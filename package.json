@@ -1,0 +1,19 @@
+{
+  "name": "dynweb-project-group15",
+  "version": "1.0.0",
+  "description": "Project for dynWeb course 2021",
+  "main": "client/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KallePettersson/dynWeb-project-group15.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KallePettersson/dynWeb-project-group15/issues"
+  },
+  "homepage": "https://github.com/KallePettersson/dynWeb-project-group15#readme"
+}
