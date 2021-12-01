@@ -1,7 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
+import ApiHandler from './api-handler'
 
 function App() {
+  // ApiHandler.getCities("Sweden");
   return (
     <div className="App">
       <header className="App-header">
