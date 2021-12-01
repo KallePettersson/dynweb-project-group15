@@ -1,5 +1,5 @@
 # API keys
-api-config.js
+api-config.*
 # Logs
 logs
 *.log
