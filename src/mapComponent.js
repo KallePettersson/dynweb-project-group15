@@ -12,33 +12,17 @@ class MapComponent extends React.Component {
 
 
     componentDidMount(){
-        var defaultColor = '#c3c3c3';
-        var activeColor = '#00b3c6';
         var highlightColorHover = '#037582';
         var highlightBorderColor = '#037582';
 
         var map = new Datamap({
             element: document.getElementById('map'),
             responsive: false,
-            height: 600,
-            width: 900,
-            fills: {
-                ZERO:"#5EFF5Bff",
-                ONE:"#6FEC5Aff",
-                TWO:"#81D95Aff",
-                THREE:"#92C659ff",
-                FOUR:"#A3B358ff",
-                FIVE:"#B5A158ff",
-                SIX:"#C68E57ff",
-                SEVEN:"#D77B56ff",
-                EIGHT:"#E96856ff",
-                NINE:"#FA5555f",
-                defaultFill: defaultColor
-            },
+            fills: this.props.colourConfig.fills,
             data: this.props.data,
             geographyConfig: {
-                highlightFillColor: highlightColorHover,
-                highlightBorderColor: highlightBorderColor,
+                highlightFillColor: this.props.colourConfig.highlightColorHover,
+                highlightBorderColor: this.props.colourConfig.highlightBorderColor,
                 popupTemplate: this.popupTemplate,
             },
         });

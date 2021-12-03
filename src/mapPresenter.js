@@ -1,28 +1,47 @@
 import React from 'react';
 import MapComponent from './mapComponent'
+import ColorGradientComponent from './colorGradientComponent';
+import './mapPresenter.css'
 
 class MapPresenter extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            //Color keys can be edited in mapComponent
-            colourKeys: [
-                "ZERO",
-                "ONE",
-                "TWO",
-                "THREE",
-                "FOUR",
-                "FIVE",
-                "SIX",
-                "SEVEN",
-                "EIGHT",
-                "NINE",
-            ],
+            colourConfig:{
+                colourKeys: [
+                    "ZERO",
+                    "ONE",
+                    "TWO",
+                    "THREE",
+                    "FOUR",
+                    "FIVE",
+                    "SIX",
+                    "SEVEN",
+                    "EIGHT",
+                    "NINE",
+                ],
+                fills: {
+                    ZERO:"#5EFF5Bff",
+                    ONE:"#6FEC5Aff",
+                    TWO:"#81D95Aff",
+                    THREE:"#92C659ff",
+                    FOUR:"#A3B358ff",
+                    FIVE:"#B5A158ff",
+                    SIX:"#C68E57ff",
+                    SEVEN:"#D77B56ff",
+                    EIGHT:"#E96856ff",
+                    NINE:"#FA5555ff",
+                    defaultFill: '#c3c3c3'
+                },
+                highlightColorHover: '#037582',
+                highlightBorderColor:'#037582',
+            },
             //Data below should be replaced with data from props, dummy data for now.
             //metaData:this.props.model.metaData ?
             //currentDataKey:this.props.model.currentDataKey ?
             //countryData:this.props.model.countryData ?
             metaData:{
+                currentDataKey:"crime_index", //Current category being displayed
                 keyToString:{
                     "crime_index": "Crime Index",
                     "climate_index": "Climate Index"
@@ -37,7 +56,6 @@ class MapPresenter extends React.Component{
                 }
                 //One of these for each option we want to visualize
             },
-            currentDataKey:"crime_index",
             countryData: {
                 SWE:{
                     "crime_index": 48.972638040217525,
@@ -66,7 +84,6 @@ class MapPresenter extends React.Component{
                     "pollution_index": 18.433391862012876
                 },
                 USA: {
-                    "crime_index": 29.448131845361495,
                     "crime_index": 48.0419452106151,
                     "traffic_time_index": 32.8738865745154,
                     "cpi_and_rent_index": 56.68056049305239,
@@ -125,8 +142,8 @@ class MapPresenter extends React.Component{
     }
 
     getColourGradient(value){
-        let min = this.state.metaData[this.state.currentDataKey].min;
-        let max = this.state.metaData[this.state.currentDataKey].max;
+        let min = this.state.metaData[this.state.metaData.currentDataKey].min;
+        let max = this.state.metaData[this.state.metaData.currentDataKey].max;
         if(value < min){
             value = min;
         } else if(value > max){
@@ -134,15 +151,15 @@ class MapPresenter extends React.Component{
         }
         let colourIndex = Math.floor(((value - min)/((max-min)/10)));
         // console.log(min, value, max, colourIndex);
-        return this.state.colourKeys[colourIndex]
+        return this.state.colourConfig.colourKeys[colourIndex]
     }
 
     setupForEachDataPoint(){
         var dataPoints = this.state.countryData;
         var newData = Object.entries(dataPoints).map( country => {
-            country[1].fillKey = this.getColourGradient(country[1][this.state.currentDataKey]) // Set colour for given country
+            country[1].fillKey = this.getColourGradient(country[1][this.state.metaData.currentDataKey]) // Set colour for given country
             // Extra data needed for popup
-            country[1].currentDataKey = this.state.currentDataKey; 
+            country[1].currentDataKey = this.state.metaData.currentDataKey; 
             country[1].keyToString = this.state.metaData.keyToString; 
             var key = country[0];
             var value = country[1];
@@ -156,7 +173,14 @@ class MapPresenter extends React.Component{
     }
 
     render(){
-        return <MapComponent data={this.state.countryData}/>
+        // return <MapComponent data={this.state.countryData}/>
+        return <div className="outer-map-container">
+            <h1>Map Component title</h1> {/* Dont use any other title than h1, some weird bug */}
+            <div className="inner-map-container">
+                <ColorGradientComponent metaData={this.state.metaData} colourConfig={this.state.colourConfig}/>
+                <MapComponent data={this.state.countryData} colourConfig={this.state.colourConfig}/>
+            </div>
+        </div>
     }
 }
 
