@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Our Funky HTML Page</title>
+    <meta name="description" content="Our first page">
+    <meta name="keywords" content="html tutorial template">
+</head>
+
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.4.11/d3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/datamaps/0.5.8/datamaps.world.min.js"></script>
+    <div id="map" class="world-map"></div>
+    <script>
+        // https://github.com/markmarkoh/datamaps
+        // https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3
+
+        var defaultColor = '#c3c3c3';
+        var activeColor = '#00b3c6';
+        var highlightColorHover = '#037582';
+        var highlightBorderColor = '#037582';
+
+        var map = new Datamap({
+            element: document.getElementById('map'),
+            responsive: false,
+            height: 600,
+            width: 900,
+            fills: {
+                HIGH: '#afafaf',
+                LOW: '#123456',
+                MEDIUM: 'blue',
+                UNKNOWN: 'rgb(0,0,0)',
+                defaultFill: defaultColor
+            },
+            data: {
+                IRL: {
+                    fillKey: 'HIGH',
+                    numberOfThings: 2002
+                },
+                USA: {
+                    fillKey: 'MEDIUM',
+                    numberOfThings: 10381
+                }
+            },
+            geographyConfig: {
+                highlightFillColor: highlightColorHover,
+                highlightBorderColor: highlightBorderColor,
+                popupTemplate: function (geo, data) {
+                    return ['<div class="hoverinfo"><strong>',
+                        'Number of things in ' + geo.properties.name,
+                        ': ' + (data.numberOfThings || "100"),
+                        '</strong></div>'].join('');
+                }
+            },
+        });
+
+        function test() {
+            map.updateChoropleth({
+                USA: activeColor,
+                MEX: activeColor,
+                PAN: activeColor,
+                ARG: activeColor,
+                BRA: activeColor,
+                CHL: activeColor,
+                COL: activeColor,
+                AUT: activeColor,
+                BEL: activeColor,
+                BGR: activeColor,
+                DNK: activeColor,
+                FIN: activeColor,
+                FRA: activeColor,
+                DEU: activeColor,
+                HUN: activeColor,
+                IRL: activeColor,
+                ITA: activeColor,
+                LTU: activeColor,
+                NLD: activeColor,
+                POL: activeColor,
+                PRT: activeColor,
+                ROU: activeColor,
+                RUS: activeColor,
+                ESP: activeColor,
+                SWE: activeColor,
+                CHE: activeColor,
+                TUR: activeColor,
+                GBR: activeColor,
+                CHN: activeColor,
+                IND: activeColor,
+                JPN: activeColor,
+                MYS: activeColor,
+                PAK: activeColor,
+                SGP: activeColor,
+                AUS: activeColor,
+                ARE: activeColor,
+                ZAF: activeColor,
+            });
+
+        }
+    </script>
+</body>
+
+</html>
