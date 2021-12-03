@@ -20,6 +20,10 @@ class MapPresenter extends React.Component{
             ],
             //Should be replaced with data from props, dummy data for now.
             metaData:{
+                keyToString:{
+                    "crime_index": "Crime Index",
+                    "climate_index": "Climate Index"
+                },
                 "crime_index":{
                     max: 100,
                     min:0
@@ -133,8 +137,10 @@ class MapPresenter extends React.Component{
     setupForEachDataPoint(){
         var dataPoints = this.state.countryData;
         var newData = Object.entries(dataPoints).map( country => {
-            country[1].fillKey = this.getColourGradient(country[1][this.state.currentDataKey])
-            country[1].currentDataKey = this.state.currentDataKey;
+            country[1].fillKey = this.getColourGradient(country[1][this.state.currentDataKey]) // Set colour for given country
+            // Extra data needed for popup
+            country[1].currentDataKey = this.state.currentDataKey; 
+            country[1].keyToString = this.state.metaData.keyToString; 
             var key = country[0];
             var value = country[1];
             return {key:value}

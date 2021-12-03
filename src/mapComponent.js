@@ -50,7 +50,7 @@ class MapComponent extends React.Component {
     popupTemplate(geo,data){
         return ['<div class="hoverinfo">',
         '<strong>' + geo.properties.name + '</strong>',
-        (data?('<br/>' + data.currentDataKey + ' : ' + data[data.currentDataKey].toFixed(2)) : '<br/> No data'), 
+        (data?('<br/>' + data.keyToString[data.currentDataKey] + ' : ' + data[data.currentDataKey].toFixed(2)) : '<br/> No data'), 
         '</div>'].join('');
     }
 
