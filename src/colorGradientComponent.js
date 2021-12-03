@@ -16,7 +16,7 @@ class ColorGradientComponent extends React.Component {
                     if (colourCode[0] == "defaultFill") {
                         return null;
                     } else {
-                        return <div className="gradient-cell-container">
+                        return <div className="gradient-cell-container" key={colourCode[0]}>
                             <div className="gradient-cell" style={{ backgroundColor: colourCode[1] }}>
                                 test
                             </div>
