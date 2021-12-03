@@ -18,7 +18,10 @@ class MapPresenter extends React.Component{
                 "EIGHT",
                 "NINE",
             ],
-            //Should be replaced with data from props, dummy data for now.
+            //Data below should be replaced with data from props, dummy data for now.
+            //metaData:this.props.model.metaData ?
+            //currentDataKey:this.props.model.currentDataKey ?
+            //countryData:this.props.model.countryData ?
             metaData:{
                 keyToString:{
                     "crime_index": "Crime Index",
