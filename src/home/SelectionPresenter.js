@@ -3,14 +3,12 @@ import "./Home.css";
 import Header from "./Header";
 import SelectionView from "./SelectionView";
 import MapView from "./MapView";
-function HomePresenter() {
+function SelectionPresenter() {
   return (
-    <div className="wrapper">
-      <Header></Header>
+    <div>
       <SelectionView></SelectionView>
-      <MapView></MapView>
     </div>
   );
 }
 
-export default HomePresenter;
+export default SelectionPresenter;

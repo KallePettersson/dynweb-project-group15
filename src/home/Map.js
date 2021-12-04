@@ -4,7 +4,7 @@ import "./Home.css";
 function Map() {
   return (
     <div className="mapPlaceholder">
-      <h1>Put map component here src/home/Map</h1>
+      <h1> Map view: Replace Map with MapComponent</h1>
       {/* TO DO MAP  */}
     </div>
   );

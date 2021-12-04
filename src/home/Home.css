@@ -18,6 +18,8 @@
   flex-direction: column;
   background-color: mediumaquamarine;
   height: 100vh;
+  width: 100vw;
+  margin: -10px;
 }
 .selectionView {
   padding-top: 20px;
@@ -43,7 +45,6 @@
   border-radius: 10px;
   background-color: #d7ffd7;
 }
-
 .map {
   margin-top: -22px;
   background-color: #d7ffd7;
@@ -54,7 +55,7 @@
   justify-content: center;
 }
 .mapPlaceholder {
-  width: 70vw;
-  height: 70vh;
+  width: 100vw;
+  height: 30vh;
   background-color: white;
 }

@@ -1,12 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
 import reportWebVitals from "./reportWebVitals";
-import HomePresenter from "./home/HomePresenter";
+import HomeContainer from "./home/HomeContainer";
+import Header from "./home/Header";
 
 ReactDOM.render(
   <React.StrictMode>
-    <HomePresenter />
+    <Header />
+    <HomeContainer />
   </React.StrictMode>,
   document.getElementById("root")
 );
