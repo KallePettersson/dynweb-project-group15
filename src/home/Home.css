@@ -1,0 +1,60 @@
+/* Header */
+.header {
+  height: 110px;
+  background-color: #033730;
+  padding-left: 20px;
+  display: flex; /* måste ha flex innan flexdirection */
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.header-text {
+  color: #ffe8dc;
+  font-size: 55px;
+  font-family: cursive;
+}
+/* HomePresenter & views */
+.wrapper {
+  flex-direction: column;
+  background-color: mediumaquamarine;
+  height: 100vh;
+}
+.selectionView {
+  padding-top: 20px;
+  height: 100px;
+  background-color: #d7ffd7;
+  display: flex; /* måste ha flex innan flexdirection */
+  flex-direction: row;
+}
+.selector {
+  height: 30px;
+  width: 200px;
+  margin-left: 20px;
+  background-color: #d7ffd7;
+  border-radius: 10px;
+  font-size: 20;
+}
+.selector-text {
+}
+.searchButton {
+  height: 30px;
+  width: 100px;
+  margin-left: 20px;
+  border-radius: 10px;
+  background-color: #d7ffd7;
+}
+
+.map {
+  margin-top: -22px;
+  background-color: #d7ffd7;
+  height: 100vh;
+  display: flex; /* måste ha flex innan flexdirection */
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.mapPlaceholder {
+  width: 70vw;
+  height: 70vh;
+  background-color: white;
+}
