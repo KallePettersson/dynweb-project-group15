@@ -1,6 +1,6 @@
 import React from "react";
 import "./Home.css";
-import Header from "./Header";
+
 import MapPresenter from "./MapView";
 import SelectionPresenter from "./SelectionPresenter";
 function HomeContainer() {

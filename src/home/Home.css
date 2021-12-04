@@ -1,8 +1,9 @@
 /* Header */
 .header {
-  height: 110px;
+  height: 130px;
   background-color: #033730;
-  padding-left: 20px;
+  margin-left: -20px;
+  margin-top: -20;
   display: flex; /* måste ha flex innan flexdirection */
   flex-direction: row;
   align-items: center;
@@ -10,7 +11,7 @@
 }
 .header-text {
   color: #ffe8dc;
-  font-size: 55px;
+  font-size: 45px;
   font-family: cursive;
 }
 /* HomePresenter & views */
