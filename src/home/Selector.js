@@ -7,12 +7,9 @@ const options = [
   { value: "norway", label: "Norway" },
   { value: "denmark", label: "Denmark" },
 ];
-const customStyles = {
+const style = {
   menu: (provided, state) => ({
     ...provided,
-    width: state.selectProps.width,
-    color: state.selectProps.menuColor,
-    paddingLeft: 50,
   }),
 
   control: (_, { selectProps: { width } }) => ({
@@ -26,9 +23,8 @@ function Selector(props) {
       <Select
         options={options}
         onChange={(e) => console.log("Country:", e)}
-        styles={customStyles}
-        width="200px"
-        menuColor="green"
+        styles={style}
+        placeholder={props.title}
       />
     </div>
   );
