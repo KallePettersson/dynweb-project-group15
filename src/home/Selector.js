@@ -10,6 +10,7 @@ const options = [
 const style = {
   menu: (provided, state) => ({
     ...provided,
+    width: state.selectProps.width,
   }),
 
   control: (_, { selectProps: { width } }) => ({
@@ -25,6 +26,7 @@ function Selector(props) {
         onChange={(e) => console.log("Country:", e)}
         styles={style}
         placeholder={props.title}
+        width="300px"
       />
     </div>
   );
