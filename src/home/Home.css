@@ -38,6 +38,7 @@
   font-size: 20;
 }
 .selector-text {
+  color: red;
 }
 .searchButton {
   height: 30px;

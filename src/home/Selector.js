@@ -1,33 +1,35 @@
 import React from "react";
 import "./Home.css";
+import Select from "react-select";
+
+const options = [
+  { value: "sweden", label: "Sweden" },
+  { value: "norway", label: "Norway" },
+  { value: "denmark", label: "Denmark" },
+];
+const customStyles = {
+  menu: (provided, state) => ({
+    ...provided,
+    width: state.selectProps.width,
+    color: state.selectProps.menuColor,
+    paddingLeft: 50,
+  }),
+
+  control: (_, { selectProps: { width } }) => ({
+    width: width,
+  }),
+};
 
 function Selector(props) {
   return (
     <div>
-      <select className="selector" onChange={(e) => console.log("Country:", e)}>
-        <option className="selector-text">{props.title}</option>
-        {/*   {props.options.map((opt) => (
-        <option key={opt}>{opt}</option>
-      ))} */}
-        <option>Sweden</option>
-        <option>Sweden</option>
-        <option>Sweden</option>
-        <option>Sweden</option>
-        <option>Sweden</option>
-        <option>Sweden</option>
-        <option>Sweden</option>
-        <option>Sweden</option>
-        <option>Sweden</option>
-        <option>Sweden</option>
-        <option>Sweden</option>
-        <option>Sweden</option>
-        <option>Sweden</option>
-        <option>Sweden</option>
-        <option>Sweden</option>
-        <option>Sweden</option>
-
-        <option>Sweden</option>
-      </select>
+      <Select
+        options={options}
+        onChange={(e) => console.log("Country:", e)}
+        styles={customStyles}
+        width="200px"
+        menuColor="green"
+      />
     </div>
   );
 }
