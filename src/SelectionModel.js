@@ -1,7 +1,8 @@
+import ApiHandler from "./api-handler";
+
 class SelectionModel {
     /**
      * A data-structure for storing the selected criteria for search.
-     * todo: not sure whether we need a default search settings.
      *
      * @param country Could be any of the values in the `COUNTRIES` list, or null.
      * @param year Could be any of the values in the `YEAR` list.
@@ -18,7 +19,7 @@ class SelectionModel {
      *
      * @param country The new selected country. Either a `null` or an element from `COUNTRIES`.
      */
-    updateCounty(country) {
+    setCountry(country) {
         if (country === null || COUNTRIES.includes(country))
             this.country = country
         else
@@ -30,11 +31,11 @@ class SelectionModel {
      *
      * @param year The new selected year. Must be from the list `YEARS`.
      */
-    updateYear(year) {
+    setYear(year) {
         if (YEARS.includes(year))
             this.year = year
         else
-            throw("Invalid year! The year must be an element form the list `YEARS`." )
+            throw("Invalid year! The year must be an element form the list `YEARS`.")
     }
 
     /**
@@ -42,11 +43,36 @@ class SelectionModel {
      *
      * @param category The new selected category. Must be form the list `CATEGORIES`.
      */
-    updateCategory(category) {
+    setCategory(category) {
         if (CATEGORIES.includes(category))
             this.catagory = category
         else
             throw("Invalid category! The category must be an element form the list `CATEGORIES`.")
+    }
+
+    /**
+     * Will execute the search based on the fields `country`, `year` and `category`.
+     * If the `year` or `category` fields are null a default value will be used.
+     *
+     * @param resultModel The resultModel where search results are stored.
+     */
+    search(resultModel) {
+        // Setting default values when values are missing.
+        if (this.year === null) this.year = 2020
+        if (this.catagory === null) this.catagory = "Prices"
+
+        // Temporary results
+        let entities
+        let year
+        let category
+
+        // Get entities
+        if (this.country)
+            entities = ApiHandler.getCities(this.country)
+        else
+            entities = ApiHandler.getCountries()
+
+
     }
 }
 
