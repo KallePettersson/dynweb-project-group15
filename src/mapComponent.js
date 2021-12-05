@@ -2,6 +2,8 @@ import React from "react"
 import * as Datamap from 'datamaps'
 import * as d3 from 'd3'
 import { geoMercator, geoPath, geoGraticule10 } from "d3-geo";
+import custom from './custom.json'
+
 {/* <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.4.11/d3.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/datamaps/0.5.8/datamaps.world.min.js"></script> */}
@@ -15,18 +17,19 @@ class MapComponent extends React.Component {
     componentDidMount(){
         var highlightColorHover = '#037582';
         var highlightBorderColor = '#037582';
-
-        var map = new Datamap({
-            element: document.getElementById('map'),
-            responsive: false,
-            fills: this.props.colourConfig.fills,
-            data: this.props.data,
-            done: this.onClickCountyHook,
-            geographyConfig: {
-                highlightFillColor: this.props.colourConfig.highlightColorHover,
-                highlightBorderColor: this.props.colourConfig.highlightBorderColor,
-                popupTemplate: this.popupTemplate,
-            },
+        console.log(custom);
+        // var map = new Datamap({
+        //     element: document.getElementById('map'),
+        //     responsive: false,
+        //     fills: this.props.colourConfig.fills,
+        //     data: this.props.data,
+        //     done: this.onClickCountyHook,
+        
+        //     geographyConfig: {
+        //         highlightFillColor: this.props.colourConfig.highlightColorHover,
+        //         highlightBorderColor: this.props.colourConfig.highlightBorderColor,
+        //         popupTemplate: this.popupTemplate,
+        //     },
         //     setProjection: function (element) {
         //         var projection = geoMercator()
         //       .center([-106.3468, 68.1304]) // always in [East Latitude, North Longitude]
@@ -36,9 +39,27 @@ class MapComponent extends React.Component {
         //       var path = geoPath().projection(projection);
         //       return { path: path, projection: projection };
         //   },
-        
+        // });
 
+        var map = new Datamap({
+            element: document.getElementById('map'),
+            scope: "collection",
+            geographyConfig: {
+                dataJson: custom
+            },
+           setProjection: function(element) {
+           var projection = geoMercator()
+             .scale(3000)
+             .center([0, 52])
+             .rotate([-4.8, 0])
+             .translate([element.offsetWidth / 2, element.offsetHeight / 2]);
+          var path = geoPath()
+             .projection(projection);
+    
+          return {path: path, projection: projection};
+         },
         });
+
         this.setState({
             map
         })
