@@ -1,0 +1,945 @@
+{
+    "cities": [
+        {
+            "country": "Sweden",
+            "city": "Bromölla",
+            "latitude": 56.0743618,
+            "city_id": 33428,
+            "longitude": 14.477659
+        },
+        {
+            "country": "Sweden",
+            "city": "Otterstad",
+            "latitude": 58.6553156,
+            "city_id": 33633,
+            "longitude": 13.1637199
+        },
+        {
+            "country": "Sweden",
+            "city": "Kyrkbacken, Ven",
+            "latitude": 55.9101319,
+            "city_id": 33634,
+            "longitude": 12.6747339
+        },
+        {
+            "country": "Sweden",
+            "city": "Kungälv (Kungalv)",
+            "latitude": 57.86975400000001,
+            "city_id": 33635,
+            "longitude": 11.9740317
+        },
+        {
+            "country": "Sweden",
+            "city": "Loddekopinge",
+            "latitude": 55.7596705,
+            "city_id": 33636,
+            "longitude": 13.0073627
+        },
+        {
+            "country": "Sweden",
+            "city": "Muodoslompolo",
+            "latitude": 67.945308,
+            "city_id": 33640,
+            "longitude": 23.4262944
+        },
+        {
+            "country": "Sweden",
+            "city": "Skegrie",
+            "latitude": 55.4057079,
+            "city_id": 33641,
+            "longitude": 13.0786577
+        },
+        {
+            "country": "Sweden",
+            "city": "Mariefred",
+            "latitude": 59.26203809999999,
+            "city_id": 33649,
+            "longitude": 17.22311
+        },
+        {
+            "country": "Sweden",
+            "city": "Frandefors",
+            "latitude": 58.4970319,
+            "city_id": 33650,
+            "longitude": 12.2800523
+        },
+        {
+            "country": "Sweden",
+            "city": "Boden",
+            "latitude": 65.8251188,
+            "city_id": 33651,
+            "longitude": 21.6887028
+        },
+        {
+            "country": "Sweden",
+            "city": "Norsjo (Norsjö)",
+            "latitude": 64.9135093,
+            "city_id": 33653,
+            "longitude": 19.4826413
+        },
+        {
+            "country": "Sweden",
+            "city": "Virrestad",
+            "latitude": 55.5644199,
+            "city_id": 33654,
+            "longitude": 14.2096598
+        },
+        {
+            "country": "Sweden",
+            "city": "Västervik (Vastervik)",
+            "latitude": 57.75771559999999,
+            "city_id": 33655,
+            "longitude": 16.6369759
+        },
+        {
+            "country": "Sweden",
+            "city": "Hulterstad",
+            "latitude": 56.4472725,
+            "city_id": 33656,
+            "longitude": 16.5670571
+        },
+        {
+            "country": "Sweden",
+            "city": "Lerum",
+            "latitude": 57.7694839,
+            "city_id": 33657,
+            "longitude": 12.2688196
+        },
+        {
+            "country": "Sweden",
+            "city": "Knivsta",
+            "latitude": 59.7261195,
+            "city_id": 33659,
+            "longitude": 17.7920363
+        },
+        {
+            "country": "Sweden",
+            "city": "Simrishamn",
+            "latitude": 55.5573959,
+            "city_id": 33660,
+            "longitude": 14.3489651
+        },
+        {
+            "country": "Sweden",
+            "city": "Bullmark",
+            "latitude": 64.0331996,
+            "city_id": 33661,
+            "longitude": 20.4826452
+        },
+        {
+            "country": "Sweden",
+            "city": "Björköby",
+            "latitude": 57.5188928,
+            "city_id": 33664,
+            "longitude": 14.9045962
+        },
+        {
+            "country": "Sweden",
+            "city": "Sjöbo (Sjobo)",
+            "latitude": 55.634822,
+            "city_id": 33666,
+            "longitude": 13.70337
+        },
+        {
+            "country": "Sweden",
+            "city": "Sollefteå",
+            "latitude": 63.1654065,
+            "city_id": 33709,
+            "longitude": 17.277135
+        },
+        {
+            "country": "Sweden",
+            "city": "Sollebrunn",
+            "latitude": 58.1201119,
+            "city_id": 33756,
+            "longitude": 12.5337439
+        },
+        {
+            "country": "Sweden",
+            "city": "Lomma",
+            "latitude": 55.674722184971,
+            "city_id": 33804,
+            "longitude": 13.080126187094
+        },
+        {
+            "country": "Sweden",
+            "city": "Härnösand (Harnosand)",
+            "city_id": 33966
+        },
+        {
+            "country": "Sweden",
+            "city": "Soderkoping (Söderköping)",
+            "latitude": 58.4759013,
+            "city_id": 34035,
+            "longitude": 16.3234307
+        },
+        {
+            "country": "Sweden",
+            "city": "Svedala",
+            "latitude": 55.5089084,
+            "city_id": 34273,
+            "longitude": 13.2371097
+        },
+        {
+            "country": "Sweden",
+            "city": "Kangos",
+            "latitude": 67.48120759999999,
+            "city_id": 34308,
+            "longitude": 22.6571493
+        },
+        {
+            "country": "Sweden",
+            "city": "Mölndal",
+            "latitude": 57.65,
+            "city_id": 34317,
+            "longitude": 12.0166669
+        },
+        {
+            "country": "Sweden",
+            "city": "Ljusdal",
+            "latitude": 61.8308392,
+            "city_id": 34426,
+            "longitude": 16.0817502
+        },
+        {
+            "country": "Sweden",
+            "city": "Storfors",
+            "latitude": 59.53183,
+            "city_id": 34428,
+            "longitude": 14.27201
+        },
+        {
+            "country": "Sweden",
+            "city": "Alingsas (Alingsås)",
+            "latitude": 57.9300205,
+            "city_id": 34474,
+            "longitude": 12.5362113
+        },
+        {
+            "country": "Sweden",
+            "city": "Ljungby",
+            "latitude": 56.8338774,
+            "city_id": 34680,
+            "longitude": 13.9410417
+        },
+        {
+            "country": "Sweden",
+            "city": "Torpshammar",
+            "latitude": 62.4755923,
+            "city_id": 34684,
+            "longitude": 16.324512
+        },
+        {
+            "country": "Sweden",
+            "city": "Vetlanda",
+            "latitude": 57.42746,
+            "city_id": 34857,
+            "longitude": 15.08533
+        },
+        {
+            "country": "Sweden",
+            "city": "Osby",
+            "latitude": 55.8419337793,
+            "city_id": 35085,
+            "longitude": 13.567224292919
+        },
+        {
+            "country": "Sweden",
+            "city": "Botkyrka",
+            "latitude": 59.239083333333,
+            "city_id": 35189,
+            "longitude": 17.818388888889
+        },
+        {
+            "country": "Sweden",
+            "city": "Piteå",
+            "latitude": 65.319716512986,
+            "city_id": 35679,
+            "longitude": 21.45112896781
+        },
+        {
+            "country": "Sweden",
+            "city": "Ljungbyhed",
+            "latitude": 56.074372506468,
+            "city_id": 35700,
+            "longitude": 13.240098134586
+        },
+        {
+            "country": "Sweden",
+            "city": "Nässjö",
+            "latitude": 57.6530377,
+            "city_id": 35734,
+            "longitude": 14.6981554
+        },
+        {
+            "country": "Sweden",
+            "city": "Bålsta",
+            "latitude": 59.551211514204,
+            "city_id": 35760,
+            "longitude": 17.504091543838
+        },
+        {
+            "country": "Sweden",
+            "city": "Falkenberg",
+            "latitude": 56.902097222222,
+            "city_id": 35763,
+            "longitude": 12.489519444444
+        },
+        {
+            "country": "Sweden",
+            "city": "Grums",
+            "latitude": 59.348953983819,
+            "city_id": 35767,
+            "longitude": 13.108321207457
+        },
+        {
+            "country": "Sweden",
+            "city": "Vaxholm",
+            "latitude": 59.404321035021,
+            "city_id": 35775,
+            "longitude": 18.331925530771
+        },
+        {
+            "country": "Sweden",
+            "city": "Hultsfred",
+            "latitude": 57.496405481981,
+            "city_id": 35809,
+            "longitude": 15.841971783193
+        },
+        {
+            "country": "Sweden",
+            "city": "Älvsbyn",
+            "latitude": 65.676548056967,
+            "city_id": 36008,
+            "longitude": 21.001406157008
+        },
+        {
+            "country": "Sweden",
+            "city": "Horred",
+            "latitude": 57.353333333333,
+            "city_id": 36044,
+            "longitude": 12.465
+        },
+        {
+            "country": "Sweden",
+            "city": "Norrtälje",
+            "latitude": 59.759166666667,
+            "city_id": 36115,
+            "longitude": 18.705666666667
+        },
+        {
+            "country": "Sweden",
+            "city": "Härnösand",
+            "latitude": 62.632635291703,
+            "city_id": 37024,
+            "longitude": 17.932859416228
+        },
+        {
+            "country": "Sweden",
+            "city": "Bollnäs",
+            "latitude": 61.34837950000001,
+            "city_id": 37666,
+            "longitude": 16.3942685
+        },
+        {
+            "country": "Sweden",
+            "city": "Enköping",
+            "latitude": 59.640280006134,
+            "city_id": 38682,
+            "longitude": 17.072521250874
+        },
+        {
+            "country": "Sweden",
+            "city": "Höllviken",
+            "latitude": 55.408351019024,
+            "city_id": 38739,
+            "longitude": 12.954233048417
+        },
+        {
+            "country": "Sweden",
+            "city": "Haparanda",
+            "latitude": 65.834178177938,
+            "city_id": 38740,
+            "longitude": 24.117032965922
+        },
+        {
+            "country": "Sweden",
+            "city": "Kalix",
+            "latitude": 65.849130349205,
+            "city_id": 38741,
+            "longitude": 23.177674141914
+        },
+        {
+            "country": "Sweden",
+            "city": "Åmål",
+            "latitude": 59.055555555556,
+            "city_id": 39070,
+            "longitude": 12.703055555556
+        },
+        {
+            "country": "Sweden",
+            "city": "Eskilstuna",
+            "latitude": 59.3664682,
+            "city_id": 6335,
+            "longitude": 16.5084272
+        },
+        {
+            "country": "Sweden",
+            "city": "Falun",
+            "latitude": 60.6023226,
+            "city_id": 6336,
+            "longitude": 15.6325756
+        },
+        {
+            "country": "Sweden",
+            "city": "Halmstad",
+            "latitude": 56.6743748,
+            "city_id": 6337,
+            "longitude": 12.8577884
+        },
+        {
+            "country": "Sweden",
+            "city": "Kalmar",
+            "latitude": 56.6614449,
+            "city_id": 6338,
+            "longitude": 16.362723
+        },
+        {
+            "country": "Sweden",
+            "city": "Karlstad",
+            "latitude": 59.3782355,
+            "city_id": 6339,
+            "longitude": 13.5042196
+        },
+        {
+            "country": "Sweden",
+            "city": "Kristianstad",
+            "latitude": 56.0293778,
+            "city_id": 6340,
+            "longitude": 14.1566859
+        },
+        {
+            "country": "Sweden",
+            "city": "Lund",
+            "latitude": 55.7028541,
+            "city_id": 6341,
+            "longitude": 13.1929125
+        },
+        {
+            "country": "Sweden",
+            "city": "Orebro",
+            "latitude": 59.2747378,
+            "city_id": 6342,
+            "longitude": 15.2149988
+        },
+        {
+            "country": "Sweden",
+            "city": "Ostersund (Östersund)",
+            "latitude": 63.1791601,
+            "city_id": 6343,
+            "longitude": 14.6356585
+        },
+        {
+            "country": "Sweden",
+            "city": "Sundsvall",
+            "latitude": 62.3908358,
+            "city_id": 6344,
+            "longitude": 17.3069157
+        },
+        {
+            "country": "Sweden",
+            "city": "Tumba",
+            "latitude": 59.1988136,
+            "city_id": 6345,
+            "longitude": 17.8354884
+        },
+        {
+            "country": "Sweden",
+            "city": "Uppsala",
+            "latitude": 59.85856380000001,
+            "city_id": 6346,
+            "longitude": 17.6389267
+        },
+        {
+            "country": "Sweden",
+            "city": "Strömsund",
+            "latitude": 63.853820479678,
+            "city_id": 39305,
+            "longitude": 15.567121144783
+        },
+        {
+            "country": "Sweden",
+            "city": "Sölvesborg",
+            "latitude": 56.053266666667,
+            "city_id": 39411,
+            "longitude": 14.584933333333
+        },
+        {
+            "country": "Sweden",
+            "city": "Rosersberg",
+            "latitude": 59.570735139257,
+            "city_id": 39426,
+            "longitude": 17.879224847476
+        },
+        {
+            "country": "Sweden",
+            "city": "Kungsbacka",
+            "city_id": 39644
+        },
+        {
+            "country": "Sweden",
+            "city": "Stockholm",
+            "latitude": 59.32932349999999,
+            "city_id": 7382,
+            "longitude": 18.0685808
+        },
+        {
+            "country": "Sweden",
+            "city": "Gothenburg",
+            "latitude": 57.70887,
+            "city_id": 7393,
+            "longitude": 11.97456
+        },
+        {
+            "country": "Sweden",
+            "city": "Almhult",
+            "latitude": 56.5514608,
+            "city_id": 7490,
+            "longitude": 14.1385681
+        },
+        {
+            "country": "Sweden",
+            "city": "Angelholm (Ängelholm)",
+            "latitude": 56.233333,
+            "city_id": 7515,
+            "longitude": 12.883333
+        },
+        {
+            "country": "Sweden",
+            "city": "Orkelljunga",
+            "latitude": 56.2834482,
+            "city_id": 7534,
+            "longitude": 13.2780943
+        },
+        {
+            "country": "Sweden",
+            "city": "Gavle",
+            "latitude": 60.6746161,
+            "city_id": 7539,
+            "longitude": 17.1418309
+        },
+        {
+            "country": "Sweden",
+            "city": "Linkoping",
+            "latitude": 58.4098135,
+            "city_id": 7541,
+            "longitude": 15.6245252
+        },
+        {
+            "country": "Sweden",
+            "city": "Nyköping",
+            "latitude": 58.7544913,
+            "city_id": 7544,
+            "longitude": 17.0118143
+        },
+        {
+            "country": "Sweden",
+            "city": "Jonkoping",
+            "latitude": 57.7817978,
+            "city_id": 7560,
+            "longitude": 14.1585104
+        },
+        {
+            "country": "Sweden",
+            "city": "Umea",
+            "latitude": 63.8256568,
+            "city_id": 7582,
+            "longitude": 20.2630745
+        },
+        {
+            "country": "Sweden",
+            "city": "Malmo",
+            "latitude": 55.6033306,
+            "city_id": 7587,
+            "longitude": 13.0013029
+        },
+        {
+            "country": "Sweden",
+            "city": "Skelleftea",
+            "latitude": 64.750244,
+            "city_id": 7657,
+            "longitude": 20.950917
+        },
+        {
+            "country": "Sweden",
+            "city": "Helsingborg",
+            "latitude": 56.0441984,
+            "city_id": 7881,
+            "longitude": 12.7040684
+        },
+        {
+            "country": "Sweden",
+            "city": "Skara",
+            "latitude": 58.3860128,
+            "city_id": 7923,
+            "longitude": 13.4393282
+        },
+        {
+            "country": "Sweden",
+            "city": "Taby",
+            "latitude": 59.4436804,
+            "city_id": 8079,
+            "longitude": 18.0688858
+        },
+        {
+            "country": "Sweden",
+            "city": "Karlskrona",
+            "latitude": 56.1608158,
+            "city_id": 8102,
+            "longitude": 15.5867142
+        },
+        {
+            "country": "Sweden",
+            "city": "Vasteras",
+            "latitude": 59.616462,
+            "city_id": 8150,
+            "longitude": 16.5515162
+        },
+        {
+            "country": "Sweden",
+            "city": "Hogsby",
+            "latitude": 57.1650738,
+            "city_id": 8209,
+            "longitude": 16.0258899
+        },
+        {
+            "country": "Sweden",
+            "city": "Lidingo",
+            "latitude": 59.36296,
+            "city_id": 8265,
+            "longitude": 18.1468
+        },
+        {
+            "country": "Sweden",
+            "city": "Ludvika",
+            "latitude": 60.152358,
+            "city_id": 8340,
+            "longitude": 15.191639
+        },
+        {
+            "country": "Sweden",
+            "city": "Kiruna",
+            "latitude": 67.8557995,
+            "city_id": 8554,
+            "longitude": 20.2252821
+        },
+        {
+            "country": "Sweden",
+            "city": "Skovde",
+            "latitude": 58.3902782,
+            "city_id": 8668,
+            "longitude": 13.8461208
+        },
+        {
+            "country": "Sweden",
+            "city": "Lulea",
+            "latitude": 65.5838896,
+            "city_id": 8681,
+            "longitude": 22.1531736
+        },
+        {
+            "country": "Sweden",
+            "city": "Smogen",
+            "latitude": 58.3582191,
+            "city_id": 8711,
+            "longitude": 11.2313897
+        },
+        {
+            "country": "Sweden",
+            "city": "Marsta (Sigtuna)",
+            "latitude": 59.6196463,
+            "city_id": 8771,
+            "longitude": 17.8555094
+        },
+        {
+            "country": "Sweden",
+            "city": "Arvika",
+            "latitude": 59.6548534,
+            "city_id": 8774,
+            "longitude": 12.592136
+        },
+        {
+            "country": "Sweden",
+            "city": "Varnamo",
+            "latitude": 57.1831605,
+            "city_id": 8851,
+            "longitude": 14.0478214
+        },
+        {
+            "country": "Sweden",
+            "city": "Boras",
+            "latitude": 57.721035,
+            "city_id": 8867,
+            "longitude": 12.939819
+        },
+        {
+            "country": "Sweden",
+            "city": "Sodertalje",
+            "latitude": 59.1964289,
+            "city_id": 8992,
+            "longitude": 17.6271663
+        },
+        {
+            "country": "Sweden",
+            "city": "Vaxjo",
+            "latitude": 56.92115405,
+            "city_id": 9013,
+            "longitude": 14.9040271321977
+        },
+        {
+            "country": "Sweden",
+            "city": "Sundbyberg",
+            "latitude": 59.37842805,
+            "city_id": 9041,
+            "longitude": 17.954984407729
+        },
+        {
+            "country": "Sweden",
+            "city": "Solna",
+            "latitude": 59.3688791,
+            "city_id": 9107,
+            "longitude": 18.0084334
+        },
+        {
+            "country": "Sweden",
+            "city": "Lycksele",
+            "latitude": 64.5958617,
+            "city_id": 9318,
+            "longitude": 18.6777559
+        },
+        {
+            "country": "Sweden",
+            "city": "Trollhattan",
+            "latitude": 58.2112449,
+            "city_id": 9367,
+            "longitude": 12.3560771274292
+        },
+        {
+            "country": "Sweden",
+            "city": "Fagersta",
+            "latitude": 59.9487989,
+            "city_id": 9396,
+            "longitude": 15.8880089095745
+        },
+        {
+            "country": "Sweden",
+            "city": "Uddevalla",
+            "latitude": 58.2964725,
+            "city_id": 9402,
+            "longitude": 11.9370655819292
+        },
+        {
+            "country": "Sweden",
+            "city": "Akersberga",
+            "latitude": 59.4823516,
+            "city_id": 9466,
+            "longitude": 18.2943981
+        },
+        {
+            "country": "Sweden",
+            "city": "Sollentuna",
+            "latitude": 59.4463593,
+            "city_id": 9526,
+            "longitude": 17.9400299861916
+        },
+        {
+            "country": "Sweden",
+            "city": "Sala",
+            "latitude": 59.97518305,
+            "city_id": 9727,
+            "longitude": 16.4527302513646
+        },
+        {
+            "country": "Sweden",
+            "city": "Ystad",
+            "latitude": 55.37392495,
+            "city_id": 9742,
+            "longitude": 13.9855734264583
+        },
+        {
+            "country": "Sweden",
+            "city": "Saffle",
+            "latitude": 59.07913645,
+            "city_id": 9853,
+            "longitude": 13.155886846188
+        },
+        {
+            "country": "Sweden",
+            "city": "Ornskoldsvik",
+            "latitude": 63.2888613,
+            "city_id": 9870,
+            "longitude": 18.7160209
+        },
+        {
+            "country": "Sweden",
+            "city": "Sveg",
+            "latitude": 62.0361156,
+            "city_id": 9914,
+            "longitude": 14.3598256
+        },
+        {
+            "country": "Sweden",
+            "city": "Stromstad",
+            "latitude": 58.93797305,
+            "city_id": 10058,
+            "longitude": 11.178280542884
+        },
+        {
+            "country": "Sweden",
+            "city": "Visby",
+            "latitude": 57.6306463,
+            "city_id": 10147,
+            "longitude": 18.3002077
+        },
+        {
+            "country": "Sweden",
+            "city": "Norrkoping",
+            "latitude": 58.5909128,
+            "city_id": 10330,
+            "longitude": 16.190348
+        },
+        {
+            "country": "Sweden",
+            "city": "Oskarshamn",
+            "latitude": 57.3705461,
+            "city_id": 10360,
+            "longitude": 16.4482170893601
+        },
+        {
+            "country": "Sweden",
+            "city": "Landskrona",
+            "latitude": 55.883333,
+            "city_id": 10395,
+            "longitude": 12.833333
+        },
+        {
+            "country": "Sweden",
+            "city": "Torsby",
+            "latitude": 60.1382507,
+            "city_id": 10648,
+            "longitude": 12.9988812
+        },
+        {
+            "country": "Sweden",
+            "city": "Are",
+            "latitude": 63.4010888,
+            "city_id": 10736,
+            "longitude": 13.0822241
+        },
+        {
+            "country": "Sweden",
+            "city": "Hagfors",
+            "latitude": 60.0320521,
+            "city_id": 10940,
+            "longitude": 13.7002392
+        },
+        {
+            "country": "Sweden",
+            "city": "Sigtuna",
+            "latitude": 59.6165201,
+            "city_id": 11258,
+            "longitude": 17.7236301
+        },
+        {
+            "country": "Sweden",
+            "city": "Trelleborg",
+            "latitude": 55.37592,
+            "city_id": 11285,
+            "longitude": 13.1461522
+        },
+        {
+            "country": "Sweden",
+            "city": "Varberg",
+            "latitude": 57.1057412,
+            "city_id": 11287,
+            "longitude": 12.2502949
+        },
+        {
+            "country": "Sweden",
+            "city": "Staffanstorp",
+            "latitude": 55.6427393,
+            "city_id": 12008,
+            "longitude": 13.2113993
+        },
+        {
+            "country": "Sweden",
+            "city": "Mora",
+            "latitude": 61.0319082,
+            "city_id": 12206,
+            "longitude": 14.4804082
+        },
+        {
+            "country": "Sweden",
+            "city": "Gustavsberg",
+            "latitude": 59.314449,
+            "city_id": 12840,
+            "longitude": 18.3985281
+        },
+        {
+            "country": "Sweden",
+            "city": "Lindesberg",
+            "latitude": 59.5976983,
+            "city_id": 12972,
+            "longitude": 15.2229108
+        },
+        {
+            "country": "Sweden",
+            "city": "Stenungsund",
+            "latitude": 58.0678388,
+            "city_id": 13148,
+            "longitude": 11.8294346
+        },
+        {
+            "country": "Sweden",
+            "city": "Tierp",
+            "latitude": 60.34758659999999,
+            "city_id": 13223,
+            "longitude": 17.5205086
+        },
+        {
+            "country": "Sweden",
+            "city": "Svanesund",
+            "latitude": 58.1428592,
+            "city_id": 13259,
+            "longitude": 11.8220189
+        },
+        {
+            "country": "Sweden",
+            "city": "Borlange",
+            "latitude": 60.484304,
+            "city_id": 13851,
+            "longitude": 15.433969
+        },
+        {
+            "country": "Sweden",
+            "city": "Hässleholm",
+            "latitude": 56.15891449999999,
+            "city_id": 13926,
+            "longitude": 13.7667655
+        },
+        {
+            "country": "Sweden",
+            "city": "Arboga",
+            "latitude": 59.39368829999999,
+            "city_id": 14078,
+            "longitude": 15.8381747
+        },
+        {
+            "country": "Sweden",
+            "city": "Torslanda",
+            "latitude": 57.72315200000001,
+            "city_id": 14147,
+            "longitude": 11.7676685
+        }
+    ]
+}

@@ -12,7 +12,6 @@ class ColorGradientComponent extends React.Component {
 
             <div className="gradient-container">
                 {Object.entries(this.props.colourConfig.fills).map(colourCode => {
-                    console.log(colourCode[1]);
                     if (colourCode[0] == "defaultFill") {
                         return null;
                     } else {
