@@ -5,7 +5,6 @@ import DBCountriesModel from "./DBCountriesModel";
 
 function App() {
   // ApiHandler.getCities("Sweden");
-  console.log(new DBCountriesModel());
   return (
     <div className="App">
       <header className="App-header">

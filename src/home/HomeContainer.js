@@ -1,14 +1,18 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Home.css";
 import MapPresenter from "./MapPresenter";
 import SelectionPresenter from "./SelectionPresenter";
-function HomeContainer(model, db) {
-  console.log("model", model.db.Afghanistan);
-  console.log("db", db);
+function HomeContainer(props) {
+  const [state, setstate] = useState();
   return (
     <div className="wrapper">
-      <SelectionPresenter model={model.SelectionModel} db={db} />
-      <MapPresenter db={db.getResults()} />
+      <SelectionPresenter
+        model={props.model}
+        db={props.db}
+        metaData={props.metaData}
+      />
+      <button onClick={(e) => setstate(e)}>Click me to rerender!</button>
+      <MapPresenter countryData={props.db.db} metaData={props.metaData} />
     </div>
   );
 }

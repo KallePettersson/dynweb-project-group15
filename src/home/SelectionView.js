@@ -14,12 +14,17 @@ const style = {
   }),
 };
 
-function SelectorView(title, options, callback) {
+function SelectorView(props) {
   return (
     <div>
       <Select
-        options={options}
-        onChange={(e) => callback(e)}
+        options={props.options.map((option) => {
+          let ref = {};
+          ref["value"] = option;
+          ref["label"] = option;
+          return ref;
+        })}
+        onChange={(e) => props.model.setCategory(e.value)}
         styles={style}
         placeholder={<p className="selector-text">SELECT CATEGORY</p>}
         width="300px"

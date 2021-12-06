@@ -1,15 +1,12 @@
-class ResultModel{
+class ResultModel {
     /**
      * The data-structure needed to search results
      *
-     * @param entities A list of cities or countries. Each entity should probably contain id, name and coordinates.
-     * @param values The value of the entity, e.g. healthcare, pollution, ...
+     * @param results A dictionary of cities or countries. Each value should probably contain id, name and coordinates.
      */
-    constructor( entities = [], values = []) {
-        this.entities = entities
-        this.values = values
+    constructor(results = []) {
+        this.results = results
     }
-
-
-
 }
+
+export default ResultModel

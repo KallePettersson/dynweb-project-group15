@@ -1,23 +1,22 @@
 import React, { useState } from "react";
 import "./Home.css";
 import SelectionView from "./SelectionView";
+import SelectionModel, { CATEGORIES } from "../SelectionModel";
 
-function SelectionPresenter(model, db) {
-  const [state, setState] = useState();
-  function setter(selectedCategory) {
-    setState(selectedCategory);
-  }
-
+function SelectionPresenter(props) {
   return (
     <div className="selectionView">
       <SelectionView
-        options={model.getCategories()}
+        options={CATEGORIES}
         title="Category"
-        callback={model.setCategory(state)}
+        model={props.model}
       />
-      {/* <button className="searchButton" onClick={model.setCategory(state)}>
+      <button
+        className="searchButton"
+        onClick={() => props.model.search(props.db, props.metaData)}
+      >
         Apply filter!
-      </button> */}
+      </button>
     </div>
   );
 }
