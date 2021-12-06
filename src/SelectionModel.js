@@ -362,3 +362,5 @@ const YEARS = [
     2019,
     2020
 ];
+
+export default SelectionModel;

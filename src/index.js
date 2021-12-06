@@ -4,13 +4,16 @@ import reportWebVitals from "./reportWebVitals";
 import HomeContainer from "./home/HomeContainer";
 import Header from "./home/Header";
 import "./home/Home.css";
+import DBCountriesModel from "./DBCountriesModel";
+import SelectionModel from "./SelectionModel";
+
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Header className="header" />
-    <HomeContainer />
-  </React.StrictMode>,
-  document.getElementById("root")
+    <React.StrictMode>
+        <Header className="header"/>
+        <HomeContainer model={new SelectionModel()} db={new DBCountriesModel()}/>
+    </React.StrictMode>,
+    document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function
