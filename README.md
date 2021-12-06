@@ -8,6 +8,8 @@ The heatmap is created using the [Datamaps](https://github.com/markmarkoh/datama
 The data in the model is fetched from https://www.numbeo.com/api/country_indices?api_key=api-key&country=country-name for each country.
 
 ## What we are going to do
+* Fix the synchronization problem that we have when we create our DBCountriesModel object.
+* Fix the rerendering issue with the map.
 * Add some sort of side component with information about what the different data represents. i.e what does a Crime index of 52.5 mean.
 * We want to add another view where we can view the same data for each city within a given country. Clicking an country should take the user to this new view.
 
