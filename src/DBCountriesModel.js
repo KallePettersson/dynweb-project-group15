@@ -8,9 +8,9 @@ class DBCountriesModel {
     constructor() {
         // A list of results for each country
         let results = {}
-        for (let i in COUNTRIES) {
-            ApiHandler.getCountryIndices(COUNTRIES[i]).then((result) => results[COUNTRIES[i]] = result);
-        }
+        Object.keys(COUNTRIES)
+            .forEach((key) => ApiHandler.getCountryIndices(COUNTRIES[key])
+                .then((result) => results[key] = result))
         this.db = results;
     }
 }

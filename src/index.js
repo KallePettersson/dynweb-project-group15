@@ -8,6 +8,12 @@ import DBCountriesModel from "./DBCountriesModel";
 import SelectionModel from "./SelectionModel";
 
 
+
+let db = new DBCountriesModel();
+let selection = new SelectionModel();
+console.log(selection.search(db));
+
+
 ReactDOM.render(
     <React.StrictMode>
         <Header className="header"/>

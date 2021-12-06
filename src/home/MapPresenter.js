@@ -165,11 +165,11 @@ class MapPresenter extends React.Component{
             var value = country[1];
             return {key:value}
         })
-        console.log(dataPoints);
+        // console.log(dataPoints);
         this.setState({
             countryData: newData,
         })
-        console.log(this.state.countryData);
+        // console.log(this.state.countryData);
     }
 
     render(){
