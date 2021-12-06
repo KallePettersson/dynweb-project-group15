@@ -1,0 +1,11 @@
+.gradient-cell{
+
+}
+
+.gradient-container{
+
+}
+.gradient-cell-container{
+    flex-direction: row;
+    display: flex;
+}

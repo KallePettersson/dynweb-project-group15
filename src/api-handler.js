@@ -25,6 +25,5 @@ const ApiHandler = {   // JS object creation literal
     }
 };
 
-// ApiHandler.getCities("Sweden");
 
 export default ApiHandler;
