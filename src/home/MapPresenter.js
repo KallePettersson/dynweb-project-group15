@@ -36,7 +36,7 @@ class MapPresenter extends React.Component {
         highlightColorHover: "#037582",
         highlightBorderColor: "#037582",
       },
-      metaData : props.metaData,
+      metaData: props.metaData,
       countryData: props.countryData,
       //Data below should be replaced with data from props, dummy data for now.
       //metaData:this.props.model.metaData ?
@@ -173,11 +173,14 @@ class MapPresenter extends React.Component {
     this.setState({
       countryData: newData,
     });
-    // console.log(this.state.countryData);
+    console.log("setUpforeac", this.state.countryData);
   }
 
   render() {
     // return <MapComponent data={this.state.countryData}/>
+    console.log("countrydata", this.state.countryData);
+    console.log("database", this.state.db);
+    console.log("METADATA", this.state.metaData);
     return (
       <div className="outer-map-container">
         {/*  <h1>Map Component title</h1> */}
@@ -188,8 +191,9 @@ class MapPresenter extends React.Component {
             colourConfig={this.state.colourConfig}
           />
           <MapComponent
-            data={this.props.db} // results from DBmodel
+            data={this.state.countryData} // results from DBmodel
             colourConfig={this.state.colourConfig}
+            metaData={this.state.metaData}
           />
         </div>
       </div>
