@@ -6,16 +6,17 @@ import Header from "./home/Header";
 import "./home/Home.css";
 import SelectionModel from "../src/SelectionModel";
 import DBCountriesModel from "../src/DBCountriesModel";
-import SelectionPresenter from "./home/SelectionPresenter";
+import MetaDataModel from "./MetaDataModel";
 
+let metaDataModel = new MetaDataModel();
 let model = new SelectionModel();
 let db = new DBCountriesModel();
-setTimeout(() => console.log(selection.search(db).results), 5000);
+setTimeout(() => console.log(model.search(db, metaDataModel).results), 5000);
 
 ReactDOM.render(
   <React.StrictMode>
     <Header className="header" />
-    <HomeContainer model={model} db={db} />
+    <HomeContainer model={model} db={db} metaData={metaDataModel} />
   </React.StrictMode>,
   document.getElementById("root")
 );

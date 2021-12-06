@@ -1,5 +1,6 @@
 import ApiHandler from "./api-handler";
 import ResultModel from "./ResultModel";
+
 class SelectionModel {
     /**
      * A data-structure for storing the selected criteria for search.
@@ -55,31 +56,22 @@ class SelectionModel {
      * If the `year` or `category` fields are null a default value will be used.
      *
      * @param dbCountries
+     * @param metaDataModel
      */
-    search(dbCountries) {
-
+    search(dbCountries, metaDataModel) {
+        console.log("OK")
+        console.log(metaDataModel)
         // Setting default values when values are missing.
         if (this.category === null) this.category = "cpi_index"
 
         let result = new ResultModel();
 
         if (this.country === null) {
-            // console.log(dbCountries.db)
-            // setTimeout(() => console.log(dbCountries.db), 5000)
-            // console.log(Object.entries(dbCountries.db))
-            // console.log(Object.getOwnPropertyNames(dbCountries.db))
-            // let d = {"KEY1": "value1", "KEY2": "value2"}
-            // console.log(d)
-            // console.log(Object.getOwnPropertyNames(d))
-            Object.keys(dbCountries.db).forEach((key) =>
-                result.results.push(
-                    {
-                        "code": key,
-                        "name": dbCountries.db[key]["name"],
-                        "category": this.category,
-                        "value": dbCountries.db[key][this.category]
-                    })
-            )
+            console.log("line69")
+            console.log(dbCountries.db)
+            metaDataModel.setCurrentDataKey(this.category);
+            return dbCountries.db;
+
         }
         return result;
     }
@@ -89,19 +81,18 @@ class SelectionModel {
  * A list of the possible categories that could be selected.
  * @type {string[]}
  */
-const CATEGORIES = [
-  "crime_index",
-  "cpi_index",
-  "cpi_and_rent_index",
-  "groceries_index",
-  "health_care_index",
-  "pollution_index",
-  "property_price_to_income_ratio",
-  "purchasing_power_incl_rent_index",
-  "quality_of_life_index",
-  "rent_index",
-  "traffic_index",
-  "traffic_time_index",
+export const CATEGORIES = [
+    "crime_index",
+    "cpi_index",
+    "cpi_and_rent_index",
+    "groceries_index",
+    "health_care_index",
+    "pollution_index",
+    "property_price_to_income_ratio",
+    "purchasing_power_incl_rent_index",
+    "rent_index",
+    "traffic_index",
+    "traffic_time_index"
 ];
 
 /**

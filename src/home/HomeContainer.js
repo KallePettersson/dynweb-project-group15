@@ -2,13 +2,11 @@ import React from "react";
 import "./Home.css";
 import MapPresenter from "./MapPresenter";
 import SelectionPresenter from "./SelectionPresenter";
-function HomeContainer(model, db) {
-  console.log("model", model.db.Afghanistan);
-  console.log("db", db);
+function HomeContainer(props) {
   return (
     <div className="wrapper">
-      <SelectionPresenter model={model.SelectionModel} db={db} />
-      <MapPresenter db={db.getResults()} />
+      <SelectionPresenter model={props.model} db={props.db } metaData={props.metaData}/>
+      <MapPresenter countryData={props.db.db} metaData={props.metaData} />
     </div>
   );
 }
