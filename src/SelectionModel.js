@@ -1,5 +1,5 @@
+import ApiHandler from "./api-handler";
 import ResultModel from "./ResultModel";
-
 class SelectionModel {
     /**
      * A data-structure for storing the selected criteria for search.
@@ -90,18 +90,18 @@ class SelectionModel {
  * @type {string[]}
  */
 const CATEGORIES = [
-    "crime_index",
-    "cpi_index",
-    "cpi_and_rent_index",
-    "groceries_index",
-    "health_care_index",
-    "pollution_index",
-    "property_price_to_income_ratio",
-    "purchasing_power_incl_rent_index",
-    "quality_of_life_index",
-    "rent_index",
-    "traffic_index",
-    "traffic_time_index"
+  "crime_index",
+  "cpi_index",
+  "cpi_and_rent_index",
+  "groceries_index",
+  "health_care_index",
+  "pollution_index",
+  "property_price_to_income_ratio",
+  "purchasing_power_incl_rent_index",
+  "quality_of_life_index",
+  "rent_index",
+  "traffic_index",
+  "traffic_time_index",
 ];
 
 /**
