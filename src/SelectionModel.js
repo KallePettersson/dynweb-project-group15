@@ -54,7 +54,7 @@ class SelectionModel {
      * Will execute the search based on the fields `country`, `year` and `category`.
      * If the `year` or `category` fields are null a default value will be used.
      *
-     * @param resultModel The resultModel where search results are stored.
+     * @param
      */
     search(dbCountries) {
         // Setting default values when values are missing.
