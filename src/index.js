@@ -8,10 +8,9 @@ import DBCountriesModel from "./DBCountriesModel";
 import SelectionModel from "./SelectionModel";
 
 
-
 let db = new DBCountriesModel();
 let selection = new SelectionModel();
-console.log(selection.search(db));
+setTimeout(() => console.log(selection.search(db).results), 5000);
 
 
 ReactDOM.render(

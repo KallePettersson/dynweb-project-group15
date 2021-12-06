@@ -1,4 +1,3 @@
-import ApiHandler from "./api-handler";
 import ResultModel from "./ResultModel";
 
 class SelectionModel {
@@ -12,7 +11,7 @@ class SelectionModel {
     constructor(country = null, year = null, category = null) {
         this.country = country
         this.year = year
-        this.catagory = category
+        this.category = category
     }
 
     /**
@@ -24,7 +23,7 @@ class SelectionModel {
         if (country === null || Object.values(COUNTRIES).includes(country))
             this.country = country
         else
-            throw("Invalid country! Country should exist in the list `COUNTRIES` or `null`.")
+            throw "Invalid country! Country should exist in the list `COUNTRIES` or `null`."
     }
 
     /**
@@ -36,7 +35,7 @@ class SelectionModel {
         if (YEARS.includes(year))
             this.year = year
         else
-            throw("Invalid year! The year must be an element form the list `YEARS`.")
+            throw "Invalid year! The year must be an element form the list `YEARS`."
     }
 
     /**
@@ -46,9 +45,9 @@ class SelectionModel {
      */
     setCategory(category) {
         if (CATEGORIES.includes(category))
-            this.catagory = category
+            this.category = category
         else
-            throw("Invalid category! The category must be an element form the list `CATEGORIES`.")
+            throw "Invalid category! The category must be an element form the list `CATEGORIES`."
     }
 
     /**
@@ -58,25 +57,27 @@ class SelectionModel {
      * @param dbCountries
      */
     search(dbCountries) {
+
         // Setting default values when values are missing.
-        if (this.catagory === null) this.catagory = "quality_of_life_index"
+        if (this.category === null) this.category = "cpi_index"
 
         let result = new ResultModel();
 
         if (this.country === null) {
-            console.log(dbCountries.db)
-            console.log(Object.entries(dbCountries.db))
-            console.log(Object.getOwnPropertyNames(dbCountries.db))
-            let d = {"KEY1": "value1", "KEY2": "value2"}
-            console.log(d)
-            console.log(Object.getOwnPropertyNames(d))
+            // console.log(dbCountries.db)
+            // setTimeout(() => console.log(dbCountries.db), 5000)
+            // console.log(Object.entries(dbCountries.db))
+            // console.log(Object.getOwnPropertyNames(dbCountries.db))
+            // let d = {"KEY1": "value1", "KEY2": "value2"}
+            // console.log(d)
+            // console.log(Object.getOwnPropertyNames(d))
             Object.keys(dbCountries.db).forEach((key) =>
                 result.results.push(
                     {
                         "code": key,
                         "name": dbCountries.db[key]["name"],
-                        "category": this.catagory,
-                        "value": dbCountries.db[key][this.catagory]
+                        "category": this.category,
+                        "value": dbCountries.db[key][this.category]
                     })
             )
         }
@@ -179,7 +180,6 @@ export const COUNTRIES = {
     "ERI": "Estonia",
     "EST": "Eswatini",
     "SWZ": "Ethiopia",
-    "ETH": "Falkland Islands (the) [Malvinas]",
     "FLK": "Faroe Islands (the)",
     "FRO": "Fiji",
     "FJI": "Finland",

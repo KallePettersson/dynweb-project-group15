@@ -11,6 +11,7 @@ class DBCountriesModel {
         Object.keys(COUNTRIES)
             .forEach((key) => ApiHandler.getCountryIndices(COUNTRIES[key])
                 .then((result) => results[key] = result))
+
         this.db = results;
     }
 }

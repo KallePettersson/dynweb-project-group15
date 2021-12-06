@@ -4,7 +4,7 @@ class ResultModel {
      *
      * @param results A dictionary of cities or countries. Each value should probably contain id, name and coordinates.
      */
-    constructor(results = {}) {
+    constructor(results = []) {
         this.results = results
     }
 }
