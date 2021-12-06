@@ -1,6 +1,7 @@
 class MetaDataModel {
   constructor() {
     this.currentDataKey = "crime_index"; //Current category being displayed
+    this.countrySelected= "World";
     this.keyToString = {
       crime_index: "Crime Index",
       climate_index: "Climate Index",

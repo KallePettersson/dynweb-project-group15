@@ -60,7 +60,7 @@ class SelectionModel {
     console.log("OK");
     console.log(metaDataModel);
     // Setting default values when values are missing.
-    if (this.category === null) this.category = "cpi_index";
+    if (this.category === null) this.category = "crime_index";
 
     let result = new ResultModel();
 
