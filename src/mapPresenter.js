@@ -212,11 +212,10 @@ class MapPresenter extends React.Component {
         let max = this.state.metaData[this.state.metaData.currentDataKey].max;
         if (value < min) {
             value = min;
-        } else if (value > max) {
-            value = max;
+        } else if (value >= max) {
+            value = (max-0.01); //ugly hack to fix edge case
         }
         let colourIndex = Math.floor(((value - min) / ((max - min) / 10)));
-        // console.log(min, value, max, colourIndex);
         return this.state.colourConfig.colourKeys[colourIndex]
     }
 
@@ -234,13 +233,18 @@ class MapPresenter extends React.Component {
         })
     }
     setupForEachCityDataPoint() {
+        console.log(this.state.cityData["cities"]);
         Object.entries(this.state.cityData["cities"]).forEach(city => {
+            console.log(city[1]);
+            console.log(this.state.metaData.currentDataKey);
+            console.log(city[1][this.state.metaData.currentDataKey]);
             city[1].fillKey = this.getColourGradient(city[1][this.state.metaData.currentDataKey]) // Set colour for given country
             city[1].radius = this.getCityRadius(city[1][this.state.metaData.currentDataKey]); // Set radius of city bubble
             // Extra data needed for popup
             city[1].currentDataKey = this.state.metaData.currentDataKey;
             city[1].keyToString = this.state.metaData.keyToString;
         })
+        console.log(this.state.cityData["cities"]);
     }
 
     render() {

@@ -30,15 +30,14 @@ class MapComponent extends React.Component {
             geographyConfig: {
                 highlightFillColor: this.props.colourConfig.highlightColorHover,
                 highlightBorderColor: this.props.colourConfig.highlightBorderColor,
-                popupTemplate: popupTemplate,
+                popupTemplate: countryPopupTemplate,
             },
             setProjection: (this.props.metaData.countrySelected !== "World"?zoomToCountry:null) //Only set projection function if a country is selected
         
     });
-        // map.svg.selectAll(".datamaps-subunits").transition().duration(750).attr("transform", "scale(1.5)translate(-50,-300)");
 
         if(this.props.metaData.countrySelected !== "World"){
-            console.log(this.props.cityData["cities"]);
+
             //Re-color map
             this.resetAllColorsExcept(map1, this.props.metaData.countrySelected);
             
@@ -86,7 +85,7 @@ class MapComponent extends React.Component {
 
 
 
-function popupTemplate(geo,data){
+function countryPopupTemplate(geo,data){
     return ['<div class="hoverinfo">',
     '<strong>' + geo.properties.name + '</strong>',
     (data?('<br/>' + data.keyToString[data.currentDataKey] + ' : ' + data[data.currentDataKey].toFixed(2)) : '<br/> No data'), 
@@ -95,7 +94,9 @@ function popupTemplate(geo,data){
 
 
 function cityPopupTemplate(geo, data) {
-    return ['<div class="hoverinfo">' +  data.city,
+    return ['<div class="hoverinfo">',
+    '<strong>' + data.city + '</strong>',
+    (data[data.currentDataKey]?('<br/>' + data.keyToString[data.currentDataKey] + ' : ' + data[data.currentDataKey].toFixed(2)) : '<br/> No data'), 
     '</div>'].join('');
 }
 
