@@ -1,9 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
-import ApiHandler from './api-handler'
+// import ApiHandler from './api-handler';
+import DBCountriesModel from "./DBCountriesModel";
 
 function App() {
   // ApiHandler.getCities("Sweden");
+  console.log(new DBCountriesModel());
   return (
     <div className="App">
       <header className="App-header">

@@ -56,22 +56,11 @@ class SelectionModel {
      *
      * @param resultModel The resultModel where search results are stored.
      */
-    search(resultModel) {
+    search(dbCountries) {
         // Setting default values when values are missing.
-        if (this.year === null) this.year = 2020
-        if (this.catagory === null) this.catagory = "Prices"
+        if (this.catagory === null) this.catagory = "quality_of_life_index"
 
-        // Temporary results
-        let entities
-        let year
-        let category
-
-        // Get entities
-        if (this.country)
-            entities = ApiHandler.getCities(this.country)
-        else
-            entities = ApiHandler.getCountries()
-
+        return new ResultModel(dbCountries.map);
 
     }
 }
@@ -81,13 +70,18 @@ class SelectionModel {
  * @type {string[]}
  */
 const CATEGORIES = [
-    "Crime",
-    "Healthcare",
-    "Prices",
-    "Pollution",
-    "property price to income ratio",
-    "purchasing power",
-    "Traffic"
+    "crime_index",
+    "cpi_index",
+    "cpi_and_rent_index",
+    "groceries_index",
+    "health_care_index",
+    "pollution_index",
+    "property_price_to_income_ratio",
+    "purchasing_power_incl_rent_index",
+    "quality_of_life_index",
+    "rent_index",
+    "traffic_index",
+    "traffic_time_index"
 ];
 
 /**
@@ -95,7 +89,7 @@ const CATEGORIES = [
  *
  * @type {string[]}
  */
-const COUNTRIES = [
+export const COUNTRIES = [
     "Afghanistan",
     "Aland Islands",
     "Albania",
