@@ -1,7 +1,7 @@
 import React from "react";
 import "./Home.css";
 
-import MapPresenter from "./MapView";
+import MapPresenter from "./MapPresenter";
 import SelectionPresenter from "./SelectionPresenter";
 function HomeContainer() {
   return (
