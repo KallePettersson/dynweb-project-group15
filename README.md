@@ -15,7 +15,8 @@ The data in the model is fetched from https://www.numbeo.com/api/country_indices
 ## Project structure - file description
 * **colorGradientComponent:** This component (which currently looks horrible css wise) is used to show what the different colors represents. Atm by default we assume that all the data points currently implemented are in the range [0,100], this should be dynamically set based on the data.
 * **MapComponent:** This component shows the map component, currently only shows the data on a country-by-country basis by coloring the map based on the category selected.
-* **MapPresenter:** Modifiyies the data from the model to set colors based on the selected category and the data associated with each country. Currently this coponent has functionality that probably should be relocated to the models.  
+* **MapPresenter:** Modifiyies the data from the model to set colors based on the selected category and the data associated with each country. Currently this coponent has functionality that probably should be relocated to the models.
+* **index:** 
 
 
 
