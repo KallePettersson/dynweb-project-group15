@@ -4,11 +4,16 @@ import reportWebVitals from "./reportWebVitals";
 import HomeContainer from "./home/HomeContainer";
 import Header from "./home/Header";
 import "./home/Home.css";
+import SelectionModel from "../src/SelectionModel";
+import DBCountriesModel from "../src/DBCountriesModel";
+import SelectionPresenter from "./home/SelectionPresenter";
 
+let model = new SelectionModel();
+let db = new DBCountriesModel();
 ReactDOM.render(
   <React.StrictMode>
     <Header className="header" />
-    <HomeContainer />
+    <HomeContainer model={model} db={db} />
   </React.StrictMode>,
   document.getElementById("root")
 );

@@ -1,15 +1,31 @@
 import React from "react";
 import "./Home.css";
-import Selector from "./Selector";
-function SelectionView() {
+import Select from "react-select";
+
+// Styling method taken from React Select Library Documentation
+const style = {
+  menu: (provided, state) => ({
+    ...provided,
+    width: state.selectProps.width,
+  }),
+
+  control: (_, { selectProps: { width } }) => ({
+    width: width,
+  }),
+};
+
+function SelectorView(title, options, callback) {
   return (
-    <div className="selectionView">
-      <Selector title="Country"></Selector>
-      <Selector title="Year"></Selector>
-      <Selector title="Category"></Selector>
-      <button className="searchButton">Search</button>
+    <div>
+      <Select
+        options={options}
+        onChange={(e) => callback(e)}
+        styles={style}
+        placeholder={<p className="selector-text">SELECT CATEGORY</p>}
+        width="300px"
+      />
     </div>
   );
 }
 
-export default SelectionView;
+export default SelectorView;

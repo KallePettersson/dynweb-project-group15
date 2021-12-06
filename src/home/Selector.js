@@ -18,14 +18,14 @@ const style = {
   }),
 };
 
-function Selector(props) {
+function Selector(db, title) {
   return (
     <div>
       <Select
-        options={options}
+        options={db.results}
         onChange={(e) => console.log("Country:", e)}
         styles={style}
-        placeholder={props.title}
+        placeholder={<p className="selector-text">Select Category</p>}
         width="300px"
       />
     </div>
