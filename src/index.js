@@ -1,15 +1,28 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom";
+import reportWebVitals from "./reportWebVitals";
+import HomeContainer from "./home/HomeContainer";
+import Header from "./home/Header";
+import "./home/Home.css";
+import SelectionModel from "../src/SelectionModel";
+import DBCountriesModel from "../src/DBCountriesModel";
+import MetaDataModel from "./MetaDataModel";
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+let metaDataModel = new MetaDataModel();
+let model = new SelectionModel();
+let db = new DBCountriesModel();
+model.search(db, metaDataModel)
+setTimeout(() => {
+  ReactDOM.render(
+    <React.StrictMode>
+      <Header className="header" />
+      <HomeContainer model={model} db={db} metaData={metaDataModel} />
+    </React.StrictMode>,
+    document.getElementById("root")
+  );
+}, 5000);
+
+
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

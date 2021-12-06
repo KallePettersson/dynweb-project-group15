@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
-import ApiHandler from './api-handler'
+// import ApiHandler from './api-handler';
+import DBCountriesModel from "./DBCountriesModel";
 
 function App() {
   // ApiHandler.getCities("Sweden");
