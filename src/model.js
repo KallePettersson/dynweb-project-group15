@@ -7,9 +7,8 @@ class GeoLocoModel {
         console.log("metaData-", this.metaData);
         this.countryData = this.mockCountryDataSetup();
         this.cityData = this.mockCityDataSetup();
-        // this.initCountryData();
         this.observers = [];
-        console.log("in constructor");
+        this.fetchGlobalData1();
     }
 
     addObserver(callback) {
@@ -36,35 +35,66 @@ class GeoLocoModel {
     }
 
 
-    testFun(countryCode){
+    testFun(countryCode) {
         console.log("countryCode", countryCode);
         this.metaData.countrySelected = countryCode;
         this.notifyObservers();
     }
 
 
-    initCountryData() {
+    // async initCountryData() {
+    //     return new Promise((resolve, reject) => {
+    //         let results = {};
+    //         await ApiHandler.getCountryIndices("GIB").then(
+    //             (result) => (results["GIB"] = result)
+    //         )
+    //         await ApiHandler.getCountryIndices("GRC").then(
+    //             (result) => (results["GRC"] = result)
+    //         )
+    //         await ApiHandler.getCountryIndices("GRL").then(
+    //             (result) => (results["GRL"] = result)
+    //         )
+
+    //         console.log("results");
+    //         resolve(results);
+    //     })
+    // }
+
+    async initCountryData() {
+        var promise = Promise.resolve();
         let results = {};
         Object.keys(COUNTRIES).forEach((key) =>
-            ApiHandler.getCountryIndices(COUNTRIES[key]).then(
-                (result) => (results[key] = result)
-            )
+            promise = ApiHandler.getCountryIndices(COUNTRIES[key])
+                .then(result => {
+                    results[key] = result
+                })
+                .catch(e => {
+                    console.log("Individual Api fetch error", e);
+                })
         );
-
-        this.countryData = results;
+        await promise.then(() => {
+            console.log("results", results);
+            this.countryData = results;
+        }).catch(e => {
+            console.log("Api fetch error", e);
+        })
     }
 
 
-    // async fetchGlobalData() {
-    //     let globalData = {};
-    //     globalData["countryData"] = this.countryData;
-    //     globalData["cityData"] = null;
-    //     globalData["colourConfig"] = this.colourConfig;
-    //     globalData["metaData"] = this.metaData;
-    //     return globalData;
-    // }
-
     async fetchGlobalData() {
+        await this.initCountryData();
+        let globalData = {};
+        this.countryData = this.setupForEachCountryDataPoint();
+        this.cityData = this.setupForEachCityDataPoint();
+        globalData["countryData"] = this.countryData;
+        globalData["cityData"] = this.cityData;
+        globalData["colourConfig"] = this.colourConfig;
+        globalData["metaData"] = this.metaData;
+        console.log("globalData", globalData);
+        return globalData;
+    }
+
+    async fetchGlobalData1() {
         let globalData = {};
         this.countryData = this.setupForEachCountryDataPoint();
         this.cityData = this.setupForEachCityDataPoint();
@@ -153,7 +183,10 @@ class GeoLocoModel {
     }
 
     setupForEachCountryDataPoint() {
-        if (this.countryData) {
+        if (this.countryData !== null) {
+            console.log("this.countryData - setupForEachCountryDataPoint", this.countryData);
+            console.log("this.countryData - setupForEachCountryDataPoint", this.countryData !== null);
+            console.log("this.countryData - setupForEachCountryDataPoint", Object.entries(this.countryData).length);
             let newCountryData = {};
             Object.entries(this.countryData).forEach(country => {
                 newCountryData[country[0]] = country[1];
@@ -166,6 +199,7 @@ class GeoLocoModel {
             // console.log(newCountryData);
             return newCountryData;
         } else {
+            console.log("no country data in setupForEachCountryDataPoint");
             return null;
         }
     }
