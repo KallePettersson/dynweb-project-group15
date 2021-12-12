@@ -7,21 +7,16 @@ import "./home/Home.css";
 import SelectionModel from "../src/SelectionModel";
 import DBCountriesModel from "../src/DBCountriesModel";
 import MetaDataModel from "./MetaDataModel";
+import GeoLocoModel from './model'
 
-let metaDataModel = new MetaDataModel();
-let model = new SelectionModel();
-let db = new DBCountriesModel();
-model.search(db, metaDataModel)
-setTimeout(() => {
-  ReactDOM.render(
-    <React.StrictMode>
-      <Header className="header" />
-      <HomeContainer model={model} db={db} metaData={metaDataModel} />
-    </React.StrictMode>,
-    document.getElementById("root")
-  );
-}, 5000);
-
+let model = new GeoLocoModel();
+ReactDOM.render(
+  <React.StrictMode>
+    <Header className="header" />
+    <HomeContainer model={model}/>
+  </React.StrictMode>,
+  document.getElementById("root")
+);
 
 
 // If you want to start measuring performance in your app, pass a function

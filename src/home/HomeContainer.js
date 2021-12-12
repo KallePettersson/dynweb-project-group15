@@ -3,7 +3,7 @@ import "./Home.css";
 import MapPresenter from "./MapPresenter";
 import SelectionPresenter from "./SelectionPresenter";
 function HomeContainer(props) {
-  const [state, setstate] = useState();
+
   return (
     <div className="wrapper">
       <SelectionPresenter
@@ -11,8 +11,8 @@ function HomeContainer(props) {
         db={props.db}
         metaData={props.metaData}
       />
-      <button onClick={(e) => setstate(e)}>Click me to rerender!</button>
-      <MapPresenter countryData={props.db.db} metaData={props.metaData} />
+      
+      <MapPresenter model = {props.model} />
     </div>
   );
 }
