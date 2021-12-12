@@ -21,7 +21,7 @@ class GeoLocoModel {
 
 
     notifyObservers() {
-        console.log("notify observers");
+        console.log("notify observers", this.observers.length);
         this.observers.forEach(cb => {
             // try {
             //     console.log("notify observers - callback");

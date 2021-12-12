@@ -6,7 +6,7 @@ import './mapPresenter.css'
 import PromiseNoData from './promieNoData';
 
 function MapPresenter(props) {
-
+    console.log("Num renders");
     //Setup states 
     const [promise, setPromise] = React.useState(null);
     const [data, setData] = React.useState(null);
@@ -22,8 +22,17 @@ function MapPresenter(props) {
         );
     }, []);
 
+    //Reset old model hook
+    props.model.removeObserver(function tmp(){
+        setPromise(
+            props.model.fetchGlobalData()
+            .then((data) => setData(data))
+            .catch((error) => setError(error))
+            )
+        })
+        
     //Add observer hook to model
-    props.model.addObserver(() => {
+    props.model.addObserver(function tmp(){
         setPromise(
             props.model.fetchGlobalData()
                 .then((data) => setData(data))
@@ -49,5 +58,6 @@ function MapPresenter(props) {
         </div>
     );
 }
+
 
 export default MapPresenter;
