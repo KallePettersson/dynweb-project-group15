@@ -23,16 +23,16 @@ function MapPresenter(props) {
     }, []);
 
     //Reset old model hook
-    props.model.removeObserver(function tmp(){
+    props.model.removeObserver(function tmp() {
         setPromise(
             props.model.fetchGlobalData()
-            .then((data) => setData(data))
-            .catch((error) => setError(error))
-            )
-        })
-        
+                .then((data) => setData(data))
+                .catch((error) => setError(error))
+        )
+    })
+
     //Add observer hook to model
-    props.model.addObserver(function tmp(){
+    props.model.addObserver(function tmp() {
         setPromise(
             props.model.fetchGlobalData()
                 .then((data) => setData(data))
@@ -45,15 +45,16 @@ function MapPresenter(props) {
         <div className="outer-map-container">
             <div className="inner-map-container">
                 {PromiseNoData(promise, data, error) ||
-                    (<div>
+                    (<MapComponent model={props.model} countryData={data.countryData} cityData={data.cityData} colourConfig={data.colourConfig} metaData={data.metaData} />
+                    )}
+                <div id="map" className="world-map"></div>
+                {PromiseNoData(promise, data, error, true) ||
+                    (
                         <ColorGradientComponent
                             metaData={data.metaData}
                             colourConfig={data.colourConfig}
                         />
-                        <MapComponent model={props.model} countryData={data.countryData} cityData={data.cityData} colourConfig={data.colourConfig} metaData={data.metaData} />
-                    </div>
                     )}
-                <div id="map" className="world-map"></div>
             </div>
         </div>
     );

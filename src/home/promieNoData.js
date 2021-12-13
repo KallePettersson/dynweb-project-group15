@@ -1,11 +1,14 @@
-function PromiseNoData(promise, data, error) {
+function PromiseNoData(promise, data, error, preventLoadingGif=false) {
 
     if (!promise) {
         return <span>no data</span>
     } else {
-
+        
         //case 2
         if (!data && !error) {
+            if (preventLoadingGif) {
+               return <div></div>; 
+            }
             return <img src={"http://www.csc.kth.se/~cristi/loading.gif"}/>
         }
         //case 3

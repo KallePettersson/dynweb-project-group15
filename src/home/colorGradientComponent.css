@@ -1,11 +1,17 @@
 .gradient-cell{
-
+    width: 3em;
+}
+.min-cell{
+    width: 3em;
+    text-align: center;
+}
+.max-cell{
+    width: 3em;
+    text-align: center;
 }
 
 .gradient-container{
-
-}
-.gradient-cell-container{
+    justify-content: center;
     flex-direction: row;
     display: flex;
 }

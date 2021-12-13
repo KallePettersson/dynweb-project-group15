@@ -11,12 +11,21 @@ function MapComponent(props) {
 
     //Reset old map data
     const myNode = document.getElementById("map");
+    let width = myNode.offsetWidth
+    let height = width/2
+    console.log("myNode", myNode.offsetHeight);
+    console.log("myNode", myNode.offsetWidth);
+    console.log("myNode", height);
+    console.log("myNode", width);
     myNode.innerHTML = '';
 
     //Setup main map
-    var map1 = new Datamap({
+    var map = new Datamap({
         element: document.getElementById('map'),
-        responsive: false,
+        width: width,
+        height: height,
+        responsive: true,
+        aspectRatio: 0.1,
         fills: props.colourConfig.fills,
         data: props.countryData,
         done: onClickCountyHook,
@@ -35,12 +44,12 @@ function MapComponent(props) {
         
         //Draw cities
         console.log("props.cityData", props.cityData);
-        map1.bubbles(props.cityData["cities"], {
+        map.bubbles(props.cityData["cities"], {
             popupTemplate: cityPopupTemplate,
         });
         
         //Re-color map
-        resetAllColorsExcept(map1, props.countryData, props.metaData.countrySelected);
+        resetAllColorsExcept(map, props.countryData, props.metaData.countrySelected);
     }
     
     //Add zoom functionality to map
@@ -53,6 +62,11 @@ function MapComponent(props) {
         })
         
     d3.select(document.getElementById("map")).select('svg').call(zoom);
+
+    //Add resizing when window changes
+    d3.select(window).on('resize', function() {
+        map.resize();
+    });
     
     //Ugly solution to access zoomRef for zooming
     globalZoomRef = zoom;
