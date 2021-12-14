@@ -21,15 +21,16 @@
 }
 /* HomePresenter & views */
 .wrapper {
-  flex-direction: column;
+  flex-direction: row;
   background-color: white;
   height: 100vh;
   width: 100vw;
   margin: -10px;
+  overflow: hidden;
 }
 .selectionView {
-  padding-top: 20px;
-  height: 100px;
+  padding-bottom: 20px;
+  height: 40px;
   background-color: #d7ffd7;
   display: flex; /* måste ha flex innan flexdirection */
   flex-direction: row;
@@ -53,17 +54,34 @@
   border-radius: 10px;
   background-color: #d7ffd7;
 }
-.map {
-  margin-top: -22px;
+.details-view {
   background-color: #d7ffd7;
-  height: 100vh;
-  display: flex; /* måste ha flex innan flexdirection */
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
+  width: 500px;
+  height: 500px;
+  border-radius: 10px;
+  margin: 100px;
 }
-.mapPlaceholder {
-  width: 100vw;
-  height: 30vh;
-  background-color: white;
+
+.details-view-banner {
+  background-color: #033730;
+  height: 50px;
+  width: 100hv;
+
+  color: #ffe8dc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.details-view-item {
+  margin: 2px;
+  background-color: #033730;
+  height: 40px;
+  width: 490px;
+  border-radius: 4px;
+  font-size: 30px;
+  color: #ffe8dc;
+  display: flex;
+  align-items: center;
+}
+.item-flex {
 }

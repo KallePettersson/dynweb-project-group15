@@ -1,24 +1,26 @@
-.inner-map-container{
-    /* background-color: blue; */
-    flex-direction: column;
-    display: flex;
-    width: 100%;
-    height: 100%;
-
+.inner-map-container {
+  /* background-color: blue; */
+  flex-direction: column;
+  display: flex;
+  width: 100%;
+  height: 100%;
 }
-.outer-map-container{
-    /* Border doesnt seem to work properly, maybe due to map component */
-    /* background-color: red; */
-    flex-direction: column;
-    display: flex;
-    width: 100%;
-    height: 700px
+.outer-map-container {
+  /* Border doesnt seem to work properly, maybe due to map component */
+  /* background-color: red; */
+  flex-direction: row;
+  display: flex;
+
+  width: 70%;
+  height: 70vh;
 }
 
-
-.world-map{
-    position: relative;
-    width: 100%;
-    height: 80%;
-    border-color: red;
+.world-map {
+  position: relative;
+  width: 100%;
+  height: 80%;
+}
+.map-flex {
+  flex-direction: row;
+  display: flex;
 }
