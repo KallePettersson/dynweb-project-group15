@@ -1,5 +1,7 @@
 const initialState = {
-    cities: []
+    cities: [],
+    cityData:{},
+    citesFetched: false
 }
 
 const reducer = (state = initialState, action) => {
