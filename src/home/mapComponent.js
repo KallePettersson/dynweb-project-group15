@@ -1,6 +1,6 @@
-import React from "react"
-import * as Datamap from 'datamaps'
-import * as d3 from 'd3'
+import React from "react";
+import * as Datamap from "datamaps";
+import * as d3 from "d3";
 import * as d3Geo from "d3-geo";
 import * as d3Zoom from "d3-zoom"
 import ColorConfig from "../colorConfig";
@@ -106,15 +106,23 @@ function MapComponent(countriesData, cityData, selectedCountry, selectedCriteria
         <button onClick={ResetMapZooming}>Reset Zoom</button>
         <button onClick={() => reColorMap(globalZoomRef, countriesData)}>Re Color map</button>
     </div>
+  );
 }
-
 
 //Reset zoom and dragging on map
 function ResetMapZooming() {
-    d3.select(document.getElementById("map")).select('svg').transition().duration(750).call(
-        globalZoomRef.transform,
-        d3Zoom.zoomIdentity,
-        d3Zoom.zoomTransform(d3.select(document.getElementById("map")).select('svg').node()).invert([1225 / 2, 700 / 2])
+  d3.select(document.getElementById("map"))
+    .select("svg")
+    .transition()
+    .duration(750)
+    .call(
+      globalZoomRef.transform,
+      d3Zoom.zoomIdentity,
+      d3Zoom
+        .zoomTransform(
+          d3.select(document.getElementById("map")).select("svg").node()
+        )
+        .invert([1225 / 2, 700 / 2])
     );
 }
 
@@ -150,11 +158,9 @@ function reColorMap(mapRef, countriesData) {
 
 
 function onClickCountyHook(datamap) {
-    datamap.svg.selectAll('.datamaps-subunit').on('click', onCountryClicked);
+  datamap.svg.selectAll(".datamaps-subunit").on("click", onCountryClicked);
+  console.log("hej");
 }
-
-
-
 
 function countryPopupTemplate(geo, data) {
     // console.log("data from popuptemplate", data)
@@ -165,7 +171,6 @@ function countryPopupTemplate(geo, data) {
         '</div>'].join('');
 }
 
-
 function cityPopupTemplate(geo, data) {
     return ['<div class="hoverinfo">',
         '<strong>' + data.city + '</strong>',
@@ -173,24 +178,22 @@ function cityPopupTemplate(geo, data) {
         '</div>'].join('');
 }
 
-
-
 function onCountryClicked(geography) {
-    console.log(geography);
-    alert(geography.properties.name);
-    // globalMap.svg.selectAll(".datamaps-subunits").transition().duration(750).attr("transform", "scale(1.5)translate(-106.3468, 68.1304)");
+  console.log(geography);
+  alert(geography.properties.name);
+  // globalMap.svg.selectAll(".datamaps-subunits").transition().duration(750).attr("transform", "scale(1.5)translate(-106.3468, 68.1304)");
 }
 
 function zoomToCountry(element) {
-    console.log(element);
-    var projection = d3Geo.geoMercator()
-        .center([10, 62.7667655]) // always in [East Latitude, North Longitude]
-        .scale(900)
-        .translate([element.offsetWidth / 2, element.offsetHeight / 2]);
+  console.log(element);
+  var projection = d3Geo
+    .geoMercator()
+    .center([10, 62.7667655]) // always in [East Latitude, North Longitude]
+    .scale(900)
+    .translate([element.offsetWidth / 2, element.offsetHeight / 2]);
 
-    var path = d3Geo.geoPath().projection(projection);
-    return { path: path, projection: projection };
+  var path = d3Geo.geoPath().projection(projection);
+  return { path: path, projection: projection };
 }
-
 
 export default MapComponent;
