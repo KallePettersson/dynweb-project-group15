@@ -8,54 +8,66 @@ import {useSelector} from "react-redux";
 
 function MapPresenter(props) {
     console.log("Num renders");
-    //Setup states 
-    const [promise, setPromise] = React.useState(null);
-    const [data, setData] = React.useState(null);
-    const [error, setError] = React.useState(null);
 
-    //Init mapComponent 
+    // //Setup states
+    // const [promise, setPromise] = React.useState(null);
+    // const [data, setData] = React.useState(null);
+    // const [error, setError] = React.useState(null);
+    //
+    // //Init mapComponent
+    //
+    // React.useEffect(() => {
+    //     setPromise(
+    //         props.model.fetchGlobalData()
+    //             .then((data) => setData(data))
+    //             .catch((error) => setError(error))
+    //     );
+    // }, []);
 
-    React.useEffect(() => {
-        setPromise(
-            props.model.fetchGlobalData()
-                .then((data) => setData(data))
-                .catch((error) => setError(error))
-        );
-    }, []);
+    const countriesData = useSelector(
+        state => state.countriesReducer.countries
+    )
+    const selectedCountry = useSelector(
+        state => state.selectorReducer.country
+    )
 
-    //Reset old model hook
-    props.model.removeObserver(function tmp() {
-        setPromise(
-            props.model.fetchGlobalData()
-                .then((data) => setData(data))
-                .catch((error) => setError(error))
-        )
-    })
+    const selectedCriteria = useSelector(
+        state => state.selectorReducer.criteria
+    )
 
-    //Add observer hook to model
-    props.model.addObserver(function tmp() {
-        setPromise(
-            props.model.fetchGlobalData()
-                .then((data) => setData(data))
-                .catch((error) => setError(error))
-        )
-    })
+    const mapLoaded = useSelector(
+        state => state.mapReducer.mapLoaded
+    )
 
+    const dataFetched = useSelector(
+        state => state.countriesReducer.dataFetched
+    )
 
     return (
         <div className="outer-map-container">
             <div className="inner-map-container">
-                {PromiseNoData(promise, data, error) ||
-                    (<MapComponent model={props.model} countryData={data.countryData} cityData={data.cityData} colourConfig={data.colourConfig} metaData={data.metaData} />
-                    )}
-                <div id="map" className="world-map"></div>
-                {PromiseNoData(promise, data, error, true) ||
-                    (
-                        <ColorGradientComponent
-                            metaData={data.metaData}
-                            colourConfig={data.colourConfig}
-                        />
-                    )}
+                {/*{PromiseNoData(promise, data, error) ||*/}
+                {/*    (<MapComponent model={props.model} countryData={data.countryData} cityData={data.cityData} colourConfig={data.colourConfig} metaData={data.metaData} />*/}
+                {/*    )}*/}
+                {/*<div id="map" className="world-map"></div>*/}
+                {/*{PromiseNoData(promise, data, error, true) ||*/}
+                {/*    (*/}
+                {/*        <ColorGradientComponent*/}
+                {/*            metaData={data.metaData}*/}
+                {/*            colourConfig={data.colourConfig}*/}
+                {/*        />*/}
+                {/*    )}*/}
+
+                {dataFetched? (<MapComponent
+                    countriesData={countriesData}
+                    cityData={null}
+                    selectedCountry={selectedCountry}
+                    selectedCriteria={selectedCriteria}
+                    mapLoaded={mapLoaded}/>):(<div>test</div>)}
+                <div id="map" className="world-map"/>
+                {/*<ColorGradientComponent*/}
+                {/*        metaData={data.metaData}*/}
+                {/*        colourConfig={data.colourConfig}/>*/}
             </div>
         </div>
     );

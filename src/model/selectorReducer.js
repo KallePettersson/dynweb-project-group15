@@ -1,7 +1,7 @@
 const initialState = {
     country: "World",
     city: null,
-    criteria: null,
+    criteria: "health_care_index",
 }
 
 const reducer = (state = initialState, action) => {

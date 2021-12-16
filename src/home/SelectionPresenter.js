@@ -4,13 +4,14 @@ import SelectionView from "./SelectionView";
 import Criteria from "../criteria";
 import {useDispatch, useSelector} from "react-redux";
 import CountryCodes from "../countryCodes";
+import {log} from "d3-geo/src/math";
 
 
 function SelectionPresenter() {
     const dispatch = useDispatch();
     const criteria = useSelector(
         state => state.selectorReducer.criteria
-    );
+    )
 
   return (
     <div className="selectionView">
@@ -24,7 +25,7 @@ function SelectionPresenter() {
                 payload: {
                     criteria: e.value
                 }
-            });
+            })
         }}
       />
     </div>
