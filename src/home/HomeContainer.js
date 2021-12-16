@@ -7,6 +7,7 @@ import ApiHandler from "../api-handler";
 import {useDispatch, useSelector} from "react-redux";
 import ColorConfig from "../colorConfig";
 import Criteria from "../criteria";
+import store from "../store";
 
 function HomeContainer() {
     const dispatch = useDispatch();
@@ -14,26 +15,37 @@ function HomeContainer() {
         state => state.selectorReducer.criteria
     );
 
-    let promises = Object.values(CountryCodes).map((name) => ApiHandler.getCountryIndices(name));
-    Promise.all(promises).then(rawData => {
-        let reducedData = rawData.reduce((accumulator, data) => {
-            accumulator[getKeyByValue(CountryCodes, data.name)] = data;
-            return accumulator;
-        }, {})
+  
+    const dataFetched = useSelector(
+      state => state.countriesReducer.dataFetched
+  );
+    
 
-        let processedData = setupForEachCountryDataPoint(reducedData, criteria);
-        console.log("dataAfter", processedData)
-
-        dispatch({
-            type: "UPDATE_COUNTRIES",
-            payload: {
-                countries: processedData
-            }
+      if(!dataFetched){
+        let promises = Object.values(CountryCodes).map((name) => ApiHandler.getCountryIndices(name));
+        Promise.all(promises).then(rawData => {
+            let reducedData = rawData.reduce((accumulator, data) => {
+                accumulator[getKeyByValue(CountryCodes, data.name)] = data;
+                return accumulator;
+            }, {})
+    
+            let processedData = setupForEachCountryDataPoint(reducedData, criteria);
+            console.log("dataAfter", processedData)
+    
+            dispatch({
+                type: "UPDATE_COUNTRIES",
+                payload: {
+                    countries: processedData
+                }
+            });
+            dispatch({
+                type: "SET_DATA_FETCHED_TRUE",
+            });
         });
-        dispatch({
-            type: "SET_DATA_FETCHED_TRUE",
-        });
-    });
+      } else {
+        console.log("dont fetch data");
+        
+      }
 
 
     return (
@@ -59,6 +71,24 @@ function getColourGradient(value) {
     }
     let colourIndex = Math.floor(((value - min) / ((max - min) / 10)));
     return ColorConfig.colourKeys[colourIndex]
+}
+
+function reColorMap() {
+  console.log("reColorMap");
+  // console.log("state from recolor", store.getState())
+  // console.log("state from recolor", countriesData)
+  let selectedCriteria = store.getState().selectorReducer.criteria
+  let newColors = Object.entries(store.getState().countriesReducer.countries).map(country => {
+      let res = {};
+      // res[country[0]] = "#f94144"
+      res[country[0]] = country[1].fillKey? ColorConfig.fills[getColourGradient(country[1][selectedCriteria])] : { "fillKey": "defaultFill" };
+      // res[country[0]] = { "fillKey": country[1]["fillkey"] };
+      // console.log(res);
+      return res
+  })
+  newColors = Object.assign({}, ...newColors);
+  console.log(newColors);
+  store.getState().mapReducer.mapReference.updateChoropleth(newColors);
 }
 
 
