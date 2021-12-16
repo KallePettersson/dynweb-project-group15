@@ -4,6 +4,7 @@ import ColorGradientComponent from './colorGradientComponent';
 import * as d3 from 'd3'
 import './mapPresenter.css'
 import PromiseNoData from './promieNoData';
+import {useSelector} from "react-redux";
 
 function MapPresenter(props) {
     console.log("Num renders");

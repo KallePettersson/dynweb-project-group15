@@ -1,5 +1,5 @@
 const initialState = {
-    country: null,
+    country: "World",
     city: null,
     criteria: null,
 }
