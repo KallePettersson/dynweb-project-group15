@@ -61,6 +61,7 @@
   display: flex; /* måste ha flex innan flexdirection */
   flex-direction: row;
   height: 100px;
+  width: 150px;
   padding: 20px;
 }
 .selector {
@@ -91,16 +92,16 @@
 }
 .details-view {
   background-color: white;
-  width: 605px;
+  width: 405px;
   height: 800px;
   border-radius: 10px;
-  margin-top: 20px;
+  margin-top: 50px;
 }
 
 .details-view-banner {
   background-color: black;
   height: 50px;
-  width: 602px;
+  width: 402px;
   font-size: 40px;
   color: #ffe8dc;
   display: flex;
@@ -110,7 +111,7 @@
 .details-view-item {
   margin-bottom: 2px;
   height: 35px;
-  width: 598px;
+  width: 398px;
   border-radius: 4px;
   font-size: 30px;
   background-color: white;
@@ -124,9 +125,9 @@
 
 .index-view-item {
   margin-bottom: 2px;
-  padding: 4px;
+
   border-radius: 4px;
-  font-size: 30px;
+  font-size: 20px;
   background-color: white;
   display: flex;
   align-items: center;
@@ -134,6 +135,7 @@
   border-bottom-width: 7px;
   border-color: black;
   border-style: solid;
+  width: 398px;
 }
 .image-div {
   width: 60vw;
@@ -141,4 +143,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.space-between {
+  display: flex;
+  flex-direction: row;
 }

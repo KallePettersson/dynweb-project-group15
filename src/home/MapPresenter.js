@@ -42,7 +42,7 @@ function MapPresenter(props) {
   );
 
   return (
-    <div>
+    <div className="space-between">
       <div className="outer-map-container">
         <div className="inner-map-container">
           {/*{PromiseNoData(promise, data, error) ||*/}
