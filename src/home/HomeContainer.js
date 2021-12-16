@@ -15,26 +15,35 @@ function HomeContainer() {
         state => state.selectorReducer.criteria
     );
 
-    let promises = Object.values(CountryCodes).map((name) => ApiHandler.getCountryIndices(name));
-    Promise.all(promises).then(rawData => {
-        let reducedData = rawData.reduce((accumulator, data) => {
-            accumulator[getKeyByValue(CountryCodes, data.name)] = data;
-            return accumulator;
-        }, {})
+    const dataFetched = useSelector(
+        state => state.countriesReducer.dataFetched
+    );
 
-        let processedData = setupForEachCountryDataPoint(reducedData, criteria);
-        console.log("dataAfter", processedData)
+    if (!dataFetched) {
+        let promises = Object.values(CountryCodes).map((name) => ApiHandler.getCountryIndices(name));
+        Promise.all(promises).then(rawData => {
+            let reducedData = rawData.reduce((accumulator, data) => {
+                accumulator[getKeyByValue(CountryCodes, data.name)] = data;
+                return accumulator;
+            }, {})
 
-        dispatch({
-            type: "UPDATE_COUNTRIES",
-            payload: {
-                countries: processedData
-            }
+            let processedData = setupForEachCountryDataPoint(reducedData, criteria);
+            console.log("dataAfter", processedData)
+
+            dispatch({
+                type: "UPDATE_COUNTRIES",
+                payload: {
+                    countries: processedData
+                }
+            });
+            dispatch({
+                type: "SET_DATA_FETCHED_TRUE",
+            });
         });
-        dispatch({
-            type: "SET_DATA_FETCHED_TRUE",
-        });
-    });
+    } else {
+        console.log("dont fetch data");
+
+    }
 
 
     return (
