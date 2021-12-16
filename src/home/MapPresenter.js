@@ -41,6 +41,10 @@ function MapPresenter(props) {
     (state) => state.countriesReducer.dataFetched
   );
 
+  const colorGradientOrder = useSelector(
+      state => state.colorReducer.order
+  );
+
   return (
     <div className="map-flex">
       <div className="outer-map-container">
@@ -63,7 +67,8 @@ function MapPresenter(props) {
               null,
               selectedCountry,
               selectedCriteria,
-              mapLoaded
+              mapLoaded,
+              colorGradientOrder
             )
           ) : (
             <div>test</div>

@@ -11,19 +11,18 @@ import updateColorGradient from "./colorGradientPresenter"
 
 var globalZoomRef = null; //TODO move this somewhere
 
-function MapComponent(countriesData, cityData, selectedCountry, selectedCriteria, mapLoaded) {
+function MapComponent(countriesData, cityData, selectedCountry, selectedCriteria, mapLoaded,colorGradientOrder) {
     const dispatch = useDispatch();
-    console.log("mapLoaded", mapLoaded)
-    // const colorGradientOrder = useSelector(
-    //     state => state.colorReducer.order
-    // );
-    const colorGradientOrder = "descending"
+    console.log("mapLoaded", colorGradientOrder, colorGradientOrder === "ascending")
+
+    // const colorGradientOrder = "descending"
 
     if (!mapLoaded) {
 
 
         let fills = ColorConfig.fills;
-        if(colorGradientOrder === "descending"){
+        if(colorGradientOrder === "ascending"){
+            console.log("reverse")
             fills = ReverseFills(fills);
         }
 
@@ -36,10 +35,6 @@ function MapComponent(countriesData, cityData, selectedCountry, selectedCriteria
         const myNode = document.getElementById("map");
         let width = myNode.offsetWidth
         let height = width / 2
-        // console.log("myNode", myNode.offsetHeight);
-        // console.log("myNode", myNode.offsetWidth);
-        // console.log("myNode", height);
-        // console.log("myNode", width);
         myNode.innerHTML = '';
 
         //Setup main map
@@ -131,10 +126,13 @@ function MapComponent(countriesData, cityData, selectedCountry, selectedCriteria
 
 
 function ReverseFills(fills){
+    // console.log("reverseFills ", fills)
+    // console.log("reverseFills ", Object.values(fills).length-1)
     let res = {}
-    let reversedFills = Object.values(fills).reverse();
+    let reversedFills = Object.values(fills).slice(0,Object.values(fills).length).reverse();
     Object.assign(res, ...ColorConfig.colourKeys.map((n, index) => ({[n]: reversedFills[index]})))
-
+    res["defaultFill"] = fills["defaultFill"];
+    // console.log("reverseFills ", res)
     return res;
 
 }
@@ -174,15 +172,22 @@ function getColourGradient(value) {
 }
 
 function reColorMap() {
+
     console.log("reColorMap");
     // console.log("state from recolor", store.getState())
     // console.log("state from recolor", countriesData)
     let selectedCriteria = store.getState().selectorReducer.criteria
+    let fills = store.getState().colorReducer.order === "ascending" ? ReverseFills(ColorConfig.fills) : ColorConfig.fills;
+
     let newColors = Object.entries(store.getState().countriesReducer.countries).map(country => {
         let res = {};
         // res[country[0]] = "#f94144"
         // console.log(getColourGradient(country[1][selectedCriteria]))
-        res[country[0]] = country[1][selectedCriteria] ? ColorConfig.fills[getColourGradient(country[1][selectedCriteria])] : {"fillKey": "defaultFill"};
+        if(country[1][selectedCriteria]) {
+            res[country[0]] = fills[getColourGradient(country[1][selectedCriteria])]
+        } else {
+            res[country[0]] = {"fillKey": "defaultFill"};
+        }
         // res[country[0]] = { "fillKey": country[1]["fillkey"] };
         // console.log(res);
         return res

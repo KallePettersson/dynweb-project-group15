@@ -1,6 +1,7 @@
 const initialState = {
     countries: {},
-    dataFetched: false
+    dataFetched: false,
+    countryHovered: null
 }
 
 const reducer = (state = initialState, action) => {
@@ -9,6 +10,11 @@ const reducer = (state = initialState, action) => {
             ...state,
             countries: action.payload.countries,
             dataFetched: true
+        }
+    } else if (action.type === "UPDATE_COUNTRY_HOVERED"){
+        return {
+            ...state,
+            countryHovered: action.payload.countryHovered,
         }
     }
     return state
