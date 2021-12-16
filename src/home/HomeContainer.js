@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
 import "./Home.css";
 import MapPresenter from "./MapPresenter";
 import SelectionPresenter from "./SelectionPresenter";
 import CountryCodes from "../countryCodes";
 import ApiHandler from "../api-handler";
-import { useDispatch, useSelector } from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import ColorConfig from "../colorConfig";
-import Criteria from "../criteria";
+import {Criteria} from "../criteria";
 import updateColorGradient from "./colorGradientPresenter"
 
 function HomeContainer() {
@@ -95,7 +95,7 @@ function setupForEachCountryDataPoint(countriesData, selectedCriteria) {
 }
 
 function getKeyByValue(object, value) {
-  return Object.keys(object).find((key) => object[key] === value);
+    return Object.keys(object).find((key) => object[key] === value);
 }
 
 export default HomeContainer;

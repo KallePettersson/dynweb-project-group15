@@ -1,5 +1,5 @@
 import store from "../store";
-import CriteriaOrder from "../criteria";
+import {CriteriaOrder} from "../criteria";
 
 function updateColorGradient() {
     let countriesData = store.getState().countriesReducer.countries;

@@ -1,4 +1,4 @@
-const Criteria = {
+export const Criteria = {
     "health_care_index": "Health Care",
     "crime_index": "Crime",
     "traffic_time_index": "Traffic Time",
@@ -17,7 +17,7 @@ const Criteria = {
     "property_price_to_income_ratio": "Property Price to Income"
 }
 // descending means lower is better
-const CriteriaOrder = {
+export const CriteriaOrder = {
     "health_care_index": "ascending",
     "crime_index": "descending",
     "traffic_time_index": "descending",
@@ -35,5 +35,3 @@ const CriteriaOrder = {
     "traffic_inefficiency_index": "descending",
     "property_price_to_income_ratio": "descending"
 }
-
-export default {Criteria, CriteriaOrder};
