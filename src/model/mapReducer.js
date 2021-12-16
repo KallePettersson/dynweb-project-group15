@@ -1,5 +1,7 @@
 const initialState = {
-    mapLoaded: false
+    mapLoaded: false,
+    mapReference: null,
+    mapZoomReference: null,
 }
 
 const reducer = (state = initialState, action) => {
@@ -12,6 +14,17 @@ const reducer = (state = initialState, action) => {
         return {
             ...state,
             mapLoaded: false
+        }
+    } else if (action.type === "SET_MAP_REFERENCE"){
+        // console.log("inside set map ref", action.payload.mapReference);
+        return {
+            ...state,
+            mapReference: action.payload.mapReference
+        }
+    } else if (action.type === "SET_MAP_ZOOM_REFERENCE"){
+        return {
+            ...state,
+            mapZoomReference: action.payload.mapZoomReference
         }
     }
     return state

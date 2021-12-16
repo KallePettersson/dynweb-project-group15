@@ -4,7 +4,7 @@ import ColorGradientComponent from './colorGradientComponent';
 import * as d3 from 'd3'
 import './mapPresenter.css'
 import PromiseNoData from './promieNoData';
-import {useSelector} from "react-redux";
+import { useSelector } from "react-redux";
 
 function MapPresenter(props) {
     console.log("Num renders");
@@ -58,13 +58,13 @@ function MapPresenter(props) {
                 {/*        />*/}
                 {/*    )}*/}
 
-                {dataFetched? (<MapComponent
-                    countriesData={countriesData}
-                    cityData={null}
-                    selectedCountry={selectedCountry}
-                    selectedCriteria={selectedCriteria}
-                    mapLoaded={mapLoaded}/>):(<div>test</div>)}
-                <div id="map" className="world-map"/>
+                {dataFetched ? MapComponent(
+                    countriesData ,
+                    null,
+                    selectedCountry,
+                    selectedCriteria ,
+                    mapLoaded) : (<div>test</div>)}
+                <div id="map" className="world-map" />
                 {/*<ColorGradientComponent*/}
                 {/*        metaData={data.metaData}*/}
                 {/*        colourConfig={data.colourConfig}/>*/}

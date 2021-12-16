@@ -4,14 +4,14 @@ import * as d3 from 'd3'
 import * as d3Geo from "d3-geo";
 import * as d3Zoom from "d3-zoom"
 import ColorConfig from "../colorConfig";
-import {useDispatch, useSelector} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 var globalZoomRef = null; //TODO move this somewhere
 
-function MapComponent({countriesData, cityData, selectedCountry, selectedCriteria , mapLoaded}) {
+function MapComponent(countriesData, cityData, selectedCountry, selectedCriteria, mapLoaded) {
     const dispatch = useDispatch();
     console.log("mapLoaded", mapLoaded)
-    if (!mapLoaded){
+    if (!mapLoaded) {
 
         // Set mapLoaded flag
         dispatch({
@@ -21,7 +21,7 @@ function MapComponent({countriesData, cityData, selectedCountry, selectedCriteri
         //Reset old map data
         // const myNode = document.getElementById("map");
         let width = 1200
-        let height = width/2
+        let height = width / 2
         // console.log("myNode", myNode.offsetHeight);
         // console.log("myNode", myNode.offsetWidth);
         // console.log("myNode", height);
@@ -74,17 +74,34 @@ function MapComponent({countriesData, cityData, selectedCountry, selectedCriteri
         d3.select(document.getElementById("map")).select('svg').call(zoom);
 
         //Add resizing when window changes
-        d3.select(window).on('resize', function() {
+        d3.select(window).on('resize', function () {
             map.resize();
         });
 
         //Ugly solution to access zoomRef for zooming
         globalZoomRef = zoom;
 
+        dispatch({
+            type: "SET_MAP_REFERENCE",
+            payload: {
+                mapReference: map,
+            }
+        });
+        dispatch({
+            type: "SET_MAP_ZOOM_REFERENCE",
+            payload: {
+                mapZoomReference: zoom,
+            }
+        });
 
     }
-    console.log("componenet rerendered")
 
+    // const criteria = useSelector(
+    //     state => state.selectorReducer.criteria
+    // );
+
+    // console.log("componenet rerendered", criteria)
+    // return <></>
     return <div id="Useless-div?">
         <button onClick={ResetMapZooming}>Reset Zoom</button>
         <button onClick={() => reColorMap(globalZoomRef, countriesData)}>Re Color map</button>
@@ -140,7 +157,7 @@ function onClickCountyHook(datamap) {
 
 
 function countryPopupTemplate(geo, data) {
-    console.log("data from popuptemplate", data)
+    // console.log("data from popuptemplate", data)
     return ['<div class="hoverinfo">',
         '<strong>' + geo.properties.name + '</strong>',
         // (data ? ('<br/>' + data.keyToString[data.currentDataKey] + ' : ' + data[data.currentDataKey].toFixed(2)) : '<br/> No data'),
