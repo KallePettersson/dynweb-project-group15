@@ -9,13 +9,13 @@ function ColorGradientComponent() {
         state => state.colorReducer.minValue
     )
     const maxValue = useSelector(
-        state => state.colorReducer.minValue
+        state => state.colorReducer.maxValue
     )
     const order = useSelector(
         state => state.colorReducer.order
     )
 
-    let fills = order === "ascending" ? Object.entries(ColorConfig.fills) : Object.entries(ColorConfig.fills).reverse()
+    let fills = order === "ascending" ? Object.entries(ColorConfig.fills).reverse() : Object.entries(ColorConfig.fills)
 
     return (
         <div className="gradient-container">
