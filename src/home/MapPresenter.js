@@ -71,7 +71,7 @@ function MapPresenter(props) {
       {PromiseNoData(promise, data, error, true) || (
         <DetailsView
           countryData={data.countryData}
-          metaData={data.metaData.countrySelected}
+          metaData={data.metaData}
         ></DetailsView>
       )}
     </div>
