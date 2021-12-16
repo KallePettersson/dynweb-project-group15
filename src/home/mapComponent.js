@@ -6,6 +6,12 @@ import * as d3Zoom from "d3-zoom"
 
 var globalZoomRef = null; //TODO move this somewhere
 
+/**
+ * The map component renders the actual map inside the div with id=map.
+ * The component itself return buttons so that a user can interact with the map.
+ * @param {*} props 
+ * @returns 
+ */
 function MapComponent(props) {
 
 
@@ -72,6 +78,7 @@ function MapComponent(props) {
     globalZoomRef = zoom;
 
     return <div id="Useless-div?">
+        <button onClick={() => props.model.testFun("World")}>View Worldmap</button>
         <button onClick={() => props.model.testFun("SWE")}>Select Sweden</button>
         <button onClick={ResetMapZooming}>Reset Zoom</button>
     </div>
@@ -90,6 +97,7 @@ function ResetMapZooming() {
 
 function resetAllColorsExcept(mapRef, countryData, countryCode) {
     let newColours = Object.entries(countryData).map(country => {
+        console.log(country[1]);
         if (countryCode === country[0]) {
             return null;
         } else {
