@@ -1,9 +1,9 @@
 /* Header */
 .header {
   height: 110px;
-  width: 100hw;
+  width: 100vw;
   background-color: #033730;
-
+  margin: -20px; /* bug with outer container margin  */
   display: flex; /* måste ha flex innan flexdirection */
   flex-direction: row;
   align-items: center;
@@ -23,8 +23,10 @@
 /*Footer*/
 
 .footer {
-  height: 410px;
-  margin-top: -300;
+  height: 210px;
+  margin-top: -150px;
+  margin-left: -20px;
+  margin-right: -20px;
   width: 100hw;
   background-color: #033730;
 
@@ -46,15 +48,14 @@
 /* HomePresenter & views */
 .container {
   overflow: auto;
-  margin: -20px;
 }
 .wrapper {
   display: flex;
-
+  margin: -20px;
   flex-direction: row;
   background-color: white;
   height: 100vh;
-  width: 100hw;
+  width: 100vw;
 }
 .selectionView {
   background-color: white;

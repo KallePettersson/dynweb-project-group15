@@ -42,7 +42,7 @@ function MapPresenter(props) {
   );
 
   return (
-    <div className="space-between">
+    <div className="map-flex">
       <div className="outer-map-container">
         <div className="inner-map-container">
           {/*{PromiseNoData(promise, data, error) ||*/}
@@ -57,23 +57,26 @@ function MapPresenter(props) {
           {/*        />*/}
           {/*    )}*/}
 
-                {dataFetched ? MapComponent(
-                    countriesData ,
-                    null,
-                    selectedCountry,
-                    selectedCriteria ,
-                    mapLoaded) : (<div>test</div>)}
-                <div id="map" className="world-map" />
-                <ColorGradientComponent/>
-            </div>
+          {dataFetched ? (
+            MapComponent(
+              countriesData,
+              null,
+              selectedCountry,
+              selectedCriteria,
+              mapLoaded
+            )
+          ) : (
+            <div>test</div>
+          )}
+          <div id="map" className="world-map" />
+          <ColorGradientComponent />
         </div>
-        <div>
-            <DetailsView
-                countryData={countriesData}
-                metaData={Criteria}/>
-        </div>
+      </div>
+      <div>
+        <DetailsView countryData={countriesData} metaData={Criteria} />
+      </div>
     </div>
-    );
+  );
 }
 
 export default MapPresenter;

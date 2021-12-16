@@ -28,4 +28,5 @@
   display: flex;
   justify-content: space-evenly;
   width: 100vw;
+  margin-top: 50px;
 }
