@@ -27,12 +27,6 @@ function SelectionPresenter() {
             });
         }}
       />
-      <button
-        className="searchButton"
-        onClick={() => props.model.search(props.db, props.metaData)}
-      >
-        Apply filter!
-      </button>
     </div>
   );
 }
