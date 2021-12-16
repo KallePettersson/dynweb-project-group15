@@ -5,96 +5,97 @@ import * as d3Geo from "d3-geo";
 import * as d3Zoom from "d3-zoom"
 import ColorConfig from "../colorConfig";
 import { useDispatch, useSelector } from "react-redux";
+import store from "../store";
 
 var globalZoomRef = null; //TODO move this somewhere
 
 function MapComponent(countriesData, cityData, selectedCountry, selectedCriteria, mapLoaded) {
     const dispatch = useDispatch();
     console.log("mapLoaded", mapLoaded)
-    if (!mapLoaded) {
 
-        // Set mapLoaded flag
-        dispatch({
-            type: "SET_MAP_LOADED_TRUE",
+    // Set mapLoaded flag
+    dispatch({
+        type: "SET_MAP_LOADED_TRUE",
+    });
+
+    //Reset old map data
+    const myNode = document.getElementById("map");
+    let width = myNode.offsetWidth
+    let height = width / 2
+    // console.log("myNode", myNode.offsetHeight);
+    // console.log("myNode", myNode.offsetWidth);
+    // console.log("myNode", height);
+    // console.log("myNode", width);
+    myNode.innerHTML = '';
+
+    //Setup main map
+    console.log("selectedCountry", selectedCountry)
+    var map = new Datamap({
+        element: document.getElementById('map'),
+        width: width,
+        height: height,
+        responsive: true,
+        aspectRatio: 0.1,
+        fills: ColorConfig.fills,
+        data: countriesData,
+        done: onClickCountyHook,
+        geographyConfig: {
+            highlightFillColor: ColorConfig.highlightColorHover,
+            highlightBorderColor: ColorConfig.highlightBorderColor,
+            popupTemplate: countryPopupTemplate,
+        },
+        setProjection: (selectedCountry !== "World" ? zoomToCountry : null) //Function set if country-view is selected
+
+    });
+
+
+    //Render country-view
+    if (selectedCountry !== "World") {
+
+        //Draw cities
+        console.log("props.cityData", cityData);
+        map.bubbles(cityData["cities"], {
+            popupTemplate: cityPopupTemplate,
         });
 
-        //Reset old map data
-        // const myNode = document.getElementById("map");
-        let width = 1200
-        let height = width / 2
-        // console.log("myNode", myNode.offsetHeight);
-        // console.log("myNode", myNode.offsetWidth);
-        // console.log("myNode", height);
-        // console.log("myNode", width);
-        // myNode.innerHTML = '';
-
-        //Setup main map
-        console.log("selectedCountry", selectedCountry)
-        var map = new Datamap({
-            element: document.getElementById('map'),
-            width: width,
-            height: height,
-            responsive: true,
-            aspectRatio: 0.1,
-            fills: ColorConfig.fills,
-            data: countriesData,
-            done: onClickCountyHook,
-            geographyConfig: {
-                highlightFillColor: ColorConfig.highlightColorHover,
-                highlightBorderColor: ColorConfig.highlightBorderColor,
-                popupTemplate: countryPopupTemplate,
-            },
-            setProjection: (selectedCountry !== "World" ? zoomToCountry : null) //Function set if country-view is selected
-
-        });
-
-
-        //Render country-view
-        if (selectedCountry !== "World") {
-
-            //Draw cities
-            console.log("props.cityData", cityData);
-            map.bubbles(cityData["cities"], {
-                popupTemplate: cityPopupTemplate,
-            });
-
-            //Re-color map
-            resetAllColorsExcept(map, countriesData, selectedCountry);
-        }
-
-        //Add zoom functionality to map
-        let mapElem = document.getElementById("map")
-        let zoom = d3Zoom.zoom()
-            .scaleExtent([1, 8])
-            .on("zoom", function (event) {
-                d3.select(mapElem).select('svg').selectAll('g').selectAll('path').attr("transform", event.transform);
-                d3.select(mapElem).select('svg').selectAll('g').selectAll('circle').attr("transform", event.transform);
-            })
-
-        d3.select(document.getElementById("map")).select('svg').call(zoom);
-
-        //Add resizing when window changes
-        d3.select(window).on('resize', function () {
-            map.resize();
-        });
-
-        //Ugly solution to access zoomRef for zooming
-        globalZoomRef = zoom;
-
-        dispatch({
-            type: "SET_MAP_REFERENCE",
-            payload: {
-                mapReference: map,
-            }
-        });
-        dispatch({
-            type: "SET_MAP_ZOOM_REFERENCE",
-            payload: {
-                mapZoomReference: zoom,
-            }
-        });
-
+        //Re-color map
+        resetAllColorsExcept(map, countriesData, selectedCountry);
     }
+
+    //Add zoom functionality to map
+    let mapElem = document.getElementById("map")
+    let zoom = d3Zoom.zoom()
+        .scaleExtent([1, 8])
+        .on("zoom", function (event) {
+            d3.select(mapElem).select('svg').selectAll('g').selectAll('path').attr("transform", event.transform);
+            d3.select(mapElem).select('svg').selectAll('g').selectAll('circle').attr("transform", event.transform);
+        })
+
+    d3.select(document.getElementById("map")).select('svg').call(zoom);
+
+    //Add resizing when window changes
+    d3.select(window).on('resize', function () {
+        map.resize();
+    });
+
+    //Ugly solution to access zoomRef for zooming
+    globalZoomRef = zoom;
+
+    dispatch({
+        type: "SET_MAP_REFERENCE",
+        payload: {
+            mapReference: map,
+        }
+    });
+
+    dispatch({
+        type: "SET_MAP_ZOOM_REFERENCE",
+        payload: {
+            mapZoomReference: zoom,
+        }
+    });
+
+
 
     // const criteria = useSelector(
     //     state => state.selectorReducer.criteria
@@ -104,7 +105,7 @@ function MapComponent(countriesData, cityData, selectedCountry, selectedCriteria
     // return <></>
     return <div id="Useless-div?">
         <button onClick={ResetMapZooming}>Reset Zoom</button>
-        <button onClick={() => reColorMap(globalZoomRef, countriesData)}>Re Color map</button>
+        <button onClick={() => reColorMap(countriesData)}>Re Color map</button>
     </div>
   );
 }
@@ -143,14 +144,19 @@ function resetAllColorsExcept(mapRef, countriesData, countryCode) {
 }
 
 
-function reColorMap(mapRef, countriesData) {
-    let newColours = Object.entries(countriesData).map(country => {
+function reColorMap(countriesData) {
+    console.log("state from recolor", store.getState().countriesReducer.countries)
+    console.log("state from recolor", countriesData)
+    let newColors = Object.entries(store.getState().countriesReducer.countries).map(country => {
         let res = {};
         res[country[0]] = { "fillKey": country[1]["fillkey"] };
+        // res[country[0]] = { "fillKey":'#c3c3c3'};
+
         return res
     })
-    newColours = Object.assign({}, ...newColours);
-    mapRef.updateChoropleth(newColours);
+    newColors = Object.assign({}, ...newColors);
+    console.log(newColors);
+    store.getState().mapReducer.mapReference.updateChoropleth(newColors);
 }
 
 
