@@ -7,7 +7,7 @@ import ApiHandler from "../api-handler";
 import { useDispatch, useSelector } from "react-redux";
 import ColorConfig from "../colorConfig";
 import Criteria from "../criteria";
-import store from "../store";
+import updateColorGradient from "./colorGradientPresenter"
 
 function HomeContainer() {
     const dispatch = useDispatch();
@@ -73,26 +73,7 @@ function getColourGradient(value) {
 
 function setupForEachCountryDataPoint(countriesData, selectedCriteria) {
     if (countriesData !== null) {
-        let values = Object.values(countriesData)
-            .map(data => data[selectedCriteria])
-            .filter(n => !isNaN(n));
-        console.log("MAX: ", Math.max(...values));
-        console.log("MIN: ", Math.min(...values));
-
-        store.dispatch({
-            type: "UPDATE_MIN_VALUE",
-            payload: {
-                minValue: Intl.NumberFormat("en-US", {
-                    minimumFractionDigits: 2,
-                    maximumFractionDigits: 2
-                }).format(Math.min(...values))
-            }
-        });
-        store.dispatch({
-            type: "UPDATE_MAX_VALUE",
-            payload: {maxValue: Math.max(...values)}
-        });
-
+        updateColorGradient();
         // console.log("this.countryData - setupForEachCountryDataPoint", this.countryData);
         // console.log("this.countryData - setupForEachCountryDataPoint", this.countryData !== null);
         // console.log("this.countryData - setupForEachCountryDataPoint", Object.entries(this.countryData).length);

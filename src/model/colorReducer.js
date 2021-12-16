@@ -5,15 +5,10 @@ const initialState = {
 }
 
 const reducer = (state = initialState, action) => {
-    if (action.type === "SET_SORT_ASCENDING") {
+    if (action.type === "SET_ORDER") {
         return {
             ...state,
-            order: "ascending"
-        }
-    } else if (action.type === "SET_SORT_DESCENDING") {
-        return {
-            ...state,
-            order: "descending"
+            order: action.payload.order
         }
     }else if (action.type === "UPDATE_MAX_VALUE") {
         return {

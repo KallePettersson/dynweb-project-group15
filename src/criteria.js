@@ -16,5 +16,24 @@ const Criteria = {
     "traffic_inefficiency_index": "Traffic Inefficiency",
     "property_price_to_income_ratio": "Property Price to Income"
 }
+// descending means lower is better
+const CriteriaOrder = {
+    "health_care_index": "ascending",
+    "crime_index": "descending",
+    "traffic_time_index": "descending",
+    "purchasing_power_incl_rent_index": "ascending",
+    "cpi_index": "ascending",
+    "pollution_index": "descending",
+    "traffic_index": "descending",
+    "quality_of_life_index": "ascending",
+    "cpi_and_rent_index": "descending",
+    "groceries_index": "descending",
+    "safety_index": "ascending",
+    "rent_index": "descending",
+    "traffic_co2_index": "descending",
+    "restaurant_price_index": "descending",
+    "traffic_inefficiency_index": "descending",
+    "property_price_to_income_ratio": "descending"
+}
 
-export default Criteria;
+export default {Criteria, CriteriaOrder};
