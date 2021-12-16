@@ -1,9 +1,9 @@
 const initialState = {
-    cities: {}
+    cities: []
 }
 
 const reducer = (state = initialState, action) => {
-    if (action.type === "UPDATE_CITY") {
+    if (action.type === "UPDATE_CITIES") {
         return {
             ...state,
             cities: action.payload.cities
