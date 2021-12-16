@@ -5,6 +5,7 @@ import ColorConfig from "../colorConfig";
 
 
 function ColorGradientComponent() {
+
     const minValue = useSelector(
         state => state.colorReducer.minValue
     )
@@ -14,6 +15,7 @@ function ColorGradientComponent() {
     const order = useSelector(
         state => state.colorReducer.order
     )
+
 
     let fills = order === "ascending" ? Object.entries(ColorConfig.fills).reverse() : Object.entries(ColorConfig.fills)
 

@@ -7,14 +7,25 @@ import ColorConfig from "../colorConfig";
 import {useDispatch, useSelector} from "react-redux";
 import store from "../store";
 import Criteria from "../criteria"
+import updateColorGradient from "./colorGradientPresenter"
 
 var globalZoomRef = null; //TODO move this somewhere
 
 function MapComponent(countriesData, cityData, selectedCountry, selectedCriteria, mapLoaded) {
     const dispatch = useDispatch();
     console.log("mapLoaded", mapLoaded)
+    // const colorGradientOrder = useSelector(
+    //     state => state.colorReducer.order
+    // );
+    const colorGradientOrder = "descending"
 
     if (!mapLoaded) {
+
+
+        let fills = ColorConfig.fills;
+        if(colorGradientOrder === "descending"){
+            fills = ReverseFills(fills);
+        }
 
         // Set mapLoaded flag
         dispatch({
@@ -39,7 +50,7 @@ function MapComponent(countriesData, cityData, selectedCountry, selectedCriteria
             height: height,
             responsive: true,
             aspectRatio: 0.1,
-            fills: ColorConfig.fills,
+            fills: fills,
             data: countriesData,
             done: onClickCountyHook,
             geographyConfig: {
@@ -100,6 +111,7 @@ function MapComponent(countriesData, cityData, selectedCountry, selectedCriteria
 
     } else {
         reColorMap();
+        updateColorGradient();
     }
 
 
@@ -115,6 +127,16 @@ function MapComponent(countriesData, cityData, selectedCountry, selectedCriteria
             {/* <button onClick={() => reColorMap(countriesData)}>Re Color map</button> */}
         </div>
     );
+}
+
+
+function ReverseFills(fills){
+    let res = {}
+    let reversedFills = Object.values(fills).reverse();
+    Object.assign(res, ...ColorConfig.colourKeys.map((n, index) => ({[n]: reversedFills[index]})))
+
+    return res;
+
 }
 
 //Reset zoom and dragging on map
@@ -210,7 +232,7 @@ function cityPopupTemplate(geo, data) {
 
 function onCountryClicked(geography) {
     console.log(geography);
-    alert(geography.properties.name);
+    alert(geography.id);
     // globalMap.svg.selectAll(".datamaps-subunits").transition().duration(750).attr("transform", "scale(1.5)translate(-106.3468, 68.1304)");
 }
 

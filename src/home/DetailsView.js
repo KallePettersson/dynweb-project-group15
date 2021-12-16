@@ -42,7 +42,7 @@ function DetailsView() {
       <table className="item-flex">
 {/* {dataKeys.map((data) => { */}
           {dataKeys
-              .filter((data) => data === "rent_index")
+              .filter((data) => data === criteriaSelected)
               .map((data) => {
                   return (
                       <tr>
