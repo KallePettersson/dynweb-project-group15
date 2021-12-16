@@ -6,6 +6,12 @@ import * as d3Zoom from "d3-zoom";
 
 var globalZoomRef = null; //TODO move this somewhere
 
+/**
+ * The map component renders the actual map inside the div with id=map.
+ * The component itself return buttons so that a user can interact with the map.
+ * @param {*} props
+ * @returns
+ */
 function MapComponent(props) {
   //Reset old map data
   const myNode = document.getElementById("map");
