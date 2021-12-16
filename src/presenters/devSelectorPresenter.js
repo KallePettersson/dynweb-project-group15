@@ -1,6 +1,6 @@
 import DevSelectorView from "../views/devSelectorView";
 import CountryCodes from "../countryCodes";
-import Criteria from "../criteria";
+import {Criteria} from "../criteria";
 import {useDispatch, useSelector} from "react-redux";
 import ApiHandler from "../api-handler";
 

@@ -1,4 +1,4 @@
-import Criteria from "../criteria";
+import {Criteria} from "../criteria";
 import indexInfo from "../info";
 import { useSelector } from "react-redux";
 

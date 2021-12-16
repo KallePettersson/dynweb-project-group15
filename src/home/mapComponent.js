@@ -6,7 +6,7 @@ import * as d3Zoom from "d3-zoom"
 import ColorConfig from "../colorConfig";
 import {useDispatch, useSelector} from "react-redux";
 import store from "../store";
-import Criteria from "../criteria"
+import {Criteria} from "../criteria"
 import updateColorGradient from "./colorGradientPresenter"
 
 var globalZoomRef = null; //TODO move this somewhere

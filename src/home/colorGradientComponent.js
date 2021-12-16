@@ -21,7 +21,7 @@ function ColorGradientComponent() {
 
     return (
         <div className="gradient-container">
-            <div className="min-cell">{order === "ascending" ? minValue : maxValue}</div>
+            <div className="min-cell">{minValue}</div>
             {fills.map(colourCode => {
                 if (colourCode[0] === "defaultFill") {
                     return null;
@@ -30,7 +30,7 @@ function ColorGradientComponent() {
                                 key={colourCode[0]}/>
                 }
             })}
-            <div className="max-cell">{order === "ascending" ? maxValue : minValue}</div>
+            <div className="max-cell">{maxValue}</div>
         </div>)
 }
 

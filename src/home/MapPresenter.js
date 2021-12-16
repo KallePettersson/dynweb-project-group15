@@ -6,7 +6,7 @@ import "./mapPresenter.css";
 import PromiseNoData from "./promieNoData";
 import { useSelector } from "react-redux";
 import DetailsView from "./DetailsView";
-import Criteria from "../criteria";
+import {Criteria} from "../criteria";
 
 function MapPresenter(props) {
   console.log("Num renders");
