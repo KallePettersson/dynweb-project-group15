@@ -13,6 +13,10 @@ const ApiHandler = {   // JS object creation literal
 
         return this.defaultApiCall("/cities", "&country=" + countryCode);
     },
+    getCityIndicies(city_id = null) {
+
+        return this.defaultApiCall("/indicies", "&city_id=" + city_id);
+    },
     /**
      * Will return a dictionary containing different values for the given country.
      *

@@ -13,12 +13,11 @@ var globalZoomRef = null; //TODO move this somewhere
 
 function MapComponent(countriesData, cityData, selectedCountry, selectedCriteria, mapLoaded,colorGradientOrder) {
     const dispatch = useDispatch();
-    console.log("mapLoaded", colorGradientOrder, colorGradientOrder === "ascending")
+    console.log("mapLoaded", colorGradientOrder, colorGradientOrder === "ascending", mapLoaded)
 
     // const colorGradientOrder = "descending"
 
     if (!mapLoaded) {
-
 
         let fills = ColorConfig.fills;
         if(colorGradientOrder === "ascending"){
@@ -49,7 +48,7 @@ function MapComponent(countriesData, cityData, selectedCountry, selectedCriteria
             data: countriesData,
             done: onClickCountyHook,
             geographyConfig: {
-                highlightFillColor: ColorConfig.highlightColorHover,
+                // highlightFillColor: ColorConfig.highlightColorHover,
                 highlightBorderColor: ColorConfig.highlightBorderColor,
                 popupTemplate: countryPopupTemplate,
             },
@@ -119,10 +118,10 @@ function MapComponent(countriesData, cityData, selectedCountry, selectedCriteria
     return (
         <div id="Useless-div?">
             <button onClick={ResetMapZooming}>Reset Zoom</button>
-            {/* <button onClick={() => reColorMap(countriesData)}>Re Color map</button> */}
         </div>
     );
 }
+
 
 
 function ReverseFills(fills){
@@ -238,6 +237,16 @@ function cityPopupTemplate(geo, data) {
 function onCountryClicked(geography) {
     console.log(geography);
     alert(geography.id);
+    store.dispatch({
+        type: "SELECT_COUNTRY",
+        payload: {
+            country: geography.id
+        }
+    })
+    store.dispatch({
+        type: "SET_MAP_LOADED_FALSE",
+    })
+    // console.log(store.getState())
     // globalMap.svg.selectAll(".datamaps-subunits").transition().duration(750).attr("transform", "scale(1.5)translate(-106.3468, 68.1304)");
 }
 

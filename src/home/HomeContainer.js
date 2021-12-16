@@ -19,6 +19,16 @@ function HomeContainer() {
         state => state.countriesReducer.dataFetched
     );
 
+    const cityDataFetched = useSelector(
+        state => state.citiesReducer.cityDataFetched
+    );
+
+    const selectedCountry = useSelector(
+        state => state.selectorReducer.country
+    );
+
+
+
     if (!dataFetched) {
         let promises = Object.values(CountryCodes).map((name) => ApiHandler.getCountryIndices(name));
         Promise.all(promises).then(rawData => {
@@ -42,7 +52,6 @@ function HomeContainer() {
         });
     } else {
         console.log("dont fetch data");
-
     }
 
 
