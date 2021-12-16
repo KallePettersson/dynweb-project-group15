@@ -57,31 +57,23 @@ function MapPresenter(props) {
           {/*        />*/}
           {/*    )}*/}
 
-          {dataFetched ? (
-            MapComponent(
-              countriesData,
-              null,
-              selectedCountry,
-              selectedCriteria,
-              mapLoaded
-            )
-          ) : (
-            <div>test</div>
-          )}
-          <div id="map" className="world-map" />
-          {/*<ColorGradientComponent*/}
-          {/*        metaData={data.metaData}*/}
-          {/*        colourConfig={data.colourConfig}/>*/}
+                {dataFetched ? MapComponent(
+                    countriesData ,
+                    null,
+                    selectedCountry,
+                    selectedCriteria ,
+                    mapLoaded) : (<div>test</div>)}
+                <div id="map" className="world-map" />
+                <ColorGradientComponent/>
+            </div>
         </div>
-      </div>
-      <div>
-        <DetailsView
-          countryData={countriesData}
-          metaData={Criteria}
-        ></DetailsView>
-      </div>
+        <div>
+            <DetailsView
+                countryData={countriesData}
+                metaData={Criteria}/>
+        </div>
     </div>
-  );
+    );
 }
 
 export default MapPresenter;

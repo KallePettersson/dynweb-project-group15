@@ -1,19 +1,35 @@
 import React from 'react';
-import './colorGradientComponent.css'
+import './colorGradientComponent.css';
+import {useSelector} from "react-redux";
+import ColorConfig from "../colorConfig";
 
 
-function ColorGradientComponent({metaData, colorConfig}) {
-    return (<div className="gradient-container">
-        <div className="min-cell" >{metaData[metaData.currentDataKey].min}</div>
-        {Object.entries(colorConfig.fills).map(colourCode => {
-            if (colourCode[0] == "defaultFill") {
-                return null;
-            } else {
-                return <div className="gradient-cell" style={{ backgroundColor: colourCode[1] }} key={colourCode[0]}></div>
-            }
-        })}
-        <div className="max-cell">{metaData[metaData.currentDataKey].max}</div>
-    </div>)
+function ColorGradientComponent() {
+    const minValue = useSelector(
+        state => state.colorReducer.minValue
+    )
+    const maxValue = useSelector(
+        state => state.colorReducer.maxValue
+    )
+    const order = useSelector(
+        state => state.colorReducer.order
+    )
+
+    let fills = order === "ascending" ? Object.entries(ColorConfig.fills).reverse() : Object.entries(ColorConfig.fills)
+
+    return (
+        <div className="gradient-container">
+            <div className="min-cell">{order === "ascending" ? minValue : maxValue}</div>
+            {fills.map(colourCode => {
+                if (colourCode[0] === "defaultFill") {
+                    return null;
+                } else {
+                    return <div className="gradient-cell" style={{backgroundColor: colourCode[1]}}
+                                key={colourCode[0]}/>
+                }
+            })}
+            <div className="max-cell">{order === "ascending" ? maxValue : minValue}</div>
+        </div>)
 }
 
 export default ColorGradientComponent;
