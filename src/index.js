@@ -7,17 +7,22 @@ import "./home/Home.css";
 import SelectionModel from "../src/SelectionModel";
 import DBCountriesModel from "../src/DBCountriesModel";
 import MetaDataModel from "./MetaDataModel";
-import GeoLocoModel from './model'
+import GeoLocoModel from "./model";
+import Footer from "./home/Footer";
 
 let model = new GeoLocoModel();
 ReactDOM.render(
   <React.StrictMode>
-    <Header className="header" />
-    <HomeContainer model={model}/>
+    <div>
+      <div className="container">
+        <Header className="header" />
+        <HomeContainer model={model} />
+        <Footer className="footer" />
+      </div>
+    </div>
   </React.StrictMode>,
   document.getElementById("root")
 );
-
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

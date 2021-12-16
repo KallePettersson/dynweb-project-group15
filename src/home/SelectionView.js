@@ -25,8 +25,7 @@ function SelectorView(props) {
           return ref;
         })}
         onChange={(e) => props.model.setCategory(e.value)}
-        styles={style}
-        placeholder={<p className="selector-text">SELECT CATEGORY</p>}
+        placeholder={<p className="selector-text">SELECT CATEGORY </p>}
         width="300px"
       />
     </div>
