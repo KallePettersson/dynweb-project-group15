@@ -4,32 +4,32 @@ import reportWebVitals from "./reportWebVitals";
 import HomeContainer from "./home/HomeContainer";
 import Header from "./home/Header";
 import "./home/Home.css";
-import SelectionModel from "../src/SelectionModel";
-import DBCountriesModel from "../src/DBCountriesModel";
-import MetaDataModel from "./MetaDataModel";
 import GeoLocoModel from './model'
 import DevSelectorPresenter from "./presenters/devSelectorPresenter";
 
 import {Provider} from "react-redux";
 import store from "./store";
-
-// let model = new GeoLocoModel();
-// ReactDOM.render(
-//   <React.StrictMode>
-//     <Header className="header" />
-//     <HomeContainer model={model}/>
-//   </React.StrictMode>,
-//   document.getElementById("root")
-// );
+import DevResultsPresenter from "./presenters/devResultsPresenter";
 
 ReactDOM.render(
     <React.StrictMode>
         <Provider store={store}>
-            <DevSelectorPresenter/>
+            <Header className="header"/>
+            <HomeContainer/>
         </Provider>
     </React.StrictMode>,
     document.getElementById("root")
 );
+
+// ReactDOM.render(
+//     <React.StrictMode>
+//         <Provider store={store}>
+//             <DevSelectorPresenter/>
+//             <DevResultsPresenter/>
+//         </Provider>
+//     </React.StrictMode>,
+//     document.getElementById("root")
+// );
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

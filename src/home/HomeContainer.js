@@ -2,17 +2,12 @@ import React, { useEffect, useState } from "react";
 import "./Home.css";
 import MapPresenter from "./MapPresenter";
 import SelectionPresenter from "./SelectionPresenter";
-function HomeContainer(props) {
+function HomeContainer() {
 
   return (
     <div className="wrapper">
-      <SelectionPresenter
-        model={props.model}
-        db={props.db}
-        metaData={props.metaData}
-      />
-      
-      <MapPresenter model = {props.model} />
+      <SelectionPresenter/>
+      {/*<MapPresenter/>*/}
     </div>
   );
 }

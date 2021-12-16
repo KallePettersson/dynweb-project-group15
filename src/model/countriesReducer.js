@@ -3,7 +3,7 @@ const initialState = {
 }
 
 const reducer = (state = initialState, action) => {
-    if (action.type === "GET_COUNTRIES") {
+    if (action.type === "UPDATE_COUNTRIES") {
         return {
             ...state,
             countries: action.payload.countries
