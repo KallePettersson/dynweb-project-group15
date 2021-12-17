@@ -5,7 +5,7 @@ const initialState = {
     order: "ascending", //Ascending means higher is better
     maxValue: 100,
     minValue: 0,
-    // updateColorGradient: updateColorGradient,
+    updateColorGradient: updateColorGradient,
 }
 
 const reducer = (state = initialState, action, globalState) => {
