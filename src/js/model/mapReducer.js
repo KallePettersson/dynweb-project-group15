@@ -6,6 +6,10 @@ import * as d3Zoom from "d3-zoom"
 import ColorConfig from "../colorConfig";
 import store from "../store";
 import {Criteria} from "../criteria"
+import updateColorGradient from "../presenters/colorGradientPresenter";
+import {useDispatch, useSelector} from "react-redux";
+import CountryCodes from "../countryCodes";
+import ApiHandler from "../api-handler";
 
 const initialState = {
     mapLoaded: false,
@@ -37,6 +41,8 @@ const reducer = (state = initialState, action , globalState) => {
         }
     } else if (action.type === "RENDER_MAP"){
         return renderMap(state, globalState)
+    } else if (action.type === "RESET_MAP_ZOOMING"){
+        return ResetMapZooming(state);
     }
     return state
 }
@@ -154,22 +160,25 @@ function ReverseFills(fills){
 
 }
 
-//Reset zoom and dragging on map
-// function ResetMapZooming() {
-//     d3.select(document.getElementById("map"))
-//         .select("svg")
-//         .transition()
-//         .duration(750)
-//         .call(
-//             globalZoomRef.transform,
-//             d3Zoom.zoomIdentity,
-//             d3Zoom
-//                 .zoomTransform(
-//                     d3.select(document.getElementById("map")).select("svg").node()
-//                 )
-//                 .invert([1225 / 2, 700 / 2])
-//         );
-// }
+// Reset zoom and dragging on map
+function ResetMapZooming(state) {
+
+    if(state.mapZoomReference){
+        d3.select(document.getElementById("map"))
+            .select("svg")
+            .transition()
+            .duration(750)
+            .call(
+                state.mapZoomReference.transform,
+                d3Zoom.zoomIdentity,
+                d3Zoom
+                    .zoomTransform(
+                        d3.select(document.getElementById("map")).select("svg").node()
+                    )
+                    .invert([1225 / 2, 700 / 2])
+            );
+    }
+}
 
 /**
  * Determines what color a country should get based on the value of the given criteria

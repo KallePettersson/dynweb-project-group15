@@ -1,4 +1,3 @@
-import {combineReducers} from "redux";
 import selectorReducer from "./selectorReducer";
 import countriesReducer from "./countriesReducer";
 import citiesReducer from "./citiesReducer";
