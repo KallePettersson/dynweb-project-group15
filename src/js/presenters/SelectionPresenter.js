@@ -1,15 +1,12 @@
 import React, {useState} from "react";
-import "../../css/Home.css";
+import "../../css/home.css";
 import SelectionView from "../views/SelectionView";
 import {Criteria} from "../criteria";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 
 
 function SelectionPresenter() {
     const dispatch = useDispatch();
-    const criteria = useSelector(
-        state => state.selectorReducer.criteria
-    )
 
     return (
         <div className="selectionView">

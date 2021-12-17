@@ -291,7 +291,6 @@ function onCountryClicked(geography) {
     // })
 }
 
-
 /**
  * Zoom into a given country (not finished)
  */
@@ -306,9 +305,5 @@ function zoomToCountry(element) {
     var path = d3Geo.geoPath().projection(projection);
     return {path: path, projection: projection};
 }
-
-
-
-
 
 export default reducer;

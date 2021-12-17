@@ -1,69 +1,68 @@
 import React from "react";
 import "../../css/mapPresenter.css";
-import { useSelector, useDispatch } from "react-redux";
-import DetailsView from "../views/detailsView";
-import {Criteria} from "../criteria";
-import ColorGradiantPresenter from "./colorGradientPresenter";
+import {useSelector, useDispatch} from "react-redux";
 import ColorGradientView from "../views/colorGradientView";
 import ColorConfig from "../colorConfig";
-import DetailsPresenter from "./detailsPresenter";
+import "../../css/home.css"
 
 function MapPresenter() {
-  console.log("Num renders");
-  const dispatch = useDispatch();
-  const countriesData = useSelector(
-    (state) => state.countriesReducer.countries
-  );
-  const selectedCountry = useSelector((state) => state.selectorReducer.country);
+    const dispatch = useDispatch();
 
-  const selectedCriteria = useSelector(
-    (state) => state.selectorReducer.criteria
-  );
+    const colorGradientOrder = useSelector(
+        state => state.colorReducer.order
+    );
+    const minValue = useSelector(
+        state => state.colorReducer.minValue
+    );
+    const maxValue = useSelector(
+        state => state.colorReducer.maxValue
+    );
 
-  const mapLoaded = useSelector((state) => state.mapReducer.mapLoaded);
+    let fills = colorGradientOrder === "ascending" ? Object.entries(ColorConfig.fills).reverse() : Object.entries(ColorConfig.fills)
 
-  const dataFetched = useSelector(
-    (state) => state.countriesReducer.dataFetched
-  );
+    //Dispatches a call to the renderMap function that inserts the map view into the map div
 
-  const colorGradientOrder = useSelector(
-      state => state.colorReducer.order
-  );
+    let dataFetched = useSelector(
+        state => state.countriesReducer.dataFetched
+    );
+    while (!dataFetched){
 
-  const minValue = useSelector(
-      state => state.colorReducer.minValue
-  )
-  const maxValue = useSelector(
-      state => state.colorReducer.maxValue
-  )
+        if (dataFetched) {
+            console.log("map being rendered")
+            dispatch({
+                type: "RENDER_MAP",
+            });
+        } else {
+            // dispatch({
+            //     type: "FETCH_COUNTRIES_DATA"
+            // })
+            // console.log("map not being rendered")
+        }
+        dataFetched = useSelector(
+            state => state.countriesReducer.dataFetched
+        );
+    }
 
-  let fills = colorGradientOrder === "ascending" ? Object.entries(ColorConfig.fills).reverse() : Object.entries(ColorConfig.fills)
-
-  //Dispatches a call to the renderMap function that inserts the map view into the map div
-  if(dataFetched){
-    dispatch({
-      type: "RENDER_MAP",
-    });
-  }
-
-
-  return (
-    <div className="map-flex">
-      <div className="outer-map-container">
-        <div className="inner-map-container">
-
-          <div id="map" className="world-map" />
-          <ColorGradientView
-              minValue={minValue}
-              maxValue={maxValue}
-              order={colorGradientOrder}
-              fills={fills}
-          />
+    return (
+        <div className="outer-map-container">
+            <div className="inner-map-container">
+                <button className="reset-zoom" onClick={() =>
+                    dispatch({
+                        type: "RESET_MAP_ZOOMING"
+                    })
+                }>
+                    Reset Zoom
+                </button>
+                <div id="map" className="world-map"/>
+                <ColorGradientView
+                    minValue={minValue}
+                    maxValue={maxValue}
+                    order={colorGradientOrder}
+                    fills={fills}
+                />
+            </div>
         </div>
-      </div>
-        <DetailsPresenter/>
-    </div>
-  );
+    );
 }
 
 export default MapPresenter;
