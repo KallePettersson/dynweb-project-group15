@@ -1,4 +1,4 @@
-const indexInfo = {
+const CriteriaInfo = {
     crime_index: "this index represents...",
     climate_index: "this index represents...",
     cpi_index: "this index represents...",
@@ -17,4 +17,4 @@ const indexInfo = {
     traffic_time_index: "this index represents...",
 };
 
-export default indexInfo;
+export default CriteriaInfo;

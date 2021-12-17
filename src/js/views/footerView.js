@@ -1,7 +1,7 @@
 import React from "react";
-import "../css/Home.css";
+import "../../css/Home.css";
 
-function Footer() {
+function FooterView() {
   return (
     <div className="footer">
       <h1 className="footer-text">Contact: geoloco@geoloco.com </h1>
@@ -10,4 +10,4 @@ function Footer() {
   );
 }
 
-export default Footer;
+export default FooterView;

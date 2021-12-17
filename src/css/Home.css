@@ -1,4 +1,4 @@
-/* Header */
+/* HeaderView */
 .header {
   height: 110px;
   width: 100vw;
@@ -20,7 +20,7 @@
   font-family: cursive;
 }
 
-/*Footer*/
+/*FooterView*/
 
 .footer {
   height: 210px;

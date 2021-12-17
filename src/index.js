@@ -2,18 +2,18 @@ import React from "react";
 import ReactDOM from "react-dom";
 import reportWebVitals from "./reportWebVitals";
 import HomeContainer from "./js/HomeContainer";
-import Header from "./js/Header";
+import HeaderView from "./js/views/headerView";
 import "./css/Home.css";
 import { Provider } from "react-redux";
 import store from "./js/store";
-import Footer from "./js/Footer";
+import FooterView from "./js/views/footerView";
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <Header className="header" />
+      <HeaderView className="header" />
       <HomeContainer />
-      <Footer className="footer" />
+      <FooterView className="footer" />
     </Provider>
   </React.StrictMode>,
   document.getElementById("root")

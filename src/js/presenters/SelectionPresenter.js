@@ -1,7 +1,7 @@
 import React, {useState} from "react";
-import "../css/Home.css";
-import SelectionView from "./SelectionView";
-import {Criteria} from "./criteria";
+import "../../css/Home.css";
+import SelectionView from "../views/SelectionView";
+import {Criteria} from "../criteria";
 import {useDispatch, useSelector} from "react-redux";
 
 

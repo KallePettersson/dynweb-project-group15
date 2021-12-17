@@ -1,14 +1,6 @@
 import React from "react";
-import "../css/Home.css";
+import "../../css/Home.css";
 import Select from "react-select";
-import { lab } from "d3";
-
-// Styling method taken from React Select Library Documentation
-const style = {
-  control: (_, { selectProps: { width } }) => ({
-    width: width,
-  }),
-};
 
 function SelectorView({ title, options, onChange }) {
   return (

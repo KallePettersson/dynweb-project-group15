@@ -1,17 +1,16 @@
 import React from "react";
-import MapComponent from "./mapComponent";
-import "../css/mapPresenter.css";
-import { useSelector } from "react-redux";
-import DetailsView from "./DetailsView";
-import {Criteria} from "./criteria";
-import ColorGradiantPresenter from "./presenters/colorGradientPresenter";
-import ColorGradientView from "./views/colorGradientView";
-import {min} from "d3";
-import ColorConfig from "./colorConfig";
+import "../../css/mapPresenter.css";
+import { useSelector, useDispatch } from "react-redux";
+import DetailsView from "../views/detailsView";
+import {Criteria} from "../criteria";
+import ColorGradiantPresenter from "./colorGradientPresenter";
+import ColorGradientView from "../views/colorGradientView";
+import ColorConfig from "../colorConfig";
+import DetailsPresenter from "./detailsPresenter";
 
 function MapPresenter() {
   console.log("Num renders");
-
+  const dispatch = useDispatch();
   const countriesData = useSelector(
     (state) => state.countriesReducer.countries
   );
@@ -40,24 +39,19 @@ function MapPresenter() {
 
   let fills = colorGradientOrder === "ascending" ? Object.entries(ColorConfig.fills).reverse() : Object.entries(ColorConfig.fills)
 
+  //Dispatches a call to the renderMap function that inserts the map view into the map div
+  if(dataFetched){
+    dispatch({
+      type: "RENDER_MAP",
+    });
+  }
 
 
   return (
     <div className="map-flex">
       <div className="outer-map-container">
         <div className="inner-map-container">
-          {dataFetched ? (
-            MapComponent(
-              countriesData,
-              null,
-              selectedCountry,
-              selectedCriteria,
-              mapLoaded,
-              colorGradientOrder
-            )
-          ) : (
-            <div>test</div>
-          )}
+
           <div id="map" className="world-map" />
           <ColorGradientView
               minValue={minValue}
@@ -65,13 +59,9 @@ function MapPresenter() {
               order={colorGradientOrder}
               fills={fills}
           />
-          {/*<ColorGradiantPresenter/>*/}
-          {/*<ColorGradientView />*/}
         </div>
       </div>
-      <div>
-        <DetailsView countryData={countriesData} metaData={Criteria} />
-      </div>
+        <DetailsPresenter/>
     </div>
   );
 }

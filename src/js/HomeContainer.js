@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import "../css/Home.css";
-import MapPresenter from "./MapPresenter";
-import SelectionPresenter from "./SelectionPresenter";
+import MapPresenter from "./presenters/mapPresenter";
+import SelectionPresenter from "./presenters/SelectionPresenter";
 import CountryCodes from "./countryCodes";
 import ApiHandler from "./api-handler";
 import {useDispatch, useSelector} from "react-redux";
