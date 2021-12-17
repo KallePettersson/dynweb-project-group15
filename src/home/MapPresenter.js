@@ -6,7 +6,7 @@ import "./mapPresenter.css";
 import PromiseNoData from "./promieNoData";
 import { useSelector } from "react-redux";
 import DetailsView from "./DetailsView";
-import {Criteria} from "../criteria";
+import { Criteria } from "../criteria";
 
 function MapPresenter(props) {
   console.log("Num renders");
@@ -41,44 +41,37 @@ function MapPresenter(props) {
     (state) => state.countriesReducer.dataFetched
   );
 
-  const colorGradientOrder = useSelector(
-      state => state.colorReducer.order
-  );
+  const colorGradientOrder = useSelector((state) => state.colorReducer.order);
 
   return (
-    <div className="map-flex">
-      <div className="outer-map-container">
-        <div className="inner-map-container">
-          {/*{PromiseNoData(promise, data, error) ||*/}
-          {/*    (<MapComponent model={props.model} countryData={data.countryData} cityData={data.cityData} colourConfig={data.colourConfig} metaData={data.metaData} />*/}
-          {/*    )}*/}
-          {/*<div id="map" className="world-map"></div>*/}
-          {/*{PromiseNoData(promise, data, error, true) ||*/}
-          {/*    (*/}
-          {/*        <ColorGradientComponent*/}
-          {/*            metaData={data.metaData}*/}
-          {/*            colourConfig={data.colourConfig}*/}
-          {/*        />*/}
-          {/*    )}*/}
+    <div className="outer-map-container">
+      <div className="inner-map-container">
+        {/*{PromiseNoData(promise, data, error) ||*/}
+        {/*    (<MapComponent model={props.model} countryData={data.countryData} cityData={data.cityData} colourConfig={data.colourConfig} metaData={data.metaData} />*/}
+        {/*    )}*/}
+        {/*<div id="map" className="world-map"></div>*/}
+        {/*{PromiseNoData(promise, data, error, true) ||*/}
+        {/*    (*/}
+        {/*        <ColorGradientComponent*/}
+        {/*            metaData={data.metaData}*/}
+        {/*            colourConfig={data.colourConfig}*/}
+        {/*        />*/}
+        {/*    )}*/}
 
-          {dataFetched ? (
-            MapComponent(
-              countriesData,
-              null,
-              selectedCountry,
-              selectedCriteria,
-              mapLoaded,
-              colorGradientOrder
-            )
-          ) : (
-            <div>test</div>
-          )}
-          <div id="map" className="world-map" />
-          <ColorGradientComponent />
-        </div>
-      </div>
-      <div>
-        <DetailsView countryData={countriesData} metaData={Criteria} />
+        {dataFetched ? (
+          MapComponent(
+            countriesData,
+            null,
+            selectedCountry,
+            selectedCriteria,
+            mapLoaded,
+            colorGradientOrder
+          )
+        ) : (
+          <div>test</div>
+        )}
+        <div id="map" className="world-map" />
+        <ColorGradientComponent />
       </div>
     </div>
   );

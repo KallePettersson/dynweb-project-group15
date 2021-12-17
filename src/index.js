@@ -10,13 +10,26 @@ import { Provider } from "react-redux";
 import store from "./store";
 import DevResultsPresenter from "./presenters/devResultsPresenter";
 import Footer from "./home/Footer";
+import SelectionPresenter from "./home/SelectionPresenter";
+import MapPresenter from "./home/MapPresenter";
+import DetailsView from "./home/DetailsView";
+import DetailsPresenter from "./home/DetailsPresenter";
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <Header className="header" />
-      <HomeContainer />
-      <Footer className="footer" />
+      <div className="app-container">
+        <Header className="header" />
+        <div className="presenter-container">
+          <MapPresenter />
+          <div className="row-flex">
+            <SelectionPresenter />
+            <DetailsPresenter />
+          </div>
+          <HomeContainer />
+        </div>
+        <Footer className="footer" />
+      </div>
     </Provider>
   </React.StrictMode>,
   document.getElementById("root")

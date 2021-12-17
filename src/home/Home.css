@@ -3,7 +3,7 @@
   height: 110px;
   width: 100vw;
   background-color: #033730;
-  margin: -20px; /* bug with outer container margin  */
+  /* bug with outer container margin  */
   display: flex; /* måste ha flex innan flexdirection */
   flex-direction: row;
   align-items: center;
@@ -12,22 +12,21 @@
 .header-text {
   color: #ffe8dc;
   font-size: 45px;
-  font-family: cursive;
+  font-family: monospace;
 }
 .header-text-small {
   color: #ffe8dc;
   font-size: 30px;
-  font-family: cursive;
+  font-family: monospace;
 }
 
 /*Footer*/
 
 .footer {
-  height: 210px;
-  margin-top: -100px;
-  margin-left: -20px;
-  margin-right: -20px;
-  width: 100hw;
+  height: 50px;
+  /*   margin-top: -130px; */
+
+  width: 100vw;
   background-color: #033730;
 
   display: flex; /* måste ha flex innan flexdirection */
@@ -37,7 +36,7 @@
 }
 .footer-text {
   color: #ffe8dc;
-  font-size: 45px;
+  font-size: 10px;
   font-family: cursive;
 }
 .footer-text-small {
@@ -45,99 +44,105 @@
   font-size: 30px;
   font-family: cursive;
 }
-/* HomePresenter & views */
-.container {
-  overflow: auto;
+
+/* APP CONTAINER */
+
+body {
+  margin: 0px;
+  overflow: hidden;
 }
-.wrapper {
+
+.app-container {
+  height: 100vh;
+  width: 100vw;
   display: flex;
-  margin: -20px;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: red;
+}
+
+.presenter-container {
+  display: flex;
+  /*   margin: -20px; */
   flex-direction: row;
+  justify-content: space-evenly;
   background-color: white;
   height: 100vh;
   width: 100vw;
 }
-.selectionView {
-  background-color: white;
-  display: flex; /* måste ha flex innan flexdirection */
-  flex-direction: row;
-  height: 100px;
-  width: 150px;
-  padding: 20px;
-}
-.selector {
-  height: 30px;
-  width: 200px;
-  margin-left: 20px;
-  background-color: #d7ffd7;
-  border-radius: 10px;
-  font-size: 20;
-}
-.selector-text {
-  color: #033730;
-  /* background-color: #033730;
-  height: 30px;
-  width: 200px;
-  border-radius: 10px;
+.row-flex {
   display: flex;
-  justify-content: center;
-  align-items: center; */
-  font-weight: 900;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding-right: 20px;
 }
-.searchButton {
-  height: 58px;
-  width: 100px;
-  margin-left: 20px;
-  border-radius: 10px;
+.reset-zoom {
   background-color: white;
-}
-.details-view {
-  background-color: white;
-  width: 405px;
-  height: 800px;
-  border-radius: 10px;
-  margin-top: 50px;
+  height: 46px;
+  border-radius: 4px;
+  width: 150px;
+  color: black;
+  margin-top: 36px;
+  border-width: 1px;
+  font-family: monospace;
+  border-color: #c4c4c4;
+  border-style: solid;
 }
 
+/* Selector view */
+.fixed-select {
+  width: 302px;
+  font-weight: 500;
+  color: #033730;
+}
+
+.selector-text {
+  color: #033730;
+  font-weight: 900;
+  font-family: monospace;
+}
+
+/* .details-view */
+.details-view {
+}
 .details-view-banner {
-  background-color: black;
-  height: 50px;
-  width: 402px;
-  font-size: 40px;
-  color: #ffe8dc;
+  background-color: white;
+  width: 300px;
+  height: 80px;
+  /* height: 50%;  auto?*/
+  font-size: 20px;
+  font-family: monospace;
+
+  color: #033730;
   display: flex;
   justify-content: center;
   align-items: center;
+  border-width: 1px;
+  border-top-right-radius: 4px;
+  border-top-left-radius: 4px;
+  border-bottom-width: 0px;
+  border-color: #c4c4c4;
+  border-style: solid;
 }
 .details-view-item {
   margin-bottom: 2px;
-  height: 35px;
-  width: 398px;
-  border-radius: 4px;
-  font-size: 30px;
-  background-color: white;
-  display: flex;
-  align-items: center;
-  border-width: 1px;
-  border-bottom-width: 7px;
-  border-color: black;
-  border-style: solid;
-}
-
-.index-view-item {
-  margin-bottom: 2px;
-
-  border-radius: 4px;
   font-size: 20px;
   background-color: white;
+
   display: flex;
   align-items: center;
   border-width: 1px;
-  border-bottom-width: 7px;
-  border-color: black;
+  border-bottom-width: 4px;
+  border-color: #c4c4c4;
   border-style: solid;
-  width: 398px;
+  width: 296px;
+  height: 400px;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 100px;
+  overflow: auto;
 }
+
 .image-div {
   width: 60vw;
   height: 100vh;
@@ -145,7 +150,109 @@
   justify-content: center;
   align-items: center;
 }
-.space-between {
-  display: flex;
-  flex-direction: row;
+@media only screen and (max-width: 1000px) {
+  body {
+    margin: 0px;
+  }
+  .header {
+    height: 50px;
+
+    background-color: #033730;
+    /* bug with outer container margin  */
+    display: flex; /* måste ha flex innan flexdirection */
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+  .header-text {
+    color: #ffe8dc;
+    font-size: 10px;
+    font-family: cursive;
+  }
+  .header-text-small {
+    color: #ffe8dc;
+    font-size: 5px;
+    font-family: cursive;
+  }
+  .footer {
+    height: 50px;
+
+    background-color: #033730;
+    /* bug with outer container margin  */
+    display: flex; /* måste ha flex innan flexdirection */
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+  .footer-text {
+    color: #ffe8dc;
+    font-size: 10px;
+    font-family: cursive;
+  }
+  .footer-text-small {
+    color: #ffe8dc;
+    font-size: 5px;
+    font-family: cursive;
+  }
+  /*  .details-view {
+    display: none;
+  } */
+  .details-view-banner {
+    background-color: black;
+
+    /* height: 50%;  auto?*/
+    font-size: 10px;
+    color: #ffe8dc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 110%;
+    height: 20px;
+    margin-left: -4px;
+  }
+  .details-view-item {
+    font-size: 10px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    border-width: 1px;
+    border-bottom-width: 2px;
+    border-color: black;
+    border-style: solid;
+    width: 104.8%;
+    padding-left: 2px;
+    padding-right: 2px;
+    height: auto;
+    padding-top: 0px;
+    margin-left: -4px;
+  }
+  .presenter-container {
+    display: flex;
+    flex-direction: column;
+  }
+  .fixed-select {
+    font-weight: 500;
+    color: #033730;
+    width: 104%;
+  }
+  .row-flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding-left: 0px;
+    margin-top: -400px;
+  }
+  .reset-zoom {
+    background-color: white;
+    height: 16px;
+    border-radius: 4px;
+    width: 100px;
+    color: black;
+    margin-top: 36px;
+    border-width: 1px;
+    font-family: monospace;
+    font-size: 10px;
+    border-color: #c4c4c4;
+    border-style: solid;
+  }
 }
