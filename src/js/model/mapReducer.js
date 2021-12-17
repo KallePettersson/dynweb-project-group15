@@ -4,7 +4,7 @@ const initialState = {
     mapZoomReference: null,
 }
 
-const reducer = (state = initialState, action) => {
+const reducer = (state = initialState, action , globalState) => {
     if (action.type === "SET_MAP_LOADED_TRUE") {
         return {
             ...state,

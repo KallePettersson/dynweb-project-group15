@@ -4,7 +4,7 @@ const initialState = {
     criteria: "health_care_index",
 }
 
-const reducer = (state = initialState, action) => {
+const reducer = (state = initialState, action, globalState) => {
     if (action.type === "SELECT_COUNTRY") {
         return {
             ...state,

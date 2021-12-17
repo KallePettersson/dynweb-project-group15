@@ -4,7 +4,7 @@ const initialState = {
     countryHovered: null
 }
 
-const reducer = (state = initialState, action) => {
+const reducer = (state = initialState, action, globalState) => {
     if (action.type === "UPDATE_COUNTRIES") {
         return {
             ...state,

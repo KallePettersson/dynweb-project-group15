@@ -13,4 +13,13 @@ import colorReducer from "./colorReducer";
 //     colorReducer
 // });
 
-export default rootReducer;
+export default (state = {}, action) => {
+    return {
+        selectorReducer: selectorReducer(state.selectorReducer, action, state),
+        countriesReducer:countriesReducer(state.countriesReducer, action, state),
+        citiesReducer:citiesReducer(state.citiesReducer, action, state),
+        mapReducer:mapReducer(state.mapReducer, action, state),
+        colorReducer: colorReducer(state.colorReducer, action, state),
+    };
+};
+// export default rootReducer;

@@ -4,7 +4,7 @@ const initialState = {
     citesFetched: false
 }
 
-const reducer = (state = initialState, action) => {
+const reducer = (state = initialState, action, globalState) => {
     if (action.type === "UPDATE_CITIES") {
         return {
             ...state,

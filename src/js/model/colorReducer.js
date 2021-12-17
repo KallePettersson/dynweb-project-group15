@@ -28,6 +28,33 @@ const reducer = (state = initialState, action, globalState) => {
     } else if (action.type === "UPDATE_COLOR_GRADIENT") {
         return updateColorGradient(state,globalState);
     }
+
     return state
 }
+
+
+function updateColorGradient(state,globalState) {
+
+    let countriesData = globalState.countriesReducer.countries;
+    let selectedCriteria = globalState.selectorReducer.criteria;
+    let values = Object.values(countriesData)
+        .map(data => data[selectedCriteria])
+        .filter(n => !isNaN(n));
+
+    let min = Intl.NumberFormat("en-US", {
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 2
+    }).format(Math.min(...values))
+    let max = Intl.NumberFormat("en-US", {
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 2
+    }).format(Math.max(...values))
+    return {
+        ...state,
+        maxValue: max,
+        minValue: min,
+        order: CriteriaOrder[selectedCriteria]
+    }
+ }
+
 export default reducer;

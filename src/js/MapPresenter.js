@@ -9,23 +9,8 @@ import ColorGradientView from "./views/colorGradientView";
 import {min} from "d3";
 import ColorConfig from "./colorConfig";
 
-function MapPresenter(props) {
+function MapPresenter() {
   console.log("Num renders");
-
-  // //Setup states
-  // const [promise, setPromise] = React.useState(null);
-  // const [data, setData] = React.useState(null);
-  // const [error, setError] = React.useState(null);
-  //
-  // //Init mapComponent
-  //
-  // React.useEffect(() => {
-  //     setPromise(
-  //         props.model.fetchGlobalData()
-  //             .then((data) => setData(data))
-  //             .catch((error) => setError(error))
-  //     );
-  // }, []);
 
   const countriesData = useSelector(
     (state) => state.countriesReducer.countries
@@ -45,6 +30,17 @@ function MapPresenter(props) {
   const colorGradientOrder = useSelector(
       state => state.colorReducer.order
   );
+
+  const minValue = useSelector(
+      state => state.colorReducer.minValue
+  )
+  const maxValue = useSelector(
+      state => state.colorReducer.maxValue
+  )
+
+  let fills = colorGradientOrder === "ascending" ? Object.entries(ColorConfig.fills).reverse() : Object.entries(ColorConfig.fills)
+
+
 
   return (
     <div className="map-flex">
