@@ -31,15 +31,20 @@ function DetailsView() {
               <tr>
                 <td>
                   <div className="details-view-banner">
-                    {" "}
-                    Index Information:{Criteria[criteriaSelected]}
+                    {Criteria[criteriaSelected]}
                   </div>
                   <div className="details-view-item">
                     <p>
+                      <div className="item-header">
+                        Information about current index <br />
+                      </div>
                       The {Criteria[criteriaSelected]} Index:&nbsp;
                       {indexInfo[data] || "currently no data available"} &nbsp;
                       <br />
                       <br />
+                      <div className="item-header">
+                        General info on our indecies <br />
+                      </div>
                       These indices are relative to New York City (NYC). Which
                       means that for New York City, each index should be 100(%).
                       If another city has, for example, rent index of 120, it
