@@ -1,5 +1,5 @@
-import {Criteria} from "../criteria";
-import indexInfo from "../info";
+import {Criteria} from "./criteria";
+import indexInfo from "./info";
 import { useSelector } from "react-redux";
 
 function DetailsView() {

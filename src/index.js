@@ -1,15 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import reportWebVitals from "./reportWebVitals";
-import HomeContainer from "./home/HomeContainer";
-import Header from "./home/Header";
-import "./home/Home.css";
-import GeoLocoModel from "./model";
-import DevSelectorPresenter from "./presenters/devSelectorPresenter";
+import HomeContainer from "./js/HomeContainer";
+import Header from "./js/Header";
+import "./css/Home.css";
 import { Provider } from "react-redux";
-import store from "./store";
-import DevResultsPresenter from "./presenters/devResultsPresenter";
-import Footer from "./home/Footer";
+import store from "./js/store";
+import Footer from "./js/Footer";
 
 ReactDOM.render(
   <React.StrictMode>

@@ -3,11 +3,11 @@ import * as Datamap from "datamaps";
 import * as d3 from "d3";
 import * as d3Geo from "d3-geo";
 import * as d3Zoom from "d3-zoom"
-import ColorConfig from "../colorConfig";
+import ColorConfig from "./colorConfig";
 import {useDispatch, useSelector} from "react-redux";
-import store from "../store";
-import {Criteria} from "../criteria"
-import updateColorGradient from "./colorGradientPresenter"
+import store from "./store";
+import {Criteria} from "./criteria"
+import updateColorGradient from "./presenters/colorGradientPresenter"
 
 var globalZoomRef = null; //TODO move this somewhere
 

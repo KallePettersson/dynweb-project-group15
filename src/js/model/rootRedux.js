@@ -5,12 +5,12 @@ import citiesReducer from "./citiesReducer";
 import mapReducer from "./mapReducer";
 import colorReducer from "./colorReducer";
 
-const rootReducer = combineReducers({
-    selectorReducer,
-    countriesReducer,
-    citiesReducer,
-    mapReducer,
-    colorReducer
-});
+// const rootReducer = combineReducers({
+//     selectorReducer,
+//     countriesReducer,
+//     citiesReducer,
+//     mapReducer,
+//     colorReducer
+// });
 
 export default rootReducer;

@@ -1,11 +1,8 @@
 import React, {useState} from "react";
-import "./Home.css";
+import "../css/Home.css";
 import SelectionView from "./SelectionView";
-import {Criteria} from "../criteria";
+import {Criteria} from "./criteria";
 import {useDispatch, useSelector} from "react-redux";
-import DevSelectorView from "../views/devSelectorView";
-import CountryCodes from "../countryCodes";
-import ApiHandler from "../api-handler";
 
 
 function SelectionPresenter() {
@@ -26,6 +23,9 @@ function SelectionPresenter() {
                         payload: {
                             criteria: e.value
                         }
+                    })
+                    dispatch({
+                        type: "UPDATE_COLOR_GRADIENT"
                     })
                 }}
             />

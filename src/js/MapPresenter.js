@@ -1,12 +1,13 @@
 import React from "react";
 import MapComponent from "./mapComponent";
-import ColorGradientComponent from "./colorGradientComponent";
-import * as d3 from "d3";
-import "./mapPresenter.css";
-import PromiseNoData from "./promieNoData";
+import "../css/mapPresenter.css";
 import { useSelector } from "react-redux";
 import DetailsView from "./DetailsView";
-import {Criteria} from "../criteria";
+import {Criteria} from "./criteria";
+import ColorGradiantPresenter from "./presenters/colorGradientPresenter";
+import ColorGradientView from "./views/colorGradientView";
+import {min} from "d3";
+import ColorConfig from "./colorConfig";
 
 function MapPresenter(props) {
   console.log("Num renders");
@@ -49,18 +50,6 @@ function MapPresenter(props) {
     <div className="map-flex">
       <div className="outer-map-container">
         <div className="inner-map-container">
-          {/*{PromiseNoData(promise, data, error) ||*/}
-          {/*    (<MapComponent model={props.model} countryData={data.countryData} cityData={data.cityData} colourConfig={data.colourConfig} metaData={data.metaData} />*/}
-          {/*    )}*/}
-          {/*<div id="map" className="world-map"></div>*/}
-          {/*{PromiseNoData(promise, data, error, true) ||*/}
-          {/*    (*/}
-          {/*        <ColorGradientComponent*/}
-          {/*            metaData={data.metaData}*/}
-          {/*            colourConfig={data.colourConfig}*/}
-          {/*        />*/}
-          {/*    )}*/}
-
           {dataFetched ? (
             MapComponent(
               countriesData,
@@ -74,7 +63,14 @@ function MapPresenter(props) {
             <div>test</div>
           )}
           <div id="map" className="world-map" />
-          <ColorGradientComponent />
+          <ColorGradientView
+              minValue={minValue}
+              maxValue={maxValue}
+              order={colorGradientOrder}
+              fills={fills}
+          />
+          {/*<ColorGradiantPresenter/>*/}
+          {/*<ColorGradientView />*/}
         </div>
       </div>
       <div>

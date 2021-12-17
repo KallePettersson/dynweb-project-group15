@@ -1,13 +1,13 @@
 import React, {useEffect, useState} from "react";
-import "./Home.css";
+import "../css/Home.css";
 import MapPresenter from "./MapPresenter";
 import SelectionPresenter from "./SelectionPresenter";
-import CountryCodes from "../countryCodes";
-import ApiHandler from "../api-handler";
+import CountryCodes from "./countryCodes";
+import ApiHandler from "./api-handler";
 import {useDispatch, useSelector} from "react-redux";
-import ColorConfig from "../colorConfig";
-import {Criteria} from "../criteria";
-import updateColorGradient from "./colorGradientPresenter"
+import ColorConfig from "./colorConfig";
+import {Criteria} from "./criteria";
+import updateColorGradient from "./presenters/colorGradientPresenter"
 
 function HomeContainer() {
     const dispatch = useDispatch();
