@@ -3,13 +3,9 @@ import * as Datamap from "datamaps";
 import * as d3 from "d3";
 import * as d3Geo from "d3-geo";
 import * as d3Zoom from "d3-zoom"
-import ColorConfig from "../colorConfig";
 import store from "../store";
 import {Criteria} from "../criteria"
-import updateColorGradient from "../presenters/colorGradientPresenter";
-import {useDispatch, useSelector} from "react-redux";
-import CountryCodes from "../countryCodes";
-import ApiHandler from "../api-handler";
+import {getColorGradient, ColorConfig} from "../colorConfig";
 
 const initialState = {
     mapLoaded: false,
@@ -17,7 +13,7 @@ const initialState = {
     mapZoomReference: null,
 }
 
-const reducer = (state = initialState, action , globalState) => {
+const reducer = (state = initialState, action, globalState) => {
     if (action.type === "SET_MAP_LOADED_TRUE") {
         return {
             ...state,
@@ -28,20 +24,21 @@ const reducer = (state = initialState, action , globalState) => {
             ...state,
             mapLoaded: false
         }
-    } else if (action.type === "SET_MAP_REFERENCE"){
+    } else if (action.type === "SET_MAP_REFERENCE") {
         // console.log("inside set map ref", action.payload.mapReference);
         return {
             ...state,
             mapReference: action.payload.mapReference
         }
-    } else if (action.type === "SET_MAP_ZOOM_REFERENCE"){
+    } else if (action.type === "SET_MAP_ZOOM_REFERENCE") {
         return {
             ...state,
             mapZoomReference: action.payload.mapZoomReference
         }
-    } else if (action.type === "RENDER_MAP"){
-        return renderMap(state, globalState)
-    } else if (action.type === "RESET_MAP_ZOOMING"){
+    } else if (action.type === "RENDER_MAP") {
+        return renderMap(state, globalState);
+    } else if (action.type === "RESET_MAP_ZOOMING") {
+        console.log("RESET_MAP_ZOOMING", state)
         return ResetMapZooming(state);
     }
     return state
@@ -65,12 +62,7 @@ function renderMap(state, globalState) {
     if (!mapLoaded) {
 
         //Determine in which orders the colors should be applied to the map, descending by default
-        let fills = ColorConfig.fills;
-        if(colorGradientOrder === "ascending"){
-            console.log("reverse")
-            fills = ReverseFills(fills);
-        }
-
+        let fills = colorGradientOrder === "ascending" ? ColorConfig.ascendingFills : ColorConfig.descendingFills;
 
         //Reset old map data
         const myNode = document.getElementById("map");
@@ -79,7 +71,6 @@ function renderMap(state, globalState) {
         myNode.innerHTML = '';
 
         //Setup main map
-        console.log("selectedCountry", selectedCountry)
         var map = new Datamap({
             element: document.getElementById('map'),
             width: width,
@@ -145,25 +136,10 @@ function renderMap(state, globalState) {
     }
 }
 
-
-/**
- * Reverses the order of the colors used for coloring the map
- * @param fills
- * @returns {{}}
- */
-function ReverseFills(fills){
-    let res = {}
-    let reversedFills = Object.values(fills).slice(0,Object.values(fills).length).reverse();
-    Object.assign(res, ...ColorConfig.colourKeys.map((n, index) => ({[n]: reversedFills[index]})))
-    res["defaultFill"] = fills["defaultFill"];
-    return res;
-
-}
-
 // Reset zoom and dragging on map
 function ResetMapZooming(state) {
 
-    if(state.mapZoomReference){
+    if (state.mapZoomReference) {
         d3.select(document.getElementById("map"))
             .select("svg")
             .transition()
@@ -180,26 +156,6 @@ function ResetMapZooming(state) {
     }
 }
 
-/**
- * Determines what color a country should get based on the value of the given criteria
- * @param value
- * @returns {string|*}
- */
-function getColourGradient(value) {
-    if (value === null) {
-        return "defaultFill"; //Default color when data is not available
-    }
-    let min = 0;
-    let max = 100;
-    if (value < min) {
-        value = min;
-    } else if (value >= max) {
-        value = (max - 0.01); //ugly hack to fix edge case
-    }
-    let colourIndex = Math.floor(((value - min) / ((max - min) / 10)));
-    return ColorConfig.colourKeys[colourIndex]
-}
-
 
 /**
  * Recolor the entire map, used after the chosen criteria has changed
@@ -208,12 +164,15 @@ function getColourGradient(value) {
 function reColorMap(globalState) {
 
     let selectedCriteria = globalState.selectorReducer.criteria
-    let fills = globalState.colorReducer.order === "ascending" ? ReverseFills(ColorConfig.fills) : ColorConfig.fills;
+    let fills = globalState.colorReducer.order === "ascending" ? ColorConfig.ascendingFills : ColorConfig.descendingFills;
 
     let newColors = Object.entries(globalState.countriesReducer.countries).map(country => {
         let res = {};
-        if(country[1][selectedCriteria]) {
-            res[country[0]] = fills[getColourGradient(country[1][selectedCriteria])]
+        if (country[1][selectedCriteria]) {
+            res[country[0]] = fills[getColorGradient(
+                country[1][selectedCriteria],
+                globalState.colorReducer.minValue,
+                globalState.colorReducer.maxValue)]
         } else {
             res[country[0]] = {"fillKey": "defaultFill"};
         }

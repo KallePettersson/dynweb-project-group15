@@ -5,11 +5,11 @@ const initialState = {
     order: "ascending", //Ascending means higher is better
     maxValue: 100,
     minValue: 0,
-    updateColorGradient: updateColorGradient,
+    updateColorGradient: updateColorGradient, //todo: varför använder vi inte dispatch?
 }
 
 const reducer = (state = initialState, action, globalState) => {
-    console.log("STATE: " , store)
+    console.log("STATE: ", store)
     if (action.type === "SET_ORDER") {
         return {
             ...state,
@@ -26,21 +26,20 @@ const reducer = (state = initialState, action, globalState) => {
             minValue: action.payload.minValue
         }
     } else if (action.type === "UPDATE_COLOR_GRADIENT") {
-        return updateColorGradient(state,globalState);
+        return updateColorGradient(state, globalState);
     }
 
     return state
 }
 
 
-function updateColorGradient(state,globalState) {
+function updateColorGradient(state, globalState) {
 
     let countriesData = globalState.countriesReducer.countries;
     let selectedCriteria = globalState.selectorReducer.criteria;
     let values = Object.values(countriesData)
         .map(data => data[selectedCriteria])
         .filter(n => !isNaN(n));
-
     let min = Intl.NumberFormat("en-US", {
         minimumFractionDigits: 0,
         maximumFractionDigits: 2
@@ -55,6 +54,6 @@ function updateColorGradient(state,globalState) {
         minValue: min,
         order: CriteriaOrder[selectedCriteria]
     }
- }
+}
 
 export default reducer;

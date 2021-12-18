@@ -4,6 +4,7 @@ function DetailsView({countriesData, criteriaName, criteriaCode, criteriaInfo, c
     return (
         <span className="details-view">
             <table>
+                <tbody>
                     <tr>
                         <td>
                             <div className="details-view-banner">
@@ -26,6 +27,7 @@ function DetailsView({countriesData, criteriaName, criteriaCode, criteriaInfo, c
                             </div>
                         </td>
                     </tr>
+                </tbody>
       </table>
             {/*<table className="item-flex">*/}
             {/*    <tr>*/}

@@ -3,7 +3,8 @@ import CountryCodes from "../countryCodes";
 import ApiHandler from "../api-handler";
 import updateColorGradient from "../presenters/colorGradientPresenter";
 import {Criteria} from "../criteria";
-import ColorConfig from "../colorConfig";
+import {getColorGradient} from "../colorConfig";
+import store from "../store";
 
 const initialState = {
     countries: {},
@@ -43,13 +44,13 @@ function FetchCountriesData(state, globalState) {
             }, {})
 
             let processedData = setupForEachCountryDataPoint(reducedData, criteria);
-            let res = {
-                ...state,
-                countries: processedData,
-                dataFetched: true,
-            }
-            console.log("dataAfter", processedData, res)
-            return res;
+            // let res = {
+            //     ...state,
+            //     countries: processedData,
+            //     dataFetched: true,
+            // }
+            console.log("dataAfter", processedData)
+            return processedData;
         });
     }
     return state
@@ -63,9 +64,11 @@ function setupForEachCountryDataPoint(countriesData, selectedCriteria) {
         // console.log("this.countryData - setupForEachCountryDataPoint", this.countryData !== null);
         // console.log("this.countryData - setupForEachCountryDataPoint", Object.entries(this.countryData).length);
         let newCountryData = {};
+        let minValue = store.getState().colorReducer.minValue;
+        let maxValue = store.getState().colorReducer.maxValue;
         Object.entries(countriesData).forEach(country => {
             newCountryData[country[0]] = country[1];
-            newCountryData[country[0]]["fillKey"] = getColourGradient(country[1][selectedCriteria]) // Set colour for given country
+            newCountryData[country[0]]["fillKey"] = getColorGradient(country[1][selectedCriteria], minValue, maxValue) // Set colour for given country
 
             // Extra data needed for popup
             newCountryData[country[0]]["currentDataKey"] = selectedCriteria;
@@ -77,26 +80,6 @@ function setupForEachCountryDataPoint(countriesData, selectedCriteria) {
         console.log("no country data in setupForEachCountryDataPoint");
         return null;
     }
-}
-
-/**
- * Determines what color a country should get based on the value of the given criteria
- * @param value
- * @returns {string|*}
- */
-function getColourGradient(value) {
-    if (value === null) {
-        return "defaultFill"; //Default color when data is not available
-    }
-    let min = 0;
-    let max = 100;
-    if (value < min) {
-        value = min;
-    } else if (value >= max) {
-        value = (max - 0.01); //ugly hack to fix edge case
-    }
-    let colourIndex = Math.floor(((value - min) / ((max - min) / 10)));
-    return ColorConfig.colourKeys[colourIndex]
 }
 
 function getKeyByValue(object, value) {
