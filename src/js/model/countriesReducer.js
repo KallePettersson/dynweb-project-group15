@@ -24,8 +24,43 @@ const reducer = (state = initialState, action, globalState) => {
             ...state,
             countryHovered: action.payload.countryHovered,
         }
+    } else if (action.type === "UPDATE_DATA_FETCHED") {
+        return {
+            ...state,
+            dataFetched: !state.dataFetched
+        }
     } else if (action.type === "FETCH_COUNTRIES_DATA") {
-        return FetchCountriesData(state, globalState);
+        // let data = FetchCountriesData(state, globalState);
+        // console.log("FETCH_COUNTRIES_DATA - data", data)
+        const criteria = globalState.selectorReducer.criteria
+        const dataFetched = state.dataFetched;
+
+        if (!dataFetched) {
+            let promises = Object.values(CountryCodes).map((name) => ApiHandler.getCountryIndices(name));
+            Promise.all(promises).then(rawData => {
+                let reducedData = rawData.reduce((accumulator, data) => {
+                    accumulator[getKeyByValue(CountryCodes, data.name)] = data;
+                    return accumulator;
+                }, {})
+
+                let processedData = setupForEachCountryDataPoint(reducedData, criteria);
+                // let res = {
+                //     ...state,
+                //     countries: processedData,
+                //     dataFetched: true,
+                // }
+                console.log("dataAfter", processedData)
+                // return processedData;
+                if (processedData) {
+                    console.log("test")
+                    return {
+                        ...state,
+                        countries: processedData,
+                        dataFetched: true
+                    }
+                }
+            });
+        }
     }
     return state
 }
@@ -53,7 +88,7 @@ function FetchCountriesData(state, globalState) {
             return processedData;
         });
     }
-    return state
+    return null;
 }
 
 

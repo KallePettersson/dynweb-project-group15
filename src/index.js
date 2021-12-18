@@ -7,9 +7,10 @@ import store from "./js/store";
 
 import App from "./App";
 
-store.dispatch({
-    type: "FETCH_COUNTRIES_DATA"
-})
+// store.dispatch({
+//     type: "FETCH_COUNTRIES_DATA"
+// })
+console.log("store.getState()", store.getState())
 
 // while(!store.getState().countriesReducer.dataFetched){
 // }

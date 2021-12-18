@@ -10,6 +10,7 @@ import ApiHandler from "../api-handler";
 import store from "../store";
 
 function MapPresenter() {
+    console.log("Render mapPresenter");
     const dispatch = useDispatch();
 
     const colorGradientOrder = useSelector(
@@ -31,22 +32,31 @@ function MapPresenter() {
     let dataFetched = useSelector(
         state => state.countriesReducer.dataFetched
     );
-    while (!dataFetched){
+    let countries = useSelector(
+        state => state.countriesReducer.countries
+    );
 
-        if (dataFetched) {
-            console.log("map being rendered")
-            dispatch({
-                type: "RENDER_MAP",
-            });
-        } else {
-            // dispatch({
-            //     type: "FETCH_COUNTRIES_DATA"
-            // })
-            // console.log("map not being rendered")
-        }
-        dataFetched = useSelector(
-            state => state.countriesReducer.dataFetched
-        );
+    const criteria = useSelector(
+        state => state.selectorReducer.criteria
+    );
+
+    const cityDataFetched = useSelector(
+        state => state.citiesReducer.cityDataFetched
+    );
+    const selectedCountry = useSelector(
+        state => state.selectorReducer.country
+    );
+
+
+    if (!dataFetched) {
+        fetchCountryDataAndUpdateState(criteria);
+    }
+
+    if (dataFetched) {
+        console.log("map being rendered")
+        dispatch({
+            type: "RENDER_MAP",
+        });
     }
 
     return (
@@ -59,6 +69,13 @@ function MapPresenter() {
                 }>
                     Reset Zoom
                 </button>
+                {dataFetched ? (<></>) : (<div className="image-div">
+                    <img
+                        height="100"
+                        width="100"
+                        src={"http://www.csc.kth.se/~cristi/loading.gif"}
+                    />
+                </div>)}
                 <div id="map" className="world-map"/>
                 <ColorGradientView
                     minValue={minValue}

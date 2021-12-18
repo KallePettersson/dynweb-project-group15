@@ -59,6 +59,7 @@ function renderMap(state, globalState) {
     let mapLoaded = state.mapLoaded
     let colorGradientOrder = globalState.colorReducer.order;
 
+    console.log("renderMap-inreducer", globalState);
     if (!mapLoaded) {
 
         //Determine in which orders the colors should be applied to the map, descending by default
@@ -154,6 +155,8 @@ function ResetMapZooming(state) {
                     .invert([1225 / 2, 700 / 2])
             );
     }
+
+    return state;
 }
 
 
