@@ -15,8 +15,8 @@ const CriteriaInfo = {
     restaurant_price_index:
         " is a comparison of prices of meals and drinks in restaurants and bars compared to NYC.",
     safety_index: "is quite opposite of crime index. If the city has a high safety index, it is considered very safe.",
-    traffic_co2_index: "No info",
-    traffic_index: "Traffic Index is a composite index of time consumed in traffic due to job commute, estimation of time consumption dissatisfaction, CO2 consumption estimation in traffic and overall inefficiencies in the traffic system.",
+    traffic_co2_index: " is an estimation of CO2 consumption due to traffic time. Measurement unit is grams for the return trip. To calculate an average estimation of emission in grams for one way commute to work, divide this value with 2.",
+    traffic_index: "is a composite index of time consumed in traffic due to job commute, estimation of time consumption dissatisfaction, CO2 consumption estimation in traffic and overall inefficiencies in the traffic system.",
     traffic_inefficiency_index: "is an estimation of inefficiencies in the traffic. High inefficiencies are usually caused by the fact that people drive a car instead of using a public transport or long commute times. It can be used as a traffic component measurement in economies of scale.",
     traffic_time_index: "is an average one way time needed to transport, in minutes.",
 };
