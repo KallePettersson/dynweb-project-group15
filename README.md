@@ -1,32 +1,46 @@
 # GEOLOCO - The Visualization tool for Socialogy
-In this project we have created a tool for visualizing global Socialogy data from the Numbeo API using a worldmap. 
+In this project we have created a tool for visualizing global Socialogy data from the Numbeo API using a worldmap.
 
 
-## What we have done 
-Thus far we have created the main page where we show data on a country by country basis using a heatmap of the world. 
+## What we have done
+We have created an application where we show data on a country by country basis using a heatmap of the world.
 The heatmap is created using the [Datamaps](https://github.com/markmarkoh/datamaps/blob/master/README.md#getting-started) library and relies heavily on d3.js.
-The data in the model is fetched from https://www.numbeo.com/api/country_indices?api_key=api-key&country=country-name for each country.
+The data of each country in the model is fetched from the external API:  https://www.numbeo.com/api/country_indices?api_key=api-key&country=country-name.
+We have Implemented the MVP architecture where we use Redux as the model. We have also included third party components like the React select component used in the `SelectorPresenter`.
+Additionally, Firebase was implemented for persistence. In fact, persistence is not very important for this project particularly, but we implemented it since it was one of the requirements in the grading criteria.
 
-## What we are going to do
-* Fix the synchronization problem that we have when we create our DBCountriesModel object.
-* Fix the rerendering issue with the map.
-* Add some sort of side component with information about what the different data represents. i.e what does a Crime index of 52.5 mean.
-* We want to add another view where we can view the same data for each city within a given country. Clicking an country should take the user to this new view.
-
-
-## Project structure - file description
-* **colorGradientComponent:** This component (which currently looks horrible css wise) is used to show what the different colors represents. Atm by default we assume that all the data points currently implemented are in the range [0,100], this should be dynamically set based on the data.
-* **MapComponent:** This component shows the map component, currently only shows the data on a country-by-country basis by coloring the map based on the category selected.
-* **MapPresenter:** Modifies the data from the model to set colors based on the selected category and the data associated with each country. Currently this coponent has functionality that probably should be relocated to the models.  
-* **DBCountriesModel:** Is part of the model where we store the data of each country.
-* **SelectorModel:** Is part of the model that will store the data for the selection element.
-* **MetaDataModel:** Is part of the model that will store the settings required for the map.
+Finally, we removed all the warnings that popped up in the console while running the application. The application is warning free from our side but there is a single warning coming which is coming form an internal function in the firebase library. This warning we could not fix as it lies in the internals of firebase library.
 
 
 
-## (installation and react) Getting Started with Create React App
+## Project structure 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Model folder
+This folder contains everythin related to the model part of our project. We use redux to maintain our state. Most of the reducers contain simple high level functions that update the state.
+But in the mapReducer we have two important functions that are a little more complex than those in the other reducers, the renderMap and ResetMapZooming functions. The first one uses the datamaps library to render the map view.
+The second one is used to reset the zooming and stretching that a user can do within the map.
+
+
+### Presenter folder
+This folder contains all the presenters for our project.
+
+
+### Views folder
+This folder contains all the views for our project. Worth mentioning is that the "map view" is rendered through the datamaps library that inserts the svg element into the `<div id="map" className="world-map"/>` in the mapPresenter.js. 
+
+### Persistance
+* **firebaseConfig.js** and **firebaseModel.js** is used to set up a simple firebase connection, the database is exported in firebaseModel.js. Firebase is used to store the current index the user is looking at. It is fetched and set as the initial state in the selectorReducer.js and is posted to firebase from the selectorPresenter.js
+
+### Others
+* **colorConfig.js**, **countryCodes.js**, **criteria.js**, **criteriaInfo.js** are all config files containing various constant data used in the project.
+* **api-config.json** and **api-handler.js** is used for fetching data from the Numbeo API.
+* **action.js** contains two functions. One thunk action used for fetching all the initial data from the Numbeo API, and another function for updating the color settings in the store which will affect the map and the color gradient.
+
+
+
+## Installation
+In the root of the project run `npm install` to install all the required dependencies from the package.json file. 
+
 
 ### Available Scripts
 
@@ -64,33 +78,3 @@ If you aren’t satisfied with the build tool and configuration choices, you can
 Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-### Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-#### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-#### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-#### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-#### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-#### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

@@ -11,10 +11,8 @@ export const Criteria = {
     "groceries_index": "Groceries",
     "safety_index": "Safety",
     "rent_index": "Rent",
-    "traffic_co2_index": "Traffic CO2",
     "restaurant_price_index": "Restaurant Prices",
     "traffic_inefficiency_index": "Traffic Inefficiency",
-    "property_price_to_income_ratio": "Property Price to Income"
 }
 // descending means lower is better
 export const CriteriaOrder = {
@@ -30,8 +28,6 @@ export const CriteriaOrder = {
     "groceries_index": "descending",
     "safety_index": "ascending",
     "rent_index": "descending",
-    "traffic_co2_index": "descending",
     "restaurant_price_index": "descending",
     "traffic_inefficiency_index": "descending",
-    "property_price_to_income_ratio": "descending"
 }

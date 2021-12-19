@@ -9,20 +9,11 @@ const colors = [
     "#4d908e",
     "#577590",
     "#277da1"
-
-    // "#d10000",
-    // "#cc3c00",
-    // "#c45900",
-    // "#b97100",
-    // "#ab8500",
-    // "#9b9700",
-    // "#88a800",
-    // "#71b700",
-    // "#51c63c",
-    // "#00d364"
 ]
 
-
+/**
+ * Color related config for the map.
+ */
 const ColorConfig = {
     colourKeys: [
         "ZERO",

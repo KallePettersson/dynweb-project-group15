@@ -1,6 +1,6 @@
 import HeaderView from "./js/views/headerView";
 import MapPresenter from "./js/presenters/mapPresenter";
-import SelectionPresenter from "./js/presenters/SelectionPresenter";
+import SelectionPresenter from "./js/presenters/selectionPresenter";
 import DetailsPresenter from "./js/presenters/detailsPresenter";
 import FooterView from "./js/views/footerView";
 
