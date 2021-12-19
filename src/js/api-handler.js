@@ -11,8 +11,11 @@ const ApiHandler = {   // JS object creation literal
     },
     getCities(countryCode = null) {
 
-        return this.defaultApiCall("/cities", "&country=" + countryCode)
-            .then(data => console.log(data));
+        return this.defaultApiCall("/cities", "&country=" + countryCode);
+    },
+    getCityIndicies(city_id = null) {
+
+        return this.defaultApiCall("/indicies", "&city_id=" + city_id);
     },
     /**
      * Will return a dictionary containing different values for the given country.
@@ -21,7 +24,7 @@ const ApiHandler = {   // JS object creation literal
      * @return {Promise<any>} The data of the selected country as a dictionary.
      */
     getCountryIndices(country) {
-        return this.defaultApiCall("/country_indices", "&country=" + country)
+        return this.defaultApiCall("/country_indices", "&country=" + country);
     }
 };
 

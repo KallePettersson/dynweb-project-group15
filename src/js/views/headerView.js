@@ -1,7 +1,7 @@
 import React from "react";
-import "./Home.css";
+import "../../css/home.css";
 
-function Header() {
+function HeaderView() {
   return (
     <div className="header">
       <h1 className="header-text">GEOLOCO - </h1>
@@ -12,4 +12,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default HeaderView;

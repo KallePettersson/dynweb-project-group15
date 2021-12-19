@@ -1,28 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
-// import ApiHandler from './api-handler';
-import DBCountriesModel from "./DBCountriesModel";
+import HeaderView from "./js/views/headerView";
+import MapPresenter from "./js/presenters/mapPresenter";
+import SelectionPresenter from "./js/presenters/SelectionPresenter";
+import DetailsPresenter from "./js/presenters/detailsPresenter";
+import FooterView from "./js/views/footerView";
 
 function App() {
-  // ApiHandler.getCities("Sweden");
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <div className="app-container">
+            <HeaderView className="header"/>
+            <div className="presenter-container">
+                <MapPresenter/>
+                <div className="row-flex">
+                    <SelectionPresenter/>
+                    <DetailsPresenter/>
+                </div>
+            </div>
+            <FooterView className="footer"/>
+        </div>
+    );
 }
 
 export default App;
