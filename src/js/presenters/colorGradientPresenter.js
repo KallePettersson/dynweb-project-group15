@@ -1,27 +1,19 @@
-import React from "react";
-import {useSelector} from "react-redux";
-import ColorConfig from "../colorConfig";
-import ColorGradientView from "../views/colorGradientView";
+// todo: unnecessary file?
 
+import ColorGradientView from "../views/colorGradientView";
+import {useSelector} from "react-redux";
+import {ColorConfig} from "../colorConfig";
 
 function ColorGradiantPresenter() {
-    // const minValue = useSelector(
-    //     state => state.colorReducer.minValue
-    // )
-    // const maxValue = useSelector(
-    //     state => state.colorReducer.maxValue
-    // )
-    // const order = useSelector(
-    //     state => state.colorReducer.order
-    // )
-    // let fills = order === "ascending" ? Object.entries(ColorConfig.fills).reverse() : Object.entries(ColorConfig.fills)
-
+    let minValue = useSelector(state => state.colorReducer.minValue);
+    let maxValue = useSelector(state => state.colorReducer.maxValue);
+    let order = useSelector(state => state.colorReducer.order);
+    let fills = order === "ascending" ? ColorConfig.ascendingFills : ColorConfig.descendingFills
     return (
         <ColorGradientView
-            minValue={null}
-            maxValue={null}
-            order={null}
-            fills={[]}
+            minValue={minValue}
+            maxValue={maxValue}
+            fills={fills}
         />
     );
 }

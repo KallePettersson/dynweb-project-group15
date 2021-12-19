@@ -4,21 +4,14 @@ import citiesReducer from "./citiesReducer";
 import mapReducer from "./mapReducer";
 import colorReducer from "./colorReducer";
 
-// const rootReducer = combineReducers({
-//     selectorReducer,
-//     countriesReducer,
-//     citiesReducer,
-//     mapReducer,
-//     colorReducer
-// });
-
-export default (state = {}, action) => {
+function rootReducer(state = {}, action) {
     return {
-        selectorReducer: selectorReducer(state.selectorReducer, action, state),
-        countriesReducer:countriesReducer(state.countriesReducer, action, state),
-        citiesReducer:citiesReducer(state.citiesReducer, action, state),
-        mapReducer:mapReducer(state.mapReducer, action, state),
-        colorReducer: colorReducer(state.colorReducer, action, state),
+        selectorReducer: selectorReducer(state.selectorReducer, action),
+        countriesReducer: countriesReducer(state.countriesReducer, action),
+        citiesReducer: citiesReducer(state.citiesReducer, action),
+        mapReducer: mapReducer(state.mapReducer, action, state),
+        colorReducer: colorReducer(state.colorReducer, action),
     };
-};
-// export default rootReducer;
+}
+
+export default rootReducer;

@@ -1,4 +1,3 @@
-import React, {useState} from "react";
 import "../../css/home.css";
 import SelectionView from "../views/SelectionView";
 import {Criteria} from "../criteria";
@@ -22,7 +21,7 @@ function SelectionPresenter() {
                         }
                     })
                     dispatch({
-                        type: "UPDATE_COLOR_GRADIENT"
+                        type: "UPDATE_COLOR_GRADIENT" // todo remove
                     })
                 }}
             />

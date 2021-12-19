@@ -1,4 +1,3 @@
-import React from 'react';
 import '../../css/colorGradientComponent.css';
 
 function ColorGradientView({minValue, maxValue, fills}) {

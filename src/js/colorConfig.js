@@ -9,6 +9,17 @@ const colors = [
     "#4d908e",
     "#577590",
     "#277da1"
+
+    // "#d10000",
+    // "#cc3c00",
+    // "#c45900",
+    // "#b97100",
+    // "#ab8500",
+    // "#9b9700",
+    // "#88a800",
+    // "#71b700",
+    // "#51c63c",
+    // "#00d364"
 ]
 
 
@@ -64,16 +75,12 @@ const ColorConfig = {
  */
 function getColorGradient(value, minValue, maxValue) {
     if (isNaN(value)) {
-        console.log("NaN")
         return "defaultFill"; //Default color when data is not available
     } else if (value < minValue) {
-        console.log("min", value)
         return ColorConfig.colourKeys[0]
     } else if (value >= maxValue) {
-        console.log("max", value)
         return ColorConfig.colourKeys[9]
     } else {
-        console.log("between", value, minValue, maxValue, Math.floor(((value - minValue) / ((maxValue - minValue) / 10))))
         let colourIndex = Math.floor(((value - minValue) / ((maxValue - minValue) / 10)));
         return ColorConfig.colourKeys[colourIndex]
     }

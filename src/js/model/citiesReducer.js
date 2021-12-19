@@ -1,17 +1,19 @@
 const initialState = {
     cities: [],
-    cityData:{},
+    cityData: {},
     citesFetched: false
 }
 
-const reducer = (state = initialState, action, globalState) => {
-    if (action.type === "UPDATE_CITIES") {
-        return {
-            ...state,
-            cities: action.payload.cities
-        }
+const reducer = (state = initialState, action) => {
+    switch (action.type) {
+        case "UPDATE_CITIES":
+            return {
+                ...state,
+                cities: action.payload.cities
+            }
+        default :
+            return state
     }
-    return state
 }
 
 export default reducer;

@@ -1,4 +1,3 @@
-import React from "react";
 import * as Datamap from "datamaps";
 import * as d3 from "d3";
 import * as d3Geo from "d3-geo";
@@ -14,34 +13,34 @@ const initialState = {
 }
 
 const reducer = (state = initialState, action, globalState) => {
-    if (action.type === "SET_MAP_LOADED_TRUE") {
-        return {
-            ...state,
-            mapLoaded: true
-        }
-    } else if (action.type === "SET_MAP_LOADED_FALSE") {
-        return {
-            ...state,
-            mapLoaded: false
-        }
-    } else if (action.type === "SET_MAP_REFERENCE") {
-        // console.log("inside set map ref", action.payload.mapReference);
-        return {
-            ...state,
-            mapReference: action.payload.mapReference
-        }
-    } else if (action.type === "SET_MAP_ZOOM_REFERENCE") {
-        return {
-            ...state,
-            mapZoomReference: action.payload.mapZoomReference
-        }
-    } else if (action.type === "RENDER_MAP") {
-        return renderMap(state, globalState);
-    } else if (action.type === "RESET_MAP_ZOOMING") {
-        console.log("RESET_MAP_ZOOMING", state)
-        return ResetMapZooming(state);
+    switch (action.type) {
+        case "SET_MAP_LOADED_TRUE":
+            return {
+                ...state,
+                mapLoaded: true
+            }
+        case "SET_MAP_LOADED_FALSE":
+            return {
+                ...state,
+                mapLoaded: false
+            }
+        case "SET_MAP_REFERENCE":
+            return {
+                ...state,
+                mapReference: action.payload.mapReference
+            }
+        case "SET_MAP_ZOOM_REFERENCE":
+            return {
+                ...state,
+                mapZoomReference: action.payload.mapZoomReference
+            }
+        case "RENDER_MAP":
+            return renderMap(state, globalState);
+        case "RESET_MAP_ZOOMING":
+            return ResetMapZooming(state);
+        default:
+            return state
     }
-    return state
 }
 
 
@@ -59,7 +58,6 @@ function renderMap(state, globalState) {
     let mapLoaded = state.mapLoaded
     let colorGradientOrder = globalState.colorReducer.order;
 
-    console.log("renderMap-inreducer", globalState);
     if (!mapLoaded) {
 
         //Determine in which orders the colors should be applied to the map, descending by default
@@ -73,7 +71,7 @@ function renderMap(state, globalState) {
 
         //Setup main map
         var map = new Datamap({
-            element: document.getElementById('map'),
+            element: document.getElementById('map'), // todo: Why not use myNode?
             width: width,
             height: height,
             responsive: true,
@@ -95,7 +93,6 @@ function renderMap(state, globalState) {
         if (selectedCountry !== "World") {
 
             //Draw cities
-            console.log("props.cityData", cityData);
             map.bubbles(cityData["cities"], {
                 popupTemplate: cityPopupTemplate,
             });
@@ -129,7 +126,7 @@ function renderMap(state, globalState) {
         }
     } else {
         reColorMap(globalState);
-        globalState.colorReducer.updateColorGradient(globalState.colorReducer, globalState);
+        // updateColorGradient(store.dispatch, countriesData, globalState.selectorReducer.criteria); //Not allowed here
     }
 
     return {
@@ -208,7 +205,6 @@ function resetAllColorsExcept(mapRef, countriesData, countryCode) {
 
 function onClickCountyHook(datamap) {
     datamap.svg.selectAll(".datamaps-subunit").on("click", onCountryClicked);
-    console.log("hej");
 }
 
 /**
@@ -247,7 +243,6 @@ function cityPopupTemplate(geo, data) {
 }
 
 function onCountryClicked(geography) {
-    console.log(geography);
     // alert(geography.id);
 
     //Code to trigger rerendering of map with country view
@@ -266,7 +261,6 @@ function onCountryClicked(geography) {
  * Zoom into a given country (not finished)
  */
 function zoomToCountry(element) {
-    console.log(element);
     var projection = d3Geo
         .geoMercator()
         .center([10, 62.7667655]) // always in [East Latitude, North Longitude]
