@@ -4,6 +4,12 @@ import {Criteria, CriteriaOrder} from "./criteria";
 import {getColorGradient} from "./colorConfig";
 
 // asynchronous action creator (thunk)
+/**
+ * A thunk that will be used to fetch data from Numbeo's API. The thunk will fetch the data and process it before
+ * storing it in the Redux store.
+ *
+ * @returns {function(*=, *): Promise<*>} The function that will be used by the Redux-thunk library.
+ */
 export const fetchCountriesData = () => {
     return (dispatch, getState) => {
         let promises = Object.values(CountryCodes).map((name) => ApiHandler.getCountryIndices(name));
@@ -56,6 +62,14 @@ export const fetchCountriesData = () => {
     }
 }
 
+/**
+ * Used to update the color properties in the store. This will affect the colors of the map and the colors of
+ * the color gradient. It will also affect the maximum and minimum values displayed on the color gradient.
+ *
+ * @param dispatch A function for dispatching data to the Redux store.
+ * @param countries A dictionary for the data of all Countries available in the Redux store.
+ * @param criteria A string representing the selected criteria in the selector.
+ */
 export function updateColorGradient(dispatch, countries, criteria) {
     // Get the numerical values of all countries
     let values = Object.values(countries)
@@ -81,6 +95,12 @@ export function updateColorGradient(dispatch, countries, criteria) {
     });
 }
 
+/**
+ * Find the given key in an object based on its value
+ * @param object
+ * @param value
+ * @returns {string}
+ */
 function getKeyByValue(object, value) {
     return Object.keys(object).find((key) => object[key] === value);
 }

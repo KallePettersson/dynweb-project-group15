@@ -9,14 +9,29 @@ const ApiHandler = {   // JS object creation literal
             .then(response => response.json());
 
     },
+
+    /**
+     * Returns geographic data for each city within a country. Data such as coordinates and city id.
+     * @param countryCode the ISO standard country code
+     * @returns {Promise<any>}
+     */
     getCities(countryCode = null) {
 
         return this.defaultApiCall("/cities", "&country=" + countryCode);
     },
+
+    /**
+     * Returns all indicies for a given city based on the city id.
+     * @param city_id a Numbeo city_id
+     * @returns {Promise<any>}
+     */
     getCityIndicies(city_id = null) {
 
         return this.defaultApiCall("/indicies", "&city_id=" + city_id);
     },
+
+
+
     /**
      * Will return a dictionary containing different values for the given country.
      *

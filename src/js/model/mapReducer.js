@@ -45,9 +45,10 @@ const reducer = (state = initialState, action, globalState) => {
 
 
 /**
- * Renders the map view
- * @param state
- * @param globalState
+ * Renders the map view into the <div id ="map">
+ * Fairly complex function that relies heavily on the datamaps library. For further documentation about specifics view https://datamaps.github.io
+ * @param state the local state within this reducer
+ * @param globalState the global state for all of the reducers
  * @returns {*|(*&{mapReference, mapZoomReference, mapLoaded: boolean})}
  */
 function renderMap(state, globalState) {
@@ -80,7 +81,7 @@ function renderMap(state, globalState) {
             data: countriesData,
             done: onClickCountyHook,
             geographyConfig: {
-                // highlightFillColor: ColorConfig.highlightColorHover,
+                highlightFillColor: ColorConfig.highlightColorHover,
                 highlightBorderColor: ColorConfig.highlightBorderColor,
                 popupTemplate: countryPopupTemplate,
             },
@@ -134,6 +135,10 @@ function renderMap(state, globalState) {
     }
 }
 
+/**
+ * Function for resetting the zoom within the map view.
+ * @param state the local state within this reducer
+ */
 // Reset zoom and dragging on map
 function ResetMapZooming(state) {
 
@@ -159,7 +164,7 @@ function ResetMapZooming(state) {
 
 /**
  * Recolor the entire map, used after the chosen criteria has changed
- * @param globalState
+ * @param globalState the global state for all reducers
  */
 function reColorMap(globalState) {
 
@@ -184,9 +189,9 @@ function reColorMap(globalState) {
 
 /**
  * Reset all the country colors except the selected country.
- * @param mapRef
- * @param countriesData
- * @param countryCode
+ * @param mapRef a reference to the svg containing the map
+ * @param countriesData all the data for all the countries
+ * @param countryCode the code for the country we dont want to reset the color for
  */
 function resetAllColorsExcept(mapRef, countriesData, countryCode) {
     let newColours = Object.entries(countriesData).map(country => {
@@ -203,24 +208,22 @@ function resetAllColorsExcept(mapRef, countriesData, countryCode) {
 }
 
 
-function onClickCountyHook(datamap) {
-    datamap.svg.selectAll(".datamaps-subunit").on("click", onCountryClicked);
+/**
+ * This function is called by datamaps when the map is finished and adds an eventlistener to each country
+ * @param mapRef a reference to the svg containing the map
+ */
+function onClickCountyHook(mapRef) {
+    mapRef.svg.selectAll(".datamaps-subunit").on("click", onCountryClicked);
 }
 
 /**
  * Popup banner for when a country is hovered
- * @param geo
- * @param data
+ * @param geo an internal object used in the datamaps library contining data about each country
+ * @param data out data added to each country
  * @returns {string}
  */
 function countryPopupTemplate(geo, data) {
     let state = store.getState();
-    // store.dispatch({
-    //     type:"UPDATE_COUNTRY_HOVERED",
-    //     payload: {
-    //         countryHovered:geo.id,
-    //     }
-    // })
 
     return ['<div class="hoverinfo">',
         '<strong>' + geo.properties.name + '</strong>',
@@ -231,8 +234,8 @@ function countryPopupTemplate(geo, data) {
 
 /**
  * Popup banner for when a city is hovered
- * @param geo
- * @param data
+ * @param geo an internal object used in the datamaps library contining data about each country
+ * @param data out data added to each country
  * @returns {string}
  */
 function cityPopupTemplate(geo, data) {
@@ -242,6 +245,10 @@ function cityPopupTemplate(geo, data) {
         '</div>'].join('');
 }
 
+/**
+ * On country clicked handler, not used in final version
+ * @param geography an internal object used in the datamaps library contining data about each country
+ */
 function onCountryClicked(geography) {
     // alert(geography.id);
 
