@@ -2,7 +2,7 @@ import * as Datamap from "datamaps";
 import * as d3 from "d3";
 import * as d3Geo from "d3-geo";
 import * as d3Zoom from "d3-zoom"
-import store from "../store";
+import store from "./store";
 import {Criteria} from "../criteria"
 import {getColorGradient, ColorConfig} from "../colorConfig";
 
@@ -71,7 +71,7 @@ function renderMap(state, globalState) {
 
         //Setup main map
         var map = new Datamap({
-            element: document.getElementById('map'), // todo: Why not use myNode?
+            element: myNode,
             width: width,
             height: height,
             responsive: true,

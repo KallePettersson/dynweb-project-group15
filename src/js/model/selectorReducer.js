@@ -1,4 +1,4 @@
-import { database } from "../firebaseModel"
+import { database } from "../persistance/firebaseModel"
 import { ref, onValue } from "firebase/database";
 
 
